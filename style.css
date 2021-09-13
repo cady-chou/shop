@@ -33,7 +33,7 @@
 }
 
 .bg-top {
-    max-width: 333px;
+    max-width: 418px;
     position: absolute;
     top: -154.2px;
     left: 5px;
@@ -44,8 +44,9 @@
         width: 280px;
     }
     .bg-top {
-        top: -153.2px;
-        left: 14px;
+        max-width: 395px;
+        top: -146.1px;
+        left: -13px;
     }
 }
 
@@ -54,9 +55,9 @@
         width: 250px;
     }
     .bg-top {
-        max-width: 318px;
-        top: -147.2px;
-        left: 5px;
+        max-width: 335px;
+        top: -124px;
+        left: -3px;
     }
 }
 
@@ -65,8 +66,9 @@
         width: 230px;
     }
     .bg-top {
-        max-width: 295px;
-        top: -136.2px;
+        max-width: 320px;
+        top: -118px;
+        left: -5px;
     }
 }
 
@@ -114,7 +116,7 @@
     word-break: keep-all;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.288);
     position: relative;
-    width: 125px;
+    width: 115px;
     -webkit-user-drag: none;
     height: 174px;
     user-select: none;
@@ -165,6 +167,10 @@ li p {
 
 .theme-6 {
     background-image: url(img/粉貓-4.png);
+}
+
+.theme-7 {
+    background-image: url(img/japan.png);
 }
 
 .more-move {
