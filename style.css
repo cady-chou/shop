@@ -42,6 +42,7 @@
 @media (max-width:425px) {
     .img-box {
         width: 280px;
+        padding: 20px 30px 10px 30px;
     }
     .bg-top {
         max-width: 395px;
