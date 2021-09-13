@@ -45,7 +45,7 @@
     }
     .bg-top {
         max-width: 395px;
-        top: -146.1px;
+        top: -145.1px;
         left: -13px;
     }
 }
@@ -116,9 +116,9 @@
     word-break: keep-all;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.288);
     position: relative;
-    width: 115px;
+    width: 135px;
     -webkit-user-drag: none;
-    height: 174px;
+    height: 205px;
     user-select: none;
     border-radius: 10px;
     white-space: nowrap;
