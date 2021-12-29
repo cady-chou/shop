@@ -108,6 +108,58 @@
             <p style="font-size:13px;padding-top: 30px;font-weight: 300;color:rgb(185, 185, 185);">© 2021 Cady._.design</p>
         </div>
     </div>
+    <style>
+        .polaroid-img {
+            position: fixed;
+            bottom: 30px;
+            right: 80px;
+            z-index: 99;
+            width: 100px
+        }
+        
+        @media (max-width:768px) {
+            .polaroid-img {
+                bottom: 40px;
+                right: 15px;
+                width: 90px
+            }
+        }
+        
+        .text-popup .popup-text {
+            visibility: hidden;
+            background: rgba(255, 255, 255, .9);
+            color: #D17644;
+            font-weight: bold;
+            text-align: center;
+            border: 2px solid #D17644;
+            border-radius: 6px;
+            padding: 5px;
+            position: fixed;
+            bottom: 135px;
+            right: 70px;
+            z-index: 1
+        }
+        
+        @media (max-width:768px) {
+            .text-popup .popup-text {
+                bottom: 126px;
+                right: 10px;
+                visibility: visible;
+                bottom: 10px;
+                background: rgba(255, 255, 255, 0);
+                color: #ffffff;
+                border: none;
+                font-size: 12px;
+            }
+        }
+        
+        .text-popup:hover .popup-text {
+            visibility: visible
+        }
+    </style>
+    <a href="https://creator.memopresso.com/Cady._.design" target="blank">
+        <div class="text-popup"><img class="polaroid-img" src="./img/相框列印.png" alt="memo相框列印"><span class="popup-text">Memo相框列印 ▸</span></div>
+    </a>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/js/bootstrap.min.js " integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA==" crossorigin=" anonymous " referrerpolicy="no-referrer "></script>
 
