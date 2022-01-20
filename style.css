@@ -184,6 +184,16 @@ li p {
     background-image: url(img/聖誕節.png);
 }
 
+.theme-10 {
+    background-size: cover;
+    background-image: url(img/lucky-b.png);
+}
+
+.theme-11 {
+    background-size: cover;
+    background-image: url(img/lucky.png);
+}
+
 .more-move {
     border-bottom: 1px solid #cecece;
     padding-bottom: 3px;
