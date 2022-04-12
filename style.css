@@ -117,7 +117,7 @@
     word-break: keep-all;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.288);
     position: relative;
-    width: 138px;
+    width: 146px;
     -webkit-user-drag: none;
     height: 208px;
     user-select: none;
@@ -192,6 +192,11 @@ li p {
 .theme-11 {
     background-size: cover;
     background-image: url(img/lucky.png);
+}
+
+.theme-12 {
+    background-size: cover;
+    background-image: url(img/水果喵.png);
 }
 
 .more-move {
