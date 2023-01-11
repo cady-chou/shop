@@ -218,6 +218,11 @@ li p {
     background-image: url(img/萬聖節2喵.png);
 }
 
+.theme-17 {
+    background-size: cover;
+    background-image: url(img/冬日雪喵.png);
+}
+
 .more-move {
     border-bottom: 1px solid #cecece;
     padding-bottom: 3px;
