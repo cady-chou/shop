@@ -223,6 +223,16 @@ li p {
     background-image: url(img/冬日雪喵.png);
 }
 
+.theme-18 {
+    background-size: cover;
+    background-image: url(img/招財貓奶茶.png);
+}
+
+.theme-19 {
+    background-size: cover;
+    background-image: url(img/早餐麵包.png);
+}
+
 .more-move {
     border-bottom: 1px solid #cecece;
     padding-bottom: 3px;
