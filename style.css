@@ -233,6 +233,11 @@ li p {
     background-image: url(img/早餐麵包.png);
 }
 
+.theme-20 {
+    background-size: cover;
+    background-image: url(img/y2k.png);
+}
+
 .more-move {
     border-bottom: 1px solid #cecece;
     padding-bottom: 3px;
