@@ -238,6 +238,11 @@ li p {
     background-image: url(img/y2k.png);
 }
 
+.theme-21 {
+    background-size: cover;
+    background-image: url(img/summer.png);
+}
+
 .more-move {
     border-bottom: 1px solid #cecece;
     padding-bottom: 3px;
