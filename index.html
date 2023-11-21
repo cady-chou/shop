@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHOÜ'S CAT Studio | 周氏喵喵＿可愛製造所 🐱 x 👽</title>
-    <meta name="description" content="LINE主題 © 2023 Cady._.design">
-    <meta property="og:title" content="CHOÜ'S CAT Studio | 周氏喵喵＿可愛製造所 🐱 x 👽" />
+    <title>周氏喵喵＿可愛製造所 🐱 x 👽｜貓咪x文創x插畫x設計</title>
+    <meta property="og:title" content="CHOÜ'S CAT Studio | 周氏喵喵＿可愛製造所 🐱 x 👽｜貓咪x文創x插畫x設計" />
     <meta property="og:image" content="https://ppt.cc/fyhRUx@.png" />
     <meta property="og:description" content="關於周氏喵喵ㄉ各種酷東東們 💫 ！" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
@@ -44,6 +43,7 @@
         margin: 0;
         font-family: sans-serif;
         background-color: #58c0d7;
+        transition: all 0.3s;
     }
     
     article {
@@ -117,6 +117,9 @@
         justify-content: flex-start;
         align-items: center;
         box-shadow: 10px 10px 0px #27a6c3;
+        background-color: #fff;
+        border: 1px solid #222;
+        transition: all 0.3s;
     }
     
     .sample-card {
@@ -130,12 +133,37 @@
         text-align: center;
         vertical-align: middle;
         font-size: 24px;
-        color: #fff;
+        color: #333;
         padding: 30px;
         width: 100%;
         aspect-ratio: 99/139;
         object-fit: cover;
         object-position: top;
+    }
+    
+    .sticker-card {
+        margin-bottom: 30px;
+        background-color: #f2f2f2;
+        padding: 15px 25px;
+        border-radius: 24px;
+        min-height: 370px;
+        transition: all 0.3s;
+    }
+    
+    .sticker-card a {
+        color: #222;
+        text-align: left;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+    
+    .sticker-card .more-btn {
+        font-weight: 500;
+        text-align: right;
+        color: #222;
+        margin: 5px 0;
+        font-size: 15px;
+        transition: all 0.3s;
     }
     
     .theme-0 {
@@ -248,6 +276,19 @@
         background-image: url(img/summer.png);
     }
     /* header */
+    
+    #darkModeToggle {
+        position: fixed;
+        bottom: 8px;
+        right: 8px;
+        z-index: 9999;
+        font-size: 30px;
+        outline: none;
+        border: 0px;
+        border-radius: 24px;
+        padding: 5px 10px;
+        background-color: #ffffff;
+    }
     
     .wrapper {
         position: fixed;
@@ -393,11 +434,18 @@
         height: 12px;
     }
     
+    .brand-intro-box {
+        background-image: url(./img/sky-bg.jpeg);
+        border-top: 1px dashed #fff;
+        border-bottom: 1px dashed #1e1e1e;
+    }
+    
     .brand-intro {
         position: relative;
         font-weight: 500;
         line-height: 1.8;
         background-color: #fff;
+        color: #222;
         display: inline-block;
         padding: 60px;
         border-radius: 160px;
@@ -474,6 +522,7 @@
         animation-delay: 0.8s;
         animation-name: keep-cute;
         margin: 0;
+        color: #ff7474;
     }
     
     .keep-cute::before {
@@ -503,6 +552,84 @@
             opacity: 1;
         }
     }
+    
+    .connect-box {
+        background-color: #e7f9ff;
+        background-image: url(./img/blue-bg.jpeg);
+    }
+    
+    .connect-box div {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 1.8;
+        padding: 0 20px;
+        color: #fff;
+        text-shadow: 0 0 3px #2885ce;
+    }
+    /* Dark Mode 樣式 */
+    
+    body.dark-mode,
+    body.dark-mode .horizontal {
+        background-color: #131417;
+        color: #ffffff;
+        transition: all 0.3s;
+    }
+    
+    body.dark-mode .cards {
+        box-shadow: 10px 10px 0px #000000;
+        background-color: #1e1f26;
+        border: 1px solid #5a5a5a;
+        transition: all 0.3s;
+    }
+    
+    body.dark-mode .sample-card {
+        color: #e3e3e3;
+    }
+    
+    body.dark-mode .sticker-card {
+        background-color: #4c4c55;
+        transition: all 0.3s;
+    }
+    
+    body.dark-mode .sticker-card a,
+    body.dark-mode .sticker-card .more-btn {
+        color: #e3e3e3;
+    }
+    
+    body.dark-mode .brand-intro-box {
+        background-image: url(./img/galaxy.jpg);
+        border-top: 1px dashed #fff;
+        border-bottom: 1px dashed #b5b5b5;
+        transition: all 0.3s;
+    }
+    
+    body.dark-mode .brand-intro {
+        background-color: #1d1e23;
+        color: #e3e3e3;
+        border: 1px solid #5a5a5a;
+        box-shadow: 10px 10px 0px #000;
+        transition: all 0.3s;
+    }
+    
+    body.dark-mode .connect-box {
+        background-image: url('./img/dark-blue.jpg');
+        transition: all 0.3s;
+    }
+    
+    body.dark-mode .connect-box div {
+        text-shadow: 0 0 3px #14191d;
+        transition: all 0.3s;
+    }
+    
+    body.dark-mode .keep-cute {
+        color: #06b0ff;
+        transition: all 0.3s;
+    }
+    
+    body.dark-mode .keep-cute::before {
+        background: #000000;
+        transition: all 0.3s;
+    }
 </style>
 
 
@@ -525,12 +652,13 @@
             </div>
         </div>
     </header>
-    <section class="container">
-        <div class="space-holder">
+    <button id="darkModeToggle"></button>
+    <section class="container content">
+        <div class="space-holder ">
             <div class="sticky">
-                <div class="horizontal" style="background-color: #58c0d7;">
-                    <section role="feed" class="cards" style="background-color: #fff;height: 80%;left: 20px;top: 10%;border-radius: 50px;border: 1px solid #222;">
-                        <div class="sample-card" style="text-align: left;color:#333;width: 400px;padding:20px 30px;">
+                <div class="horizontal">
+                    <section role="feed" class="cards" style="height: 80%;left: 20px;top: 10%;border-radius: 50px;">
+                        <div class="sample-card" style="text-align: left;width: 400px;padding:20px 30px;">
                             <h2 style="margin-bottom: 16px;">喵喵最常出沒在<br>「 <span style="color:#5acc34;">LINE 主題</span> 」</h2>
                             <p class="h-point">超過 20 種！一定有你喜歡ㄉ！</p>
                             <p class="h-point">把聊天室變可愛吧 ♡♡♡ </p>
@@ -593,37 +721,37 @@
         <div class="space-holder-1">
             <div class="sticky-1">
                 <div class="horizontal-1">
-                    <section role="feed" class="cards" style="background-color: #fff;height: 80%;width: 175%;left: 50px;top: 10%;border-radius: 50px;border: 1px solid #222;">
-                        <div class="sample-card" style="text-align: left;color:#333;width: 400px;">
+                    <section role="feed" class="cards" style="height: 80%;width: 175%;left: 50px;top: 10%;border-radius: 50px;">
+                        <div class="sample-card" style="text-align: left;width: 400px;">
                             <h2>「<span style="color:#5acc34;">LINE 貼圖</span>」</h2>
                             <p class="h-point">集結可愛嗆辣於一身！</p>
                             <p class="h-point">和朋朋聊天必須有🔥🔥🔥</p>
                             <img style="position:relative;left: -18px;bottom: 8px;" src="./img/貼圖對話喵.gif" width="380px">
                         </div>
                         <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;">
-                            <div style="margin-bottom: 30px;background-color: #f2f2f2;padding: 15px 25px;border-radius: 24px;min-height: 370px;">
-                                <a style="color: #222;text-align: left;text-decoration: none;" class="theme-link" href="https://line.me/S/sticker/23794593/?lang=zh-Hant&utm_source=gnsh_stickerDetail" rel="noopener noreferrer" target="blank">
+                            <div class="sticker-card">
+                                <a class="theme-link" href="https://line.me/S/sticker/23794593/?lang=zh-Hant&utm_source=gnsh_stickerDetail" rel="noopener noreferrer" target="blank">
                                     <img src="./img/sticker-2.png" style="width: 100%;display: inline-block;max-width: 180px;vertical-align: top;">
                                     <hr style="border-color: #d6d6d65e;border-bottom: none;">
                                     <div style="width: 100%;display: inline-block;">
                                         <h4 style="margin:5px 0 0 0;font-size: 21px;">軟爛ㄉ嗆辣角色</h4>
                                         <p style="margin: 5px 0;font-size: 16px;">立志當嗆辣ㄉ軟爛喵喵，如果傷到你我很抱歉( ˃ ⌑ ˂ഃ )～<br>（才怪ㄎㄎ）</p>
-                                        <p style="font-weight: 500;text-align: right;color: #222;margin: 5px 0;font-size: 15px;">看更多 ▸</p>
+                                        <p class="more-btn">看更多 ▸</p>
                                     </div>
                                 </a>
                             </div>
                         </article>
                         <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;margin-top: -12px;">
-                            <div style="background-color: #f2f2f2;padding: 15px 25px;border-radius: 24px;">
-                                <a style="color: #222;text-align: left;text-decoration: none;" class="theme-link" href="https://line.me/S/sticker/20317494/?lang=zh-Hant&utm_source=gnsh_stickerDetail" rel="noopener noreferrer" target="blank">
+                            <div class="sticker-card">
+                                <aclass="theme-link" href="https://line.me/S/sticker/20317494/?lang=zh-Hant&utm_source=gnsh_stickerDetail" rel="noopener noreferrer" target="blank">
                                     <img src="./img/sticker-1.png" style="width: 100%;display: inline-block;max-width: 180px;vertical-align: top;">
                                     <hr style="border-color: #d6d6d65e;border-bottom: none;">
                                     <div style="width: 100%;display: inline-block;">
                                         <h4 style="margin:0;font-size: 21px;">可愛迷人ㄉ嗆辣角色</h4>
                                         <p style="margin: 5px 0;font-size: 16px;">五隻有點嗆辣ㄉ可愛貓咪，喵喵平常很 nice，都是這些頭套帶壞我的！（才怪）</p>
-                                        <p style="font-weight: 500;text-align: right;color: #222;margin: 5px 0;font-size: 15px;">看更多 ▸</p>
+                                        <p class="more-btn">看更多 ▸</p>
                                     </div>
-                                </a>
+                                    </a>
                             </div>
                         </article>
                     </section>
@@ -635,32 +763,77 @@
         <div class="space-holder-2">
             <div class="sticky-2">
                 <div class="horizontal-2">
-                    <section role="feed" class="cards">
-                        <div class="sample-card" style="text-align: left;color:#333;width: 400px;">
+                    <section role="feed" class="cards" style="height: 80%;width: 175%;left: 20px;top: 10%;border-radius: 50px;">
+                        <div class="sample-card" style="text-align: left;width: 400px;">
                             <h2>一些其他ㄉ<br>「<span style="color:#09bac7;">可愛酷東東</span>」<br></h2>
                             <p>讚<br>讚讚</p>
                         </div>
-                        <article class="sample-card card-8">uni聯名</article>
-                        <article class="sample-card card-9">可印聯名</article>
-                        <article class="sample-card card-10">T恤聯名</article>
+                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;color: #222;">
+                            <h4>喵喵ㄉ周邊 🛒</h4>
+                            <img src="./img/product-1.png" alt="" width="100%" style="border-radius: 12px;">
+                        </article>
+                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;color: #222;">
+                            <h4>Unicorn 聯名</h4>
+                            <img src="./img/IMG_6452.jpg" alt="" width="100%" style="border-radius: 12px;">
+                        </article>
+                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;color: #222;">
+                            <h4>可印 CANPRINT 聯名</h4>
+                            <img src="./img/IMG_4858.jpg" alt="" width="100%" style="border-radius: 12px;">
+                        </article>
+                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;color: #222;">
+                            <h4>Hosetee T恤聯名</h4>
+                            <img src="./img/小花喵.png" alt="" width="100%" style="border-radius: 12px;">
+                        </article>
+                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;color: #222;">
+                            <h4>Snapshot 聯名相框</h4>
+                            <img src="./img/小花喵.png" alt="" width="100%" style="border-radius: 12px;">
+                        </article>
                     </section>
                 </div>
             </div>
         </div>
     </section>
-    <div class="bumper" style="background-image: url(./img/sky-bg.jpeg);border-top: 1px dashed #fff;border-bottom: 1px dashed #1e1e1e;">
+    <section class="container" style="display: none;">
+        <div class="space-holder-2">
+            <div class="sticky-2">
+                <div class="horizontal-2">
+                    <section role="feed" class="cards" style="background-color: #fff;height: 80%;width: 175%;left: 20px;top: 10%;border-radius: 50px;">
+                        <div class="sample-card" style="text-align: left;width: 400px;">
+                            <h2>「<span style="color:#09bac7;">品牌合作經驗</span>」<br></h2>
+                            <p>讚<br>讚讚</p>
+                        </div>
+                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;color: #222;">
+                            <h4>未來少女快閃店應援牌</h4>
+                            <p style="font-size: 16px;text-align: left;">與未來少女xBeanfun!合作，設計未來少女快閃店-紫月光的應援手牌</p>
+                            <img src="./img/紫月光x周氏喵喵_宣傳圖.png" alt="" width="100%" style="border-radius: 12px;">
+                        </article>
+                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;color: #222;">
+                            <h4>CLA 品牌合作聯名貼圖</h4>
+                            <p style="font-size: 16px;text-align: left;">繪製聯名貼圖，以喵喵結合CLA品牌衣服為形象的日常x購物貼圖</p>
+                            <img src="./img/香氛社群.png" alt="" width="100%" style="border-radius: 12px;">
+                        </article>
+                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;color: #222;">
+                            <h4>Dalla 香氛</h4>
+                            <img src="./img/香氛社群.png" alt="" width="100%" style="border-radius: 12px;">
+                        </article>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="bumper brand-intro-box">
         <div class="bg-container brand-intro">
             <img class="love-img" src="./img/love.png" alt="">
             <h2>周氏喵喵｜CHOÜ’S CAT</h2>
             <p>由五隻不同花色的貓咪組成，想傳達給你的理念是</p>
-            <h2 class="keep-cute" style="color: #ff7474;"><span>「 保 持 可 愛 」</span></h2>
+            <h2 class="keep-cute"><span>「 保 持 可 愛 」</span></h2>
             <p>為什麼會說是保持呢？<br>因為相信每個人生來都有可愛的一部分<br>它可以是可愛的樣子、用可愛的物品<br>還是一顆想要變得可愛的心</p>
             <p>讓喵喵陪你一起吧( ¨̮ )♡.ᐟ.ᐟ</p>
             <img class="brand-intro-img run-animation" src="./img/img-1.png" alt="">
         </div>
     </div>
-    <div class="bumper" style="background-color: #e7f9ff;background-image: url(./img/blue-bg.jpeg);">
-        <div style="font-weight: 500;font-size: 18px;line-height: 1.8;padding: 0 20px;color: #fff;text-shadow: 0 0 3px #2885ce;">💌 合作邀約歡迎來信至 <a style="color: #fff;" href="mailto:ruidiechou@gmail.com">ruidiechou@gmail.com</a></div>
+    <div class="bumper connect-box">
+        <div>💌 合作邀約歡迎來信至 <a style="color: #fff;" href="mailto:ruidiechou@gmail.com">ruidiechou@gmail.com</a></div>
     </div>
     <div style="text-align: center;padding: 5px;color: #fff;">RUI-DIE © 2023</div>
 </body>
@@ -787,6 +960,54 @@
 
         lastScrollTop = st;
     }
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        // 檢查用戶的選擇，如果之前是 Dark Mode，切換圖示為🌚
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            enableDarkMode();
+        } else {
+            // 預設 Light Mode 圖示為🌝
+            darkModeToggle.innerHTML = '🌝';
+        }
+
+        // 切換 Dark Mode
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+
+            // 切換按鈕上的圖示
+            if (body.classList.contains('dark-mode')) {
+                enableDarkMode();
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                enableLightMode();
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+
+        // 在頁面重整時檢查 Dark Mode 設定
+        window.addEventListener('load', function() {
+            if (body.classList.contains('dark-mode')) {
+                // 如果目前是 Dark Mode，移除 dark-mode 並設定為預設的🌚圖示
+                enableLightMode();
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+
+        // 根據 Dark Mode 設定設定初始狀態
+        function enableDarkMode() {
+            darkModeToggle.innerHTML = '🌚';
+            body.classList.add('dark-mode');
+        }
+
+        function enableLightMode() {
+            darkModeToggle.innerHTML = '🌝';
+            body.classList.remove('dark-mode');
+        }
+    });
 </script>
 
 </html>
