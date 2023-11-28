@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>周氏喵喵＿可愛製造所 🐱 x 👽｜貓咪x文創x插畫x設計</title>
-    <meta property="og:title" content="CHOÜ'S CAT Studio | 周氏喵喵＿可愛製造所 🐱 x 👽｜貓咪x文創x插畫x設計" />
+    <title>周氏喵喵＿可愛製造所 🐱 x 👽｜文創品牌・插畫設計・圖像授權・異業合作</title>
+    <meta property="og:title" content="周氏喵喵＿可愛製造所 🐱 x 👽｜文創品牌・插畫設計・圖像授權・異業合作" />
     <meta property="og:image" content="https://ppt.cc/fyhRUx@.png" />
     <meta property="og:description" content="關於周氏喵喵ㄉ各種酷東東們 💫 ！" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
@@ -72,14 +72,16 @@
     
     .space-holder,
     .space-holder-1,
-    .space-holder-2 {
+    .space-holder-2,
+    .space-holder-3 {
         position: relative;
         width: 100%;
     }
     
     .sticky,
     .sticky-1,
-    .sticky-2 {
+    .sticky-2,
+    .sticky-3 {
         position: sticky;
         top: 0;
         height: 100vh;
@@ -88,21 +90,10 @@
         background-size: cover;
     }
     
-    .sticky {
-        background-image: url(./bg_gradient.jpg);
-    }
-    
-    .sticky-1 {
-        background-image: url(./bg_gradient-nn.jpg);
-    }
-    
-    .sticky-2 {
-        background-image: url(./bg_gradient-n.jpeg);
-    }
-    
     .horizontal,
     .horizontal-1,
-    .horizontal-2 {
+    .horizontal-2,
+    .horizontal-3 {
         position: absolute;
         height: 100%;
         will-change: transform;
@@ -139,6 +130,40 @@
         aspect-ratio: 99/139;
         object-fit: cover;
         object-position: top;
+    }
+    
+    .sample-card h4 {
+        margin: 12px 0;
+        text-align: left;
+    }
+    
+    .sample-card .card-label {
+        text-align: left;
+    }
+    
+    .sample-card .card-label span {
+        color: #fff;
+        padding: 6.5px 14px 3px 10px;
+        background: #09bac7;
+        font-size: 16px;
+        font-weight: 500;
+        border-radius: 3px;
+        position: relative;
+        left: 1px;
+        top: -1px;
+        height: 32px;
+        border: 0px;
+        line-height: 1.25;
+        display: inline-block;
+        clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
+    }
+    
+    .sample-card a {
+        color: #000;
+    }
+    
+    .sample-card a:hover {
+        color: #09bac7;
     }
     
     .sticker-card {
@@ -593,7 +618,8 @@
     }
     
     body.dark-mode .sticker-card a,
-    body.dark-mode .sticker-card .more-btn {
+    body.dark-mode .sticker-card .more-btn,
+    body.dark-mode .sample-card a {
         color: #e3e3e3;
     }
     
@@ -655,10 +681,10 @@
     </header>
     <button id="darkModeToggle"></button>
     <section class="container content">
-        <div class="space-holder ">
+        <div class="space-holder">
             <div class="sticky">
                 <div class="horizontal">
-                    <section role="feed" class="cards" style="height: 80%;left: 20px;top: 10%;border-radius: 50px;">
+                    <section role="feed" class="cards" style="height: 88%;left: 20px;top: 5%;border-radius: 50px;">
                         <div class="sample-card" style="text-align: left;width: 400px;padding:20px 30px;">
                             <h2 style="margin-bottom: 16px;">喵喵最常出沒在<br>「 <span style="color:#5acc34;">LINE 主題</span> 」</h2>
                             <p class="h-point">超過 20 種！一定有你喜歡ㄉ！</p>
@@ -722,7 +748,7 @@
         <div class="space-holder-1">
             <div class="sticky-1">
                 <div class="horizontal-1">
-                    <section role="feed" class="cards" style="height: 80%;width: 175%;left: 50px;top: 10%;border-radius: 50px;">
+                    <section role="feed" class="cards" style="height: 88%;width: 165%;left: 50px;top: 5%;border-radius: 50px;">
                         <div class="sample-card" style="text-align: left;width: 400px;">
                             <h2>「<span style="color:#5acc34;">LINE 貼圖</span>」</h2>
                             <p class="h-point">集結可愛嗆辣於一身！</p>
@@ -760,63 +786,74 @@
             </div>
         </div>
     </section>
-    <section class="container" style="display: none;">
+    <section class="container">
         <div class="space-holder-2">
             <div class="sticky-2">
                 <div class="horizontal-2">
-                    <section role="feed" class="cards" style="height: 80%;width: 175%;left: 20px;top: 10%;border-radius: 50px;">
+                    <section role="feed" class="cards" style="height: 88%;width: 190%;left: 20px;top: 5%;border-radius: 50px;">
                         <div class="sample-card" style="text-align: left;width: 400px;">
-                            <h2>一些其他ㄉ<br>「<span style="color:#09bac7;">可愛酷東東</span>」<br></h2>
-                            <p>讚<br>讚讚</p>
+                            <h2>正在販售中ㄉ<br>「<span style="color:#09bac7;">可愛酷東東</span>」<br></h2>
+                            <p>有文創商品、服飾、3C用品<br>快去逛逛ㄅ！</p>
                         </div>
-                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;color: #222;">
+                        <article class="sample-card" onclick="window.open('https://reurl.cc/z6GXMp');" style="max-width: 370px;max-height: 450px;margin-right: 0;">
                             <h4>喵喵ㄉ周邊 🛒</h4>
+                            <p style="font-size: 16px;text-align: left;">壓克力吊飾/貼紙/手機支架/杯墊/胸章等</p>
                             <img src="./img/product-1.png" alt="" width="100%" style="border-radius: 12px;">
                         </article>
-                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;color: #222;">
-                            <h4>Unicorn 聯名</h4>
+                        <article class="sample-card" onclick="window.open('https://www.unicornforu.tw/v2/official/SalePageCategory/498176?sortMode=Curator');" style="max-width: 370px;max-height: 450px;margin-right: 0;">
+                            <h4>Unicorn 聯名 🦄</h4>
+                            <p style="font-size: 16px;text-align: left;">
+                                <a href="https://www.unicornforu.tw/SalePage/Index/9158940">環保杯</a>/<a href="https://www.unicornforu.tw/SalePage/Index/9303539">手機殼</a>/<a href="https://www.unicornforu.tw/SalePage/Index/9303563">快充插頭</a>/<a href="https://www.unicornforu.tw/SalePage/Index/9303572">行動電源</a></p>
                             <img src="./img/IMG_6452.jpg" alt="" width="100%" style="border-radius: 12px;">
                         </article>
-                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;color: #222;">
+                        <article class="sample-card" onclick="window.open('https://shopee.tw/mall/search?keyword=%E5%91%A8%E6%B0%8F%E5%96%B5%E5%96%B5&shop=422622625');" style="max-width: 370px;max-height: 450px;margin-right: 0;">
                             <h4>可印 CANPRINT 聯名</h4>
+                            <p style="font-size: 16px;text-align: left;">手機殼/轉印貼</p>
                             <img src="./img/IMG_4858.jpg" alt="" width="100%" style="border-radius: 12px;">
                         </article>
-                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;color: #222;">
-                            <h4>Hosetee T恤聯名</h4>
-                            <img src="./img/小花喵.png" alt="" width="100%" style="border-radius: 12px;">
+                        <article class="sample-card" onclick="window.open('https://www.funshopping.com.tw/categories/tshirt-104280?sl-ref=cady');" style="max-width: 370px;max-height: 450px;margin-right: 0;">
+                            <h4>Hosetee 聯名</h4>
+                            <p style="font-size: 16px;text-align: left;">夏季短袖T恤/冬天帽T 都有！</p>
+                            <img src="./img/露營喵喵小花.png" alt="" width="100%" style="border-radius: 12px;">
                         </article>
-                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;color: #222;">
-                            <h4>Snapshot 聯名相框</h4>
-                            <img src="./img/小花喵.png" alt="" width="100%" style="border-radius: 12px;">
+                        <article class="sample-card" onclick="window.open('https://reurl.cc/a4ZEkQ');" style="max-width: 370px;max-height: 450px;margin-right: 0;">
+                            <h4>Snapshot 聯名</h4>
+                            <p style="font-size: 16px;text-align: left;">人生四格相框拍貼</p>
+                            <img src="./img/拍貼框.PNG" alt="" width="100%" style="border-radius: 12px;">
                         </article>
                     </section>
                 </div>
             </div>
         </div>
     </section>
-    <section class="container" style="display: none;">
-        <div class="space-holder-2">
-            <div class="sticky-2">
-                <div class="horizontal-2">
-                    <section role="feed" class="cards" style="background-color: #fff;height: 80%;width: 175%;left: 20px;top: 10%;border-radius: 50px;">
+    <section class="container">
+        <div class="space-holder-3">
+            <div class="sticky-3">
+                <div class="horizontal-3">
+                    <section role="feed" class="cards" style="height: 95%;width: 175%;left: 20px;top: 3%;border-radius: 50px;">
                         <div class="sample-card" style="text-align: left;width: 400px;">
-                            <h2>「<span style="color:#09bac7;">品牌合作經驗</span>」<br></h2>
-                            <p>讚<br>讚讚</p>
+                            <h2>過去ㄉ<br>「<span style="color:#09bac7;">品牌合作經驗</span>」<br></h2>
+                            <p>💖💖💖</p>
                         </div>
-                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;color: #222;">
-                            <h4>未來少女快閃店應援牌</h4>
-                            <p style="font-size: 16px;text-align: left;">與未來少女xBeanfun!合作，設計未來少女快閃店-紫月光的應援手牌</p>
+                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;">
+                            <div class="card-label"><span>應援牌設計</span></div>
+                            <h4>選秀節目 - 未來少女</h4>
+                            <p style="font-size: 16px;text-align: left;">與 Beanfun! x「<a href="https://zh.wikipedia.org/zh-tw/" target="_blank">未來少女</a>」合作，負責<a href="https://today.line.me/tw/v2/article/wJQGQjE" target="_blank">未來少女熱力應援站</a>紫月光的應援手牌設計，使用該女團的標準色系、團體風格&代表性 logo 結合周氏喵喵的原創角色。
+                            </p>
                             <img src="./img/紫月光x周氏喵喵_宣傳圖.png" alt="" width="100%" style="border-radius: 12px;">
                         </article>
-                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;color: #222;">
-                            <h4>CLA 品牌合作聯名貼圖</h4>
-                            <p style="font-size: 16px;text-align: left;">繪製聯名貼圖，以喵喵結合CLA品牌衣服為形象的日常x購物貼圖</p>
-                            <img src="./img/香氛社群.png" alt="" width="100%" style="border-radius: 12px;">
+                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;">
+                            <div class="card-label"><span>聯名貼圖設計</span></div>
+                            <h4>服飾品牌 - CLA</h4>
+                            <p style="font-size: 16px;text-align: left;">與服飾品牌合作聯名貼圖，以 CLA 品牌的衣服結合周氏喵喵原創角色的日常實用、購物主題的貼圖。</p>
+                            <img src="./img/cla.jpg" alt="" width="100%" style="border-radius: 12px;">
                         </article>
-                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;color: #222;">
-                            <h4>Dalla 香氛</h4>
+                        <!-- <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;">
+                            <div class="card-label"><span>包裝設計</span></div>
+                            <h4>香氛品牌 - Dalla</h4>
+                            <p style="font-size: 16px;text-align: left;">參與 Penker x Dalla 的聯名活動，為 Dalla 設計香氛包裝。</p>
                             <img src="./img/香氛社群.png" alt="" width="100%" style="border-radius: 12px;">
-                        </article>
+                        </article> -->
                     </section>
                 </div>
             </div>
@@ -841,68 +878,35 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-    const spaceHolder = document.querySelector('.space-holder');
-    const horizontal = document.querySelector('.horizontal');
-    spaceHolder.style.height = `${calcDynamicHeight(horizontal)}px`;
+    function setupDynamicHeight(spaceHolder, horizontal, stickyClass) {
+        const spaceHolderElement = document.querySelector(spaceHolder);
+        const horizontalElement = document.querySelector(horizontal);
+        spaceHolderElement.style.height = `${calcDynamicHeight(horizontalElement)}px`;
 
-    function calcDynamicHeight(ref) {
-        const vw = window.innerWidth;
-        const vh = window.innerHeight;
-        const objectWidth = ref.scrollWidth;
-        return objectWidth - vw + vh + 150; // 150 is the padding (in pixels) desired on the right side of the .cards container. This can be set to whatever your styles dictate
+        function calcDynamicHeight(ref) {
+            const vw = window.innerWidth;
+            const vh = window.innerHeight;
+            const objectWidth = ref.scrollWidth;
+            return objectWidth - vw + vh + 150; // 150 is the padding (in pixels) desired on the right side of the .cards container. This can be set to whatever your styles dictate
+        }
+
+        window.addEventListener('scroll', () => {
+            const stickyElement = document.querySelector(stickyClass);
+            horizontalElement.style.transform = `translateX(-${stickyElement.offsetTop}px)`;
+        });
+
+        window.addEventListener('resize', () => {
+            spaceHolderElement.style.height = `${calcDynamicHeight(horizontalElement)}px`;
+        });
     }
 
-    window.addEventListener('scroll', () => {
-        const sticky = document.querySelector('.sticky');
-        horizontal.style.transform = `translateX(-${sticky.offsetTop}px)`;
-    });
-
-    window.addEventListener('resize', () => {
-        spaceHolder.style.height = `${calcDynamicHeight(horizontal)}px`;
-    });
+    // 使用示例
+    setupDynamicHeight('.space-holder', '.horizontal', '.sticky');
+    setupDynamicHeight('.space-holder-1', '.horizontal-1', '.sticky-1');
+    setupDynamicHeight('.space-holder-2', '.horizontal-2', '.sticky-2');
+    setupDynamicHeight('.space-holder-3', '.horizontal-3', '.sticky-3');
 </script>
-<script>
-    const spaceHolder1 = document.querySelector('.space-holder-1');
-    const horizontal1 = document.querySelector('.horizontal-1');
-    spaceHolder1.style.height = `${calcDynamicHeight(horizontal1)}px`;
 
-    function calcDynamicHeight(ref) {
-        const vw = window.innerWidth;
-        const vh = window.innerHeight;
-        const objectWidth = ref.scrollWidth;
-        return objectWidth - vw + vh + 150; // 150 is the padding (in pixels) desired on the right side of the .cards container. This can be set to whatever your styles dictate
-    }
-
-    window.addEventListener('scroll', () => {
-        const sticky1 = document.querySelector('.sticky-1');
-        horizontal1.style.transform = `translateX(-${sticky1.offsetTop}px)`;
-    });
-
-    window.addEventListener('resize', () => {
-        spaceHolder1.style.height = `${calcDynamicHeight(horizontal1)}px`;
-    });
-</script>
-<script>
-    const spaceHolder2 = document.querySelector('.space-holder-2');
-    const horizontal2 = document.querySelector('.horizontal-2');
-    spaceHolder2.style.height = `${calcDynamicHeight(horizontal2)}px`;
-
-    function calcDynamicHeight(ref) {
-        const vw = window.innerWidth;
-        const vh = window.innerHeight;
-        const objectWidth = ref.scrollWidth;
-        return objectWidth - vw + vh + 150; // 150 is the padding (in pixels) desired on the right side of the .cards container. This can be set to whatever your styles dictate
-    }
-
-    window.addEventListener('scroll', () => {
-        const sticky2 = document.querySelector('.sticky-2');
-        horizontal2.style.transform = `translateX(-${sticky2.offsetTop}px)`;
-    });
-
-    window.addEventListener('resize', () => {
-        spaceHolder2.style.height = `${calcDynamicHeight(horizontal2)}px`;
-    });
-</script>
 
 <!-- header -->
 <script>
@@ -962,6 +966,8 @@
         lastScrollTop = st;
     }
 </script>
+
+<!-- darkMode 模式 -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const darkModeToggle = document.getElementById('darkModeToggle');
