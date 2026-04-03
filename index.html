@@ -524,6 +524,11 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
     position: relative;
+    max-height: 500px;
+    overflow: hidden;
+  }
+  .illus-grid .illus-item:nth-child(n+3) {
+    display: none;
   }
   .ig-item {
     flex: 0 0 100%;
@@ -1354,12 +1359,16 @@ document.querySelectorAll('.tab').forEach(tab=>{
 })();
 </script>
 
-// Carousel functionality for IP illustrations
+
+// Carousel functionality for IP illustrations - Fixed version
 let carouselIntervals = {};
+let carouselPositions = {};
 
 function initCarousel(carouselId) {
   const carousel = document.getElementById(carouselId);
   if (!carousel) return;
+
+  carouselPositions[carouselId] = 0;
 
   // Auto-rotate every 5 seconds
   if (carouselIntervals[carouselId]) clearInterval(carouselIntervals[carouselId]);
@@ -1376,8 +1385,10 @@ function carouselNext(carouselId) {
   const items = carousel.querySelectorAll('.illus-item');
   if (items.length <= 2) return;
 
-  carousel.appendChild(items[0]);
+  carouselPositions[carouselId] = (carouselPositions[carouselId] + 2) % items.length;
+  updateCarouselDisplay(carouselId);
 
+  // Reset interval
   if (carouselIntervals[carouselId]) clearInterval(carouselIntervals[carouselId]);
   carouselIntervals[carouselId] = setInterval(() => {
     carouselNext(carouselId);
@@ -1391,12 +1402,30 @@ function carouselPrev(carouselId) {
   const items = carousel.querySelectorAll('.illus-item');
   if (items.length <= 2) return;
 
-  carousel.insertBefore(items[items.length - 1], items[0]);
+  carouselPositions[carouselId] = (carouselPositions[carouselId] - 2 + items.length) % items.length;
+  updateCarouselDisplay(carouselId);
 
+  // Reset interval
   if (carouselIntervals[carouselId]) clearInterval(carouselIntervals[carouselId]);
   carouselIntervals[carouselId] = setInterval(() => {
     carouselNext(carouselId);
   }, 5000);
+}
+
+function updateCarouselDisplay(carouselId) {
+  const carousel = document.getElementById(carouselId);
+  if (!carousel) return;
+
+  const items = carousel.querySelectorAll('.illus-item');
+  const pos = carouselPositions[carouselId];
+
+  items.forEach((item, index) => {
+    if (index >= pos && index < pos + 2) {
+      item.style.display = '';
+    } else {
+      item.style.display = 'none';
+    }
+  });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
