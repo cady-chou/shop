@@ -510,7 +510,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
   .illus-grid{ grid-template-columns: repeat(2,1fr); }
 }
 @media(max-width:580px){
-  .ig-grid, .illus-grid {
+  .ig-grid {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -519,8 +519,17 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
   }
-  .ig-item, .illus-item {
+  .illus-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    position: relative;
+  }
+  .ig-item {
     flex: 0 0 100%;
+    scroll-snap-align: start;
+  }
+  .illus-item {
     scroll-snap-align: start;
   }
   /* 隱藏滾動條 */
@@ -530,6 +539,29 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
   .ig-grid, .illus-grid {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+  /* 輪播箭頭 */
+  .carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 20px;
+    z-index: 10;
+  }
+  .carousel-nav:hover {
+    background: rgba(0,0,0,0.7);
+  }
+  .carousel-nav.prev {
+    left: 10px;
+  }
+  .carousel-nav.next {
+    right: 10px;
   }
 }
 
@@ -595,7 +627,9 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
         <p class="section-desc">春夏秋冬・節日慶典，每個季節都有屬於喵喵的故事。</p>
       </div>
     </div>
-    <div class="illus-grid">
+    <div class="illus-grid" id="illusCarousel">
+      <button class="carousel-nav prev" onclick="carouselPrev('illusCarousel')">❮</button>
+      <button class="carousel-nav next" onclick="carouselNext('illusCarousel')">❯</button>
       
     <div class="illus-item">
       <div class="illus-item-img" style="background:#E8F6FA">
@@ -1319,6 +1353,55 @@ document.querySelectorAll('.tab').forEach(tab=>{
   };
 })();
 </script>
+
+// Carousel functionality for IP illustrations
+let carouselIntervals = {};
+
+function initCarousel(carouselId) {
+  const carousel = document.getElementById(carouselId);
+  if (!carousel) return;
+
+  // Auto-rotate every 5 seconds
+  if (carouselIntervals[carouselId]) clearInterval(carouselIntervals[carouselId]);
+
+  carouselIntervals[carouselId] = setInterval(() => {
+    carouselNext(carouselId);
+  }, 5000);
+}
+
+function carouselNext(carouselId) {
+  const carousel = document.getElementById(carouselId);
+  if (!carousel) return;
+
+  const items = carousel.querySelectorAll('.illus-item');
+  if (items.length <= 2) return;
+
+  carousel.appendChild(items[0]);
+
+  if (carouselIntervals[carouselId]) clearInterval(carouselIntervals[carouselId]);
+  carouselIntervals[carouselId] = setInterval(() => {
+    carouselNext(carouselId);
+  }, 5000);
+}
+
+function carouselPrev(carouselId) {
+  const carousel = document.getElementById(carouselId);
+  if (!carousel) return;
+
+  const items = carousel.querySelectorAll('.illus-item');
+  if (items.length <= 2) return;
+
+  carousel.insertBefore(items[items.length - 1], items[0]);
+
+  if (carouselIntervals[carouselId]) clearInterval(carouselIntervals[carouselId]);
+  carouselIntervals[carouselId] = setInterval(() => {
+    carouselNext(carouselId);
+  }, 5000);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  initCarousel('illusCarousel');
+});
 
 
 <!-- Instagram Embed Script -->
