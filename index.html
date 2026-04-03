@@ -1,50 +1,1052 @@
-<!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>簡單頁面</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        
-        .container {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            padding: 40px;
-            max-width: 600px;
-            text-align: center;
-        }
-        
-        h1 {
-            color: #667eea;
-            margin-bottom: 20px;
-        }
-        
-        p {
-            color: #666;
-            line-height: 1.6;
-        }
-    </style>
+    <title>周氏喵喵＿可愛製造所 🐱 x 👽｜文創品牌・插畫設計・圖像授權・異業合作</title>
+    <meta property="og:title" content="周氏喵喵＿可愛製造所 🐱 x 👽｜文創品牌・插畫設計・圖像授權・異業合作" />
+    <meta property="og:image" content="https://ppt.cc/fyhRUx@.png" />
+    <meta property="og:description" content="關於周氏喵喵ㄉ各種酷東東們 💫 ！" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="img/site.webmanifest">
+    <link rel="stylesheet" href="./scroll.css">
 </head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WQYFLM6X45"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-WQYFLM6X45');
+</script>
+<style>
+    *,
+    *::before,
+    *::after {
+        box-sizing: inherit;
+    }
+    
+    html {
+        box-sizing: border-box;
+        font-size: 100%;
+    }
+    
+    body {
+        margin: 0;
+        font-family: sans-serif;
+        background-color: #58c0d7;
+        transition: all 0.3s;
+    }
+    
+    article {
+        margin-right: 15px;
+        cursor: pointer;
+    }
+    
+    .bumper {
+        text-align: center;
+        padding: 45px 16px;
+        background-color: #ffffff;
+        background-size: cover;
+        background-position: 50% 55%;
+    }
+    
+    .container {
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+    }
+    
+    .bg-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .space-holder,
+    .space-holder-1,
+    .space-holder-2,
+    .space-holder-3 {
+        position: relative;
+        width: 100%;
+    }
+    
+    .sticky,
+    .sticky-1,
+    .sticky-2,
+    .sticky-3 {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        width: 100%;
+        overflow-x: hidden;
+        background-size: cover;
+    }
+    
+    .horizontal,
+    .horizontal-1,
+    .horizontal-2,
+    .horizontal-3 {
+        position: absolute;
+        height: 100%;
+        will-change: transform;
+    }
+    
+    .cards {
+        position: relative;
+        height: 100%;
+        padding: 0 0 0 15px;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        box-shadow: 10px 10px 0px #27a6c3;
+        background-color: #fff;
+        border: 1px solid #222;
+        transition: all 0.3s;
+    }
+    
+    .sample-card {
+        position: relative;
+        max-width: 495px;
+        max-height: 695px;
+        min-width: 125px;
+        margin-right: 30px;
+        flex-shrink: 0;
+        border-radius: 24px;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 24px;
+        color: #333;
+        padding: 30px;
+        width: 100%;
+        aspect-ratio: 99/139;
+        object-fit: cover;
+        object-position: top;
+    }
+    
+    .sample-card h4 {
+        margin: 12px 0;
+        text-align: left;
+    }
+    
+    .sample-card .card-label {
+        text-align: left;
+    }
+    
+    .sample-card .card-label span {
+        color: #fff;
+        padding: 6.5px 16px 3px 10px;
+        background: #09bac7;
+        font-size: 16px;
+        font-weight: 500;
+        border-radius: 3px;
+        position: relative;
+        left: 1px;
+        top: -1px;
+        height: 32px;
+        border: 0px;
+        line-height: 1.25;
+        display: inline-block;
+        clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
+    }
+    
+    .sample-card a {
+        color: #000;
+    }
+    
+    .sample-card a:hover {
+        color: #09bac7;
+    }
+    
+    .sticker-card {
+        margin-bottom: 30px;
+        background-color: #f2f2f2;
+        padding: 15px 25px;
+        border-radius: 24px;
+        min-height: 370px;
+        transition: all 0.3s;
+    }
+    
+    .sticker-card a {
+        color: #222;
+        text-align: left;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+    
+    .sticker-card .more-btn {
+        font-weight: 500;
+        text-align: right;
+        color: #222;
+        margin: 5px 0;
+        font-size: 15px;
+        transition: all 0.3s;
+    }
+    
+    .theme-0 {
+        background-size: cover;
+        background-image: url(img/兔兔bg.png);
+    }
+    
+    .theme-1 {
+        background-size: cover;
+        background-image: url(img/熊熊bg.png);
+    }
+    
+    .theme-2 {
+        background-size: cover;
+        background-image: url(img/咖貓-4.png);
+    }
+    
+    .theme-3 {
+        background-size: cover;
+        background-image: url(img/黑貓-4.png);
+    }
+    
+    .theme-4 {
+        background-size: cover;
+        background-image: url(img/白貓-4.png);
+    }
+    
+    .theme-5 {
+        background-size: cover;
+        background-image: url(img/綠貓-4.png);
+    }
+    
+    .theme-6 {
+        background-size: cover;
+        background-image: url(img/粉貓-4.png);
+    }
+    
+    .theme-7 {
+        background-size: cover;
+        background-image: url(img/japan.png);
+    }
+    
+    .theme-8 {
+        background-size: cover;
+        background-image: url(img/萬聖節.png);
+    }
+    
+    .theme-9 {
+        background-size: cover;
+        background-image: url(img/聖誕節.png);
+    }
+    
+    .theme-10 {
+        background-size: cover;
+        background-image: url(img/lucky-b.png);
+    }
+    
+    .theme-11 {
+        background-size: cover;
+        background-image: url(img/lucky.png);
+    }
+    
+    .theme-12 {
+        background-size: cover;
+        background-image: url(img/水果喵.png);
+    }
+    
+    .theme-13 {
+        background-size: cover;
+        background-image: url(img/露營\ bg.png);
+    }
+    
+    .theme-14 {
+        background-size: cover;
+        background-image: url(img/宇宙喵.png);
+    }
+    
+    .theme-15 {
+        background-size: cover;
+        background-image: url(img/游泳喵.png);
+    }
+    
+    .theme-16 {
+        background-size: cover;
+        background-image: url(img/萬聖節2喵.png);
+    }
+    
+    .theme-17 {
+        background-size: cover;
+        background-image: url(img/冬日雪喵.png);
+    }
+    
+    .theme-18 {
+        background-size: cover;
+        background-image: url(img/招財貓奶茶.png);
+    }
+    
+    .theme-19 {
+        background-size: cover;
+        background-image: url(img/早餐麵包.png);
+    }
+    
+    .theme-20 {
+        background-size: cover;
+        background-image: url(img/y2k.png);
+    }
+    
+    .theme-21 {
+        background-size: cover;
+        background-image: url(img/summer.png);
+    }
+
+     .theme-22 {
+        background-size: cover;
+        background-image: url(img/新年主題.png);
+    }
+    /* header */
+    
+    #darkModeToggle {
+        position: fixed;
+        bottom: 8px;
+        right: 8px;
+        z-index: 9999;
+        font-size: 30px;
+        outline: none;
+        border: 0px;
+        border-radius: 24px;
+        padding: 5px 10px;
+        background-color: #ffffff;
+        box-shadow: 0px 0px 15px #1717171f;
+    }
+    
+    .wrapper {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: #fff;
+        border-radius: 0 0 30px 30px;
+        height: 80px;
+        z-index: 100;
+        box-shadow: 0px 0px 13.92px 2.08px rgba(0, 0, 0, .05);
+        transition: top 0.2s ease-in-out;
+    }
+    
+    .nav-up {
+        top: -80px;
+    }
+    
+    .nav-bar-area {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        height: 100%;
+        padding: 12px 12px 12px 38px;
+    }
+    
+    ul {
+        margin: 0 auto;
+        padding: 0;
+        position: absolute;
+        right: 0;
+        display: -webkit-inline-box;
+    }
+    
+    ul li {
+        display: inline;
+        float: left;
+        padding: 5px;
+        margin: 0 3% 0 0;
+        color: #333;
+        cursor: pointer;
+        line-height: 225%;
+    }
+    
+    li:hover {
+        background-color: #888888;
+    }
+    
+    .menu {
+        display: none;
+        color: #333;
+        font-weight: bold;
+    }
+    
+    #text {
+        float: right;
+    }
+    
+    #image {
+        float: left;
+        cursor: pointer;
+    }
+    
+    .nav-bar {
+        width: 100%;
+    }
+    
+    @media screen and (max-width: 600px) {
+        .nav-bar-area {
+            height: auto;
+            overflow: auto;
+        }
+        ul {
+            width: 100%;
+            height: auto;
+            display: block;
+            overflow: hidden;
+        }
+        ul li {
+            width: 50%;
+            float: left;
+            position: relative;
+            display: block;
+            margin: -1px;
+            padding: 10px 0 10px 0;
+            text-indent: 25px;
+            border-bottom: 1px solid #888888;
+            border-right: 1px solid #888888;
+        }
+        .nav-bar {
+            display: block;
+        }
+    }
+    
+    @media screen and (max-width: 480px) {
+        .menu {
+            display: block;
+        }
+        #text {
+            margin: 0 0 0 20px;
+        }
+        #image {
+            margin: 0 30px 0 0;
+        }
+        .nav-bar {
+            display: none;
+        }
+        .nav-bar {
+            font-size: 0.8em;
+        }
+    }
+    
+    .h-point {
+        padding-bottom: 0px;
+        margin-top: 0px;
+        margin-bottom: 0;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.5s;
+        display: inline-block;
+        position: relative;
+        font-size: 19px;
+        line-height: 1.5;
+        letter-spacing: 1px;
+    }
+    
+    .h-point:before {
+        content: "";
+        width: 100%;
+        height: 3px;
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+        background-color: #ffeb3b70;
+        transition: all 0.3s;
+    }
+    
+    .h-point:hover.h-point:before {
+        height: 12px;
+    }
+    
+    .brand-intro-box {
+        background-image: url(./img/sky-bg.jpeg);
+        border-top: 1px dashed #fff;
+        border-bottom: 1px dashed #1e1e1e;
+    }
+    
+    .brand-intro {
+        position: relative;
+        font-weight: 500;
+        line-height: 1.8;
+        background-color: #fff;
+        color: #222;
+        display: inline-block;
+        padding: 60px;
+        border-radius: 160px;
+        border: 1px solid #000;
+        box-shadow: 10px 10px 0px;
+        letter-spacing: 1px;
+    }
+    
+    .love-img {
+        width: 60px;
+        position: absolute;
+        top: 40px;
+        left: 8px;
+        transform: rotate(346deg);
+        animation-duration: 2s;
+        animation-name: love-animation;
+        animation-iteration-count: infinite;
+    }
+    
+    @keyframes love-animation {
+        0% {
+            width: 60px;
+        }
+        50% {
+            width: 65px;
+        }
+        100% {
+            width: 60px;
+        }
+    }
+    
+    .brand-intro-img {
+        width: 130px;
+        position: absolute;
+        bottom: -12px;
+        right: 0px;
+    }
+    
+    @media(max-width:425px) {
+        .brand-intro {
+            padding: 92px 30px;
+            border-radius: 250px;
+            box-shadow: 8px 8px 0px;
+        }
+        .brand-intro-img {
+            width: 120px;
+        }
+    }
+    
+    .run-animation {
+        animation-duration: 2.8s;
+        animation-name: run-animation;
+        animation-iteration-count: infinite;
+    }
+    
+    @keyframes run-animation {
+        0% {
+            right: 0px;
+        }
+        50% {
+            right: -14px;
+        }
+        100% {
+            right: 0px;
+        }
+    }
+    
+    .keep-cute {
+        position: relative;
+        display: inline-block;
+        opacity: 0;
+        -webkit-animation: 1s ease both;
+        animation: 1s ease both;
+        animation-delay: 0.8s;
+        animation-name: keep-cute;
+        margin: 0;
+        color: #ff7474;
+    }
+    
+    .keep-cute::before {
+        content: "";
+        width: 100%;
+        height: 24%;
+        background: #fffd53;
+        display: block;
+        position: absolute;
+        bottom: 0.25em;
+        left: 0;
+        z-index: -1;
+    }
+    
+    @keyframes keep-cute {
+        0% {
+            font-size: 22px;
+            opacity: 0;
+        }
+        50% {
+            font-size: 28px;
+            margin-top: -5px;
+        }
+        100% {
+            font-size: 22px;
+            margin-top: 0px;
+            opacity: 1;
+        }
+    }
+    
+    .connect-box {
+        background-color: #e7f9ff;
+        background-image: url(./img/blue-bg.jpeg);
+    }
+    
+    .connect-box div {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 1.8;
+        padding: 0 20px;
+        color: #fff;
+        text-shadow: 0 0 3px #2885ce;
+    }
+    /* Dark Mode 樣式 */
+    
+    body.dark-mode,
+    body.dark-mode .horizontal {
+        background-color: #131417;
+        color: #ffffff;
+        transition: all 0.3s;
+    }
+    
+    body.dark-mode .cards {
+        box-shadow: 10px 10px 0px #000000;
+        background-color: #1e1f26;
+        border: 1px solid #5a5a5a;
+        transition: all 0.3s;
+    }
+    
+    body.dark-mode .sample-card {
+        color: #e3e3e3;
+    }
+    
+    body.dark-mode .sticker-card {
+        background-color: #4c4c55;
+        transition: all 0.3s;
+    }
+    
+    body.dark-mode .sticker-card a,
+    body.dark-mode .sticker-card .more-btn,
+    body.dark-mode .sample-card a {
+        color: #e3e3e3;
+    }
+    
+    body.dark-mode .brand-intro-box {
+        background-image: url(./img/galaxy.jpg);
+        border-top: 1px dashed #fff;
+        border-bottom: 1px dashed #b5b5b5;
+        transition: all 0.3s;
+    }
+    
+    body.dark-mode .brand-intro {
+        background-color: #1d1e23;
+        color: #e3e3e3;
+        border: 1px solid #5a5a5a;
+        box-shadow: 10px 10px 0px #000;
+        transition: all 0.3s;
+    }
+    
+    body.dark-mode .connect-box {
+        background-image: url('./img/dark-blue.jpg');
+        transition: all 0.3s;
+    }
+    
+    body.dark-mode .connect-box div {
+        text-shadow: 0 0 3px #14191d;
+        transition: all 0.3s;
+    }
+    
+    body.dark-mode .keep-cute {
+        color: #06b0ff;
+        transition: all 0.3s;
+    }
+    
+    body.dark-mode .keep-cute::before {
+        background: #000000;
+        transition: all 0.3s;
+    }
+</style>
+
+
 <body>
-    <div class="container">
-        <h1>簡單頁面</h1>
-        <p>這是一個簡單的 HTML 頁面</p>
+    <header class="wrapper" style="display: none;">
+        <div class="nav-bar-area">
+            <div class="menu">
+                <!-- <div id="text">⌘</div> -->
+                <div id="image" style="font-size: 28px;color:#566f31;font-weight: 500;">
+                    <img style="position: relative;top: -12px;" src="./img/logo.png" width="80px"></div>
+                <h1 style="margin: 0;line-height: 2;font-size: 28px;">周氏喵喵 ｜CHOÜ’S CAT</h1>
+            </div>
+            <div class="nav-bar">
+                <div id="image" style="font-size: 28px;color:#566f31;font-weight: 500;"><img style="position: relative;top: -12px;" src="./img/logo.png" width="80px"></div>
+                <h1 style="margin: 0;line-height: 2;font-size: 28px;">周氏喵喵 ｜CHOÜ’S CAT</h1>
+                <!-- <ul>
+                    <li style="width: 160px;margin-right: 15px;text-align: center;background-color: #edf2f6;border-radius: 24px;">LINE 貼圖</li>
+                    <li style="width: 160px;margin-right: 15px;text-align: center;background:linear-gradient(174deg, rgb(0, 193, 139) 0%, rgb(63, 175, 192) 100%);border-radius: 24px;color: #fff;">LINE 主題</li>
+                </ul> -->
+            </div>
+        </div>
+    </header>
+    <button id="darkModeToggle"></button>
+    <section class="container content">
+        <div class="space-holder">
+            <div class="sticky">
+                <div class="horizontal">
+                    <section role="feed" class="cards" style="height: 88%;left: 20px;top: 5%;border-radius: 50px;">
+                        <div class="sample-card" style="text-align: left;width: 400px;padding:20px 30px;">
+                            <h2 style="margin-bottom: 16px;">喵喵最常出沒在<br>「 <span style="color:#5acc34;">LINE 主題</span> 」</h2>
+                            <p class="h-point">超過 20 種！一定有你喜歡ㄉ！</p>
+                            <p class="h-point">把聊天室變可愛吧 ♡♡♡ </p>
+                            <img style="width: 350px;position: absolute;left: -35px;bottom: -10px;" src="./img/魔法喵.gif" alt="">
+                        </div>
+                        <article>
+                            <div onclick="window.open('https://line.me/S/shop/theme/detail?id=64e85bee-d0e1-4cf0-959f-a1f482f0d09b&lang=zh-Hant&ref=lsh_themeDetail');" class="sample-card theme-22" style="margin-bottom: 30px;position: relative;"></div>
+                            <div onclick="window.open('https://line.me/S/shop/theme/detail?id=9678047d-3b66-430a-9d03-08071109b2bd&lang=zh-Hant&ref=lsh_themeDetail');" class="sample-card theme-21" ></div>
+                        </article>
+                        <article>
+                            <div onclick="window.open('https://line.me/S/shop/theme/detail?id=50ca3c79-7c9a-4813-aa6d-3b0e899e48a5&lang=zh-Hant&ref=lsh_themeDetail');" class="sample-card theme-20" style="margin-bottom: 30px;position: relative;"></div>
+                            <div onclick="window.open('https://line.me/S/shop/theme/detail?id=a80a3e7a-5a81-44e9-a29c-e265fad8f550&lang=zh-Hant&ref=lsh_themeDetail');" class="sample-card theme-19" ></div>
+                        </article>
+                        <article>
+                            <div onclick="window.open('https://line.me/S/shop/theme/detail?id=ac40b4e6-db53-4fe6-9c70-40e0a381573d&lang=zh-Hant&ref=lsh_themeDetail');" class="sample-card theme-18" style="margin-bottom: 30px;position: relative;"></div>
+                            <div onclick="window.open('https://line.me/S/shop/theme/detail?id=4e6a2ab5-9ab7-43d9-ad92-c15702561e94&lang=zh-Hant&ref=lsh_themeDetail');" class="sample-card theme-17" ></div>
+                        </article>
+                        <article>    
+                            <div onclick="window.open('https://line.me/S/shop/theme/detail?id=4ef6d41e-7a0b-4715-9249-cb78a5ba0890&lang=zh-Hant&ref=lsh_themeDetail');" class="sample-card theme-16" style="margin-bottom: 30px;position: relative;"></div>
+                            <div onclick="window.open('https://line.me/S/shop/theme/detail?id=c1fb4018-16be-4530-9a18-228e6e18cd28&lang=zh-Hant&ref=lsh_themeDetail');" class="sample-card theme-15" ></div>
+                        </article>
+                        <article>    
+                            <div onclick="window.open('https://line.me/S/shop/theme/detail?id=4e942a81-343d-4635-b1d5-316751133f5d&lang=zh-Hant&ref=lsh_themeDetail');" class="sample-card theme-14" style="margin-bottom: 30px;position: relative;"></div>
+                            <div onclick="window.open('https://line.me/S/shop/theme/detail?id=3d3a4cfd-3d78-4cbe-8acd-ce4d79c961e8&lang=zh-Hant&ref=lsh_themeDetail');" class="sample-card theme-13" ></div>
+                        </article>
+                        <article>      
+                            <div onclick="window.open('https://line.me/S/shop/theme/detail?id=a94d4584-49a3-4323-8df6-b47c9a93bb19&lang=zh-Hant&ref=lsh_themeDetail');" class="sample-card theme-12" style="margin-bottom: 30px;position: relative;"></div>
+                            <div onclick="window.open('https://line.me/S/shop/theme/detail?id=7112f59e-0d38-4838-a185-229dea19066e&lang=zh-Hant&ref=lsh_themeDetail');" class="sample-card theme-11" ></div>
+                        </article>
+                        <article>      
+                            <div onclick="window.open('https://line.me/S/shop/theme/detail?id=2fc94703-57f0-4782-b6f0-7fc6083abdfd&lang=zh-Hant&ref=lsh_themeDetail');" class="sample-card theme-10" style="margin-bottom: 30px;position: relative;"></div>
+                            <div onclick="window.open('https://line.me/S/shop/theme/detail?id=38e116c5-c265-410f-b42e-aa6e8bd64bdb&lang=zh-Hant&ref=lsh_themeDetail');" class="sample-card theme-9" ></div>
+                        </article>
+                        <article>      
+                            <div onclick="window.open('https://line.me/S/shop/theme/detail?id=e38a86e6-e259-4e3a-86d2-1c1854cd9a8a&lang=zh-Hant&ref=lsh_themeDetail');" class="sample-card theme-8" style="margin-bottom: 30px;position: relative;"></div>
+                            <div onclick="window.open('https://line.me/S/shop/theme/detail?id=e8ede51f-a309-4446-8802-6a9ed92ccb95&lang=zh-Hant&ref=lsh_themeDetail');" class="sample-card theme-7" style="border: 2px solid #9bcae2;box-sizing: border-box;"></div>
+                        </article>
+                        <article>      
+                            <div onclick="window.open('https://line.me/S/shop/theme/detail?id=2c261df5-a739-42af-9e70-cade5e0ba85e&lang=zh-Hant&ref=lsh_themeDetail');" class="sample-card theme-6" style="margin-bottom: 30px;position: relative;"></div>
+                            <div onclick="window.open('https://line.me/S/shop/theme/detail?id=224a2caa-c16d-4e76-b2d7-b8a42489681f&lang=zh-Hant&ref=lsh_themeDetail');" class="sample-card theme-5" ></div>
+                        </article>
+                        <article>      
+                            <div onclick="window.open('https://line.me/S/shop/theme/detail?id=ae1068b5-f0a8-4bed-9395-54480771e826&lang=zh-Hant&ref=lsh_themeDetail');" class="sample-card theme-4" style="margin-bottom: 30px;position: relative;"></div>
+                            <div onclick="window.open('https://line.me/S/shop/theme/detail?id=ccf6d120-e693-4bbf-8ee9-e87ad4f3c794&lang=zh-Hant&ref=lsh_themeDetail');" class="sample-card theme-3" ></div>
+                        </article>
+                        <article>      
+                            <div onclick="window.open('https://line.me/S/shop/theme/detail?id=06e33d86-e413-4aa4-8d32-673d342781c7&lang=zh-Hant&ref=lsh_themeDetail');" class="sample-card theme-2" style="margin-bottom: 30px;position: relative;"></div>
+                            <div onclick="window.open('https://line.me/S/shop/theme/detail?id=9826f9b5-2826-47d1-9998-ba933955bb93&lang=zh-Hant&ref=lsh_themeDetail');" class="sample-card theme-1" ></div>
+                        </article>
+                        <article>      
+                            <div onclick="window.open('https://line.me/S/shop/theme/detail?id=475d8c9d-4b7b-4ccd-800f-cc359b892ab2&lang=zh-Hant&ref=lsh_themeDetail');" class="sample-card theme-0" style="margin-bottom: 30px;position: relative;"></div>
+                        </article>
+                        <div onclick="window.open('https://store.line.me/themeshop/author/1088855');" style="padding: 5px 5px 5px 35px;font-size: 20px;cursor: pointer;">
+                            點我去主題列表
+                        </div>
+                        <p onclick="window.open('https://store.line.me/themeshop/author/1088855');" style="padding: 5px 35px 5px 12px;font-size: 26px;cursor: pointer;">▸</p>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="space-holder-1">
+            <div class="sticky-1">
+                <div class="horizontal-1">
+                    <section role="feed" class="cards" style="height: 88%;width: 185%;left: 50px;top: 5%;border-radius: 50px;">
+                        <div class="sample-card" style="text-align: left;width: 400px;">
+                            <h2>「<span style="color:#5acc34;">LINE 貼圖/表情貼</span>」</h2>
+                            <p class="h-point">集結可愛嗆辣於一身！</p>
+                            <p class="h-point">和朋朋聊天必須有🔥🔥🔥</p>
+                            <img style="position:relative;left: -18px;bottom: 8px;" src="./img/貼圖對話喵.gif" width="380px">
+                        </div>
+                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;">
+                            <div class="sticker-card">
+                                <a class="theme-link" href="https://line.me/S/emoji/?id=6540bdb63a007919c0168848&lang=zh-Hant&utm_source=gnsh_stickerDetail" rel="noopener noreferrer" target="blank">
+                                    <img src="./img/動態表情貼.png" style="width: 100%;display: inline-block;max-width: 180px;vertical-align: top;">
+                                    <hr style="border-color: #d6d6d65e;border-bottom: none;">
+                                    <div style="width: 100%;display: inline-block;">
+                                        <h4 style="margin:5px 0 0 0;font-size: 21px;">動起來ㄌ♪實用篇</h4>
+                                        <p style="margin: 5px 0;font-size: 16px;">周氏喵喵們第一次動起來ㄌ！可愛又實用ㄉ貓咪表情貼 ♪</p>
+                                        <p class="more-btn">看更多 ▸</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </article>
+                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;">
+                            <div class="sticker-card">
+                                <a class="theme-link" href="https://line.me/S/sticker/23794593/?lang=zh-Hant&utm_source=gnsh_stickerDetail" rel="noopener noreferrer" target="blank">
+                                    <img src="./img/sticker-2.png" style="width: 100%;display: inline-block;max-width: 180px;vertical-align: top;">
+                                    <hr style="border-color: #d6d6d65e;border-bottom: none;">
+                                    <div style="width: 100%;display: inline-block;">
+                                        <h4 style="margin:5px 0 0 0;font-size: 21px;">軟爛ㄉ嗆辣角色</h4>
+                                        <p style="margin: 5px 0;font-size: 16px;">立志當嗆辣ㄉ軟爛喵喵，如果傷到你我很抱歉( ˃ ⌑ ˂ഃ )～<br>（才怪ㄎㄎ）</p>
+                                        <p class="more-btn">看更多 ▸</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </article>
+                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;margin-top: -12px;">
+                            <div class="sticker-card">
+                                <aclass="theme-link" href="https://line.me/S/sticker/20317494/?lang=zh-Hant&utm_source=gnsh_stickerDetail" rel="noopener noreferrer" target="blank">
+                                    <img src="./img/sticker-1.png" style="width: 100%;display: inline-block;max-width: 180px;vertical-align: top;">
+                                    <hr style="border-color: #d6d6d65e;border-bottom: none;">
+                                    <div style="width: 100%;display: inline-block;">
+                                        <h4 style="margin:0;font-size: 21px;">可愛迷人ㄉ嗆辣角色</h4>
+                                        <p style="margin: 5px 0;font-size: 16px;">五隻有點嗆辣ㄉ可愛貓咪，喵喵平常很 nice，都是這些頭套帶壞我的！（才怪）</p>
+                                        <p class="more-btn">看更多 ▸</p>
+                                    </div>
+                                    </a>
+                            </div>
+                        </article>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="space-holder-2">
+            <div class="sticky-2">
+                <div class="horizontal-2">
+                    <section role="feed" class="cards" style="height: 88%;width: 190%;left: 20px;top: 5%;border-radius: 50px;">
+                        <div class="sample-card" style="text-align: left;width: 400px;">
+                            <h2>正在販售中ㄉ<br>「<span style="color:#09bac7;">可愛酷東東</span>」<br></h2>
+                            <p>有文創商品、服飾、3C用品<br>快去逛逛ㄅ！</p>
+                        </div>
+                        <article class="sample-card" onclick="window.open('https://reurl.cc/z6GXMp');" style="max-width: 370px;max-height: 450px;margin-right: 0;">
+                            <h4>喵喵ㄉ周邊 🛒<span style="font-size: 14px;">（賣場休息中）</span></h4>
+                            <p style="font-size: 16px;text-align: left;">壓克力吊飾/貼紙/手機支架/杯墊/胸章等</p>
+                            <img src="./img/product-1.png" alt="" width="100%" style="border-radius: 12px;">
+                        </article>
+                        <article class="sample-card" onclick="window.open('https://shopee.tw/mall/search?keyword=%E5%91%A8%E6%B0%8F%E5%96%B5%E5%96%B5&shop=422622625');" style="max-width: 370px;max-height: 450px;margin-right: 0;">
+                            <h4>可印 CANPRINT 聯名</h4>
+                            <p style="font-size: 16px;text-align: left;">手機殼/轉印貼</p>
+                            <img src="./img/IMG_4858.jpg" alt="" width="100%" style="border-radius: 12px;">
+                        </article>
+                        <article class="sample-card" onclick="window.open('https://www.funshopping.com.tw/categories/tshirt-104280?sl-ref=cady');" style="max-width: 370px;max-height: 450px;margin-right: 0;">
+                            <h4>Hosetee 聯名</h4>
+                            <p style="font-size: 16px;text-align: left;">夏季短袖T恤/冬天帽T 都有！</p>
+                            <img src="./img/露營喵喵小花.png" alt="" width="100%" style="border-radius: 12px;">
+                        </article>
+                        <article class="sample-card" onclick="window.open('https://reurl.cc/a4ZEkQ');" style="max-width: 370px;max-height: 450px;margin-right: 0;">
+                            <h4>Snapshot 聯名</h4>
+                            <p style="font-size: 16px;text-align: left;">人生四格相框拍貼</p>
+                            <img src="./img/拍貼框.PNG" alt="" width="100%" style="border-radius: 12px;">
+                        </article>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="space-holder-3">
+            <div class="sticky-3">
+                <div class="horizontal-3">
+                    <section role="feed" class="cards" style="height: 95%;width: 200%;left: 20px;top: 3%;border-radius: 50px;">
+                        <div class="sample-card" style="text-align: left;width: 400px;">
+                            <h2>過去ㄉ<br>「<span style="color:#09bac7;">品牌合作經驗</span>」<br></h2>
+                            <p>💖💖💖</p>
+                        </div>
+                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;">
+                            <div class="card-label"><span>3C 聯名商品合作</span></div>
+                            <h4>Unicorn 聯名商品</h4>
+                            <p style="font-size: 16px;text-align: left;height: 67.5px;"> 環保杯/手機殼/快充插頭/行動電源商品圖像合作。</p>
+                            <img src="./img/IMG_6452.jpg" alt="" width="100%" style="border-radius: 12px;">
+                             <p style="font-size: 12px;text-align: right;"></p>
+                        </article>
+                         <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;" onclick="window.open('https://line.me/S/sticker/30276/?lang=zh-Hant&utm_source=gnsh_stickerDetail');">
+                            <div class="card-label"><span>官方聯名免費貼圖</span></div>
+                            <h4>LINE購物品牌名店</h4>
+                            <p style="font-size: 16px;text-align: left;height: 67.5px;">與 LINE 購物品牌名店合作免費貼圖，內容以實用日常情境為主。
+                            </p>
+                            <img src="./img/免費貼圖.png" alt="" width="100%" style="border-radius: 12px;">
+                            <p style="font-size: 12px;text-align: right;">2023.12.19</p>
+                        </article>
+                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;" onclick="window.open('https://today.line.me/tw/v2/article/wJQGQjE');">
+                            <div class="card-label"><span>應援牌設計</span></div>
+                            <h4>Beanfun! x「未來少女」</h4>
+                            <p style="font-size: 16px;text-align: left;">負責未來少女熱力應援站紫月光的應援手牌設計，使用該女團的標準色系、團體風格&代表性 logo 結合周氏喵喵的原創角色。
+                            </p>
+                            <img src="./img/紫月光x周氏喵喵_宣傳圖.png" alt="" width="100%" style="border-radius: 12px;">
+                            <p style="font-size: 12px;text-align: right;">2023.09.04</p>
+                        </article>
+                        <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;" onclick="window.open('https://line.me/S/sticker/21403383/?lang=zh-Hant&utm_source=gnsh_stickerDetail');">
+                            <div class="card-label"><span>聯名貼圖設計</span></div>
+                            <h4>服飾品牌 - CLA</h4>
+                            <p style="font-size: 16px;text-align: left;height: 67.5px;">以 CLA 品牌的衣服結合周氏喵喵原創角色的日常實用、購物主題的貼圖。</p>
+                            <img src="./img/cla.jpg" alt="" width="100%" style="border-radius: 12px;">
+                            <p style="font-size: 12px;text-align: right;">2022.11.22</p>
+                        </article>
+                        <!-- <article class="sample-card" style="max-width: 370px;max-height: 450px;margin-right: 0;">
+                            <div class="card-label"><span>包裝設計</span></div>
+                            <h4>香氛品牌 - Dalla</h4>
+                            <p style="font-size: 16px;text-align: left;">參與 Penker x Dalla 的聯名活動，為 Dalla 設計香氛包裝。</p>
+                            <img src="./img/香氛社群.png" alt="" width="100%" style="border-radius: 12px;">
+                        </article> -->
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="bumper brand-intro-box">
+        <div class="bg-container brand-intro">
+            <img class="love-img" src="./img/love.png" alt="">
+            <h2>周氏喵喵｜CHOÜ’S CAT</h2>
+            <p>由五隻不同花色的貓咪組成，想傳達給你的理念是</p>
+            <h2 class="keep-cute"><span>「 保 持 可 愛 」</span></h2>
+            <p>為什麼會說是保持呢？<br>因為相信每個人生來都有可愛的一部分<br>它可以是可愛的樣子、用可愛的物品<br>還是一顆想要變得可愛的心</p>
+            <p>讓喵喵陪你一起吧( ¨̮ )♡.ᐟ.ᐟ</p>
+            <img class="brand-intro-img run-animation" src="./img/img-1.png" alt="">
+        </div>
     </div>
+    <div class="bumper connect-box">
+        <div>💌 合作邀約歡迎來信至 <a style="color: #fff;" href="mailto:ruidiechou@gmail.com">ruidiechou@gmail.com</a></div>
+    </div>
+    <div style="text-align: center;padding: 5px;color: #fff;">RUI-DIE © 2023</div>
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    function setupDynamicHeight(spaceHolder, horizontal, stickyClass) {
+        const spaceHolderElement = document.querySelector(spaceHolder);
+        const horizontalElement = document.querySelector(horizontal);
+        spaceHolderElement.style.height = `${calcDynamicHeight(horizontalElement)}px`;
+
+        function calcDynamicHeight(ref) {
+            const vw = window.innerWidth;
+            const vh = window.innerHeight;
+            const objectWidth = ref.scrollWidth;
+            return objectWidth - vw + vh + 150; // 150 is the padding (in pixels) desired on the right side of the .cards container. This can be set to whatever your styles dictate
+        }
+
+        window.addEventListener('scroll', () => {
+            const stickyElement = document.querySelector(stickyClass);
+            horizontalElement.style.transform = `translateX(-${stickyElement.offsetTop}px)`;
+        });
+
+        window.addEventListener('resize', () => {
+            spaceHolderElement.style.height = `${calcDynamicHeight(horizontalElement)}px`;
+        });
+    }
+
+    // 使用示例
+    setupDynamicHeight('.space-holder', '.horizontal', '.sticky');
+    setupDynamicHeight('.space-holder-1', '.horizontal-1', '.sticky-1');
+    setupDynamicHeight('.space-holder-2', '.horizontal-2', '.sticky-2');
+    setupDynamicHeight('.space-holder-3', '.horizontal-3', '.sticky-3');
+</script>
+
+
+<!-- header -->
+<script>
+    $(document).ready(function() {
+        $("#text").click(function() {
+            $(".nav-bar").slideToggle("swing");
+
+        });
+
+        $(window).resize(function() {
+            var w = $(window).width();
+            var navBar = $(".nav-bar");
+            if (w > 320 & navBar.is(":hidden")) {
+                navBar.removeAttr("style");
+            }
+
+        });
+
+    });
+
+    // Hide Header on on scroll down
+    var didScroll;
+    var lastScrollTop = 0;
+    var delta = 5;
+    var navbarHeight = $('header').outerHeight();
+
+    $(window).scroll(function(event) {
+        didScroll = true;
+    });
+
+    setInterval(function() {
+        if (didScroll) {
+            hasScrolled();
+            didScroll = false;
+        }
+    }, 250);
+
+    function hasScrolled() {
+        var st = $(this).scrollTop();
+
+        // Make sure they scroll more than delta
+        if (Math.abs(lastScrollTop - st) <= delta)
+            return;
+
+        // If they scrolled down and are past the navbar, add class .nav-up.
+        // This is necessary so you never see what is "behind" the navbar.
+        if (st > lastScrollTop && st > navbarHeight) {
+            // Scroll Down
+            $('header').removeClass('nav-down').addClass('nav-up');
+        } else {
+            // Scroll Up
+            if (st + $(window).height() < $(document).height()) {
+                $('header').removeClass('nav-up').addClass('nav-down');
+            }
+        }
+
+        lastScrollTop = st;
+    }
+</script>
+
+<!-- darkMode 模式 -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        // 檢查用戶的選擇，如果之前是 Dark Mode，切換圖示為🌚
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            enableDarkMode();
+        } else {
+            // 預設 Light Mode 圖示為🌝
+            darkModeToggle.innerHTML = '🌝';
+        }
+
+        // 切換 Dark Mode
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+
+            // 切換按鈕上的圖示
+            if (body.classList.contains('dark-mode')) {
+                enableDarkMode();
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                enableLightMode();
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+
+        // 在頁面重整時檢查 Dark Mode 設定
+        window.addEventListener('load', function() {
+            if (body.classList.contains('dark-mode')) {
+                // 如果目前是 Dark Mode，移除 dark-mode 並設定為預設的🌚圖示
+                enableLightMode();
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+
+        // 根據 Dark Mode 設定設定初始狀態
+        function enableDarkMode() {
+            darkModeToggle.innerHTML = '🌚';
+            body.classList.add('dark-mode');
+        }
+
+        function enableLightMode() {
+            darkModeToggle.innerHTML = '🌝';
+            body.classList.remove('dark-mode');
+        }
+    });
+</script>
+
 </html>
