@@ -469,8 +469,21 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
 .ig-item .instagram-media .footer,
 .ig-item .instagram-media [role="button"],
 .ig-item .instagram-media img[alt*="贊"],
-.ig-item .instagram-media > div > div:last-child {
+.ig-item .instagram-media > div > div:last-child,
+.ig-item .instagram-media > div:last-child,
+.ig-item .instagram-media svg {
   display: none !important;
+}
+/* Hide all text content in Instagram embeds */
+.ig-item .instagram-media a[href*="instagram.com/"],
+.ig-item .instagram-media span,
+.ig-item .instagram-media div {
+  color: transparent !important;
+  background: transparent !important;
+}
+/* Show only images */
+.ig-item .instagram-media img:not([alt*="贊"]) {
+  color: inherit !important;
 }
 /* Type badge */
 .ig-type-badge {
@@ -667,6 +680,15 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
 
     <!-- Instagram 貼文 Grid（newest → oldest） -->
     <div class="ig-grid" id="igGrid">
+
+      <div class="ig-item" data-type="promo">
+        <div class="ig-cat-badge ig-cat-promo">社群推廣</div>
+        <blockquote class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/p/DWrNkojmmxn/"
+          data-instgrm-version="14">
+          <a href="https://www.instagram.com/p/DWrNkojmmxn/">在 Instagram 查看這則貼文</a>
+        </blockquote>
+      </div>
 
       <div class="ig-item" data-type="promo">
         <div class="ig-cat-badge ig-cat-promo">社群推廣</div>
