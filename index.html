@@ -48,6 +48,9 @@ section{padding:96px 48px;}
   gap: 16px;
   position: relative;
 }
+.illus-grid .illus-item {
+  display: block;
+}
 .illus-item{
   border-radius: 16px;
   overflow: hidden;
@@ -99,13 +102,10 @@ section{padding:96px 48px;}
     grid-template-columns: repeat(3, 1fr);
   }
 }
-/* mobile: 2 columns with carousel */
+/* mobile: 2 columns */
 @media(max-width:600px){
   .illus-grid{
     grid-template-columns: repeat(2, 1fr);
-  }
-  .illus-grid .illus-item:nth-child(n+3) {
-    display: none;
   }
 }
 
@@ -1379,29 +1379,30 @@ document.querySelectorAll('.tab').forEach(tab=>{
 
 
 
-// Universal carousel for all screen sizes
-let carouselIntervals = {};
-let carouselPositions = {};
+
+
+// Pagination carousel system
+let carouselPages = {};
+let carouselCurrentPage = {};
 
 function getItemsPerPage(carouselId) {
   const width = window.innerWidth;
-  if (width >= 1200) return 4;      // Desktop: 4 items
-  if (width >= 601) return 3;       // Tablet: 3 items
-  return 2;                          // Mobile: 2 items
+  if (width >= 1200) return 4;      // Desktop: 4 items per page
+  if (width >= 601) return 3;       // Tablet: 3 items per page
+  return 2;                          // Mobile: 2 items per page
 }
 
 function initCarousel(carouselId) {
   const carousel = document.getElementById(carouselId);
   if (!carousel) return;
 
-  carouselPositions[carouselId] = 0;
-
-  if (carouselIntervals[carouselId]) clearInterval(carouselIntervals[carouselId]);
-
-  carouselIntervals[carouselId] = setInterval(() => {
-    carouselNext(carouselId);
-  }, 5000);
-
+  const items = carousel.querySelectorAll('.illus-item');
+  const itemsPerPage = getItemsPerPage(carouselId);
+  
+  // Calculate total pages
+  carouselPages[carouselId] = Math.ceil(items.length / itemsPerPage);
+  carouselCurrentPage[carouselId] = 0;
+  
   updateCarouselDisplay(carouselId);
 }
 
@@ -1411,16 +1412,11 @@ function carouselNext(carouselId) {
 
   const items = carousel.querySelectorAll('.illus-item');
   const itemsPerPage = getItemsPerPage(carouselId);
+  const totalPages = Math.ceil(items.length / itemsPerPage);
   
-  if (items.length <= itemsPerPage) return;
-
-  carouselPositions[carouselId] = (carouselPositions[carouselId] + itemsPerPage) % items.length;
+  // Go to next page, loop back to first if at end
+  carouselCurrentPage[carouselId] = (carouselCurrentPage[carouselId] + 1) % totalPages;
   updateCarouselDisplay(carouselId);
-
-  if (carouselIntervals[carouselId]) clearInterval(carouselIntervals[carouselId]);
-  carouselIntervals[carouselId] = setInterval(() => {
-    carouselNext(carouselId);
-  }, 5000);
 }
 
 function carouselPrev(carouselId) {
@@ -1429,16 +1425,11 @@ function carouselPrev(carouselId) {
 
   const items = carousel.querySelectorAll('.illus-item');
   const itemsPerPage = getItemsPerPage(carouselId);
+  const totalPages = Math.ceil(items.length / itemsPerPage);
   
-  if (items.length <= itemsPerPage) return;
-
-  carouselPositions[carouselId] = (carouselPositions[carouselId] - itemsPerPage + items.length) % items.length;
+  // Go to previous page, loop to end if at start
+  carouselCurrentPage[carouselId] = (carouselCurrentPage[carouselId] - 1 + totalPages) % totalPages;
   updateCarouselDisplay(carouselId);
-
-  if (carouselIntervals[carouselId]) clearInterval(carouselIntervals[carouselId]);
-  carouselIntervals[carouselId] = setInterval(() => {
-    carouselNext(carouselId);
-  }, 5000);
 }
 
 function updateCarouselDisplay(carouselId) {
@@ -1447,10 +1438,13 @@ function updateCarouselDisplay(carouselId) {
 
   const items = carousel.querySelectorAll('.illus-item');
   const itemsPerPage = getItemsPerPage(carouselId);
-  const pos = carouselPositions[carouselId];
+  const currentPage = carouselCurrentPage[carouselId];
+  
+  const startIndex = currentPage * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
 
   items.forEach((item, index) => {
-    if (index >= pos && index < pos + itemsPerPage) {
+    if (index >= startIndex && index < endIndex) {
       item.style.display = '';
     } else {
       item.style.display = 'none';
@@ -1463,6 +1457,13 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 window.addEventListener('resize', function() {
+  initCarousel('illusCarousel');
+});
+  // Can be used for scrolling if needed
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Just show all items, no carousel
   updateCarouselDisplay('illusCarousel');
 });
 
