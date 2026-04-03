@@ -46,6 +46,12 @@ section{padding:96px 48px;}
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
+  position: relative;
+  max-height: 600px;
+  overflow: hidden;
+}
+.illus-grid .illus-item:nth-child(n+5) {
+  display: none;
 }
 .illus-item{
   border-radius: 16px;
@@ -92,16 +98,21 @@ section{padding:96px 48px;}
   color: white; letter-spacing: .04em;
 }
 
-/* tablet: 2 columns */
+/* tablet: 3 columns */
 @media(max-width:1024px) and (min-width:601px){
   .illus-grid{
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    max-height: 600px;
+    overflow: hidden;
+  }
+  .illus-grid .illus-item:nth-child(n+4) {
+    display: none;
   }
 }
-/* mobile: 1 column */
+/* mobile: 2 columns with carousel */
 @media(max-width:600px){
   .illus-grid{
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -1360,9 +1371,17 @@ document.querySelectorAll('.tab').forEach(tab=>{
 </script>
 
 
-// Carousel functionality for IP illustrations - Fixed version
+
+// Universal carousel for all screen sizes
 let carouselIntervals = {};
 let carouselPositions = {};
+
+function getItemsPerPage(carouselId) {
+  const width = window.innerWidth;
+  if (width >= 1200) return 4;      // Desktop: 4 items
+  if (width >= 601) return 3;       // Tablet: 3 items
+  return 2;                          // Mobile: 2 items
+}
 
 function initCarousel(carouselId) {
   const carousel = document.getElementById(carouselId);
@@ -1370,12 +1389,13 @@ function initCarousel(carouselId) {
 
   carouselPositions[carouselId] = 0;
 
-  // Auto-rotate every 5 seconds
   if (carouselIntervals[carouselId]) clearInterval(carouselIntervals[carouselId]);
 
   carouselIntervals[carouselId] = setInterval(() => {
     carouselNext(carouselId);
   }, 5000);
+
+  updateCarouselDisplay(carouselId);
 }
 
 function carouselNext(carouselId) {
@@ -1383,12 +1403,13 @@ function carouselNext(carouselId) {
   if (!carousel) return;
 
   const items = carousel.querySelectorAll('.illus-item');
-  if (items.length <= 2) return;
+  const itemsPerPage = getItemsPerPage(carouselId);
+  
+  if (items.length <= itemsPerPage) return;
 
-  carouselPositions[carouselId] = (carouselPositions[carouselId] + 2) % items.length;
+  carouselPositions[carouselId] = (carouselPositions[carouselId] + itemsPerPage) % items.length;
   updateCarouselDisplay(carouselId);
 
-  // Reset interval
   if (carouselIntervals[carouselId]) clearInterval(carouselIntervals[carouselId]);
   carouselIntervals[carouselId] = setInterval(() => {
     carouselNext(carouselId);
@@ -1400,12 +1421,13 @@ function carouselPrev(carouselId) {
   if (!carousel) return;
 
   const items = carousel.querySelectorAll('.illus-item');
-  if (items.length <= 2) return;
+  const itemsPerPage = getItemsPerPage(carouselId);
+  
+  if (items.length <= itemsPerPage) return;
 
-  carouselPositions[carouselId] = (carouselPositions[carouselId] - 2 + items.length) % items.length;
+  carouselPositions[carouselId] = (carouselPositions[carouselId] - itemsPerPage + items.length) % items.length;
   updateCarouselDisplay(carouselId);
 
-  // Reset interval
   if (carouselIntervals[carouselId]) clearInterval(carouselIntervals[carouselId]);
   carouselIntervals[carouselId] = setInterval(() => {
     carouselNext(carouselId);
@@ -1417,10 +1439,11 @@ function updateCarouselDisplay(carouselId) {
   if (!carousel) return;
 
   const items = carousel.querySelectorAll('.illus-item');
+  const itemsPerPage = getItemsPerPage(carouselId);
   const pos = carouselPositions[carouselId];
 
   items.forEach((item, index) => {
-    if (index >= pos && index < pos + 2) {
+    if (index >= pos && index < pos + itemsPerPage) {
       item.style.display = '';
     } else {
       item.style.display = 'none';
@@ -1430,6 +1453,10 @@ function updateCarouselDisplay(carouselId) {
 
 document.addEventListener('DOMContentLoaded', function() {
   initCarousel('illusCarousel');
+});
+
+window.addEventListener('resize', function() {
+  updateCarouselDisplay('illusCarousel');
 });
 
 
