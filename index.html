@@ -464,6 +464,14 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
   border: none !important;
   box-shadow: none !important;
 }
+/* Hide Instagram account info and likes */
+.ig-item .instagram-media footer,
+.ig-item .instagram-media .footer,
+.ig-item .instagram-media [role="button"],
+.ig-item .instagram-media img[alt*="贊"],
+.ig-item .instagram-media > div > div:last-child {
+  display: none !important;
+}
 /* Type badge */
 .ig-type-badge {
   display: inline-flex;
