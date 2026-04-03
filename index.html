@@ -1297,6 +1297,20 @@ document.querySelectorAll('.tab').forEach(tab=>{
       }
     });
 
+    // Hide gallery-col if all items inside are hidden
+    var cols = document.querySelectorAll('#exhGallery .gallery-col');
+    cols.forEach(function(col){
+      var colItems = col.querySelectorAll('.gallery-item');
+      var allHidden = Array.from(colItems).every(function(item){
+        return item.classList.contains('exh-hidden');
+      });
+      if(allHidden){
+        col.style.display = 'none';
+      } else {
+        col.style.display = '';
+      }
+    });
+
     // Update count badge
     var badge = document.getElementById('exhCountBadge');
     if(badge) badge.textContent = '共 '+visible+' 場';
