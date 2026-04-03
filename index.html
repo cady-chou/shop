@@ -48,9 +48,7 @@ section{padding:96px 48px;}
   gap: 16px;
   position: relative;
 }
-.illus-grid .illus-item {
-  display: block;
-}
+/* .illus-item display controlled by JavaScript carousel */
 .illus-item{
   border-radius: 16px;
   overflow: hidden;
@@ -102,11 +100,12 @@ section{padding:96px 48px;}
     grid-template-columns: repeat(3, 1fr);
   }
 }
-/* mobile: 2 columns */
+/* mobile: 2 columns with pagination carousel */
 @media(max-width:600px){
   .illus-grid{
     grid-template-columns: repeat(2, 1fr);
   }
+  /* Display controlled by JavaScript */
 }
 
 /* ══════════════════════════════════════
@@ -1381,12 +1380,14 @@ document.querySelectorAll('.tab').forEach(tab=>{
 
 
 
-// Pagination carousel system
+
+// Pagination carousel system - FIXED
 let carouselPages = {};
 let carouselCurrentPage = {};
 
 function getItemsPerPage(carouselId) {
   const width = window.innerWidth;
+  console.log('Window width:', width); // Debug
   if (width >= 1200) return 4;      // Desktop: 4 items per page
   if (width >= 601) return 3;       // Tablet: 3 items per page
   return 2;                          // Mobile: 2 items per page
@@ -1403,6 +1404,7 @@ function initCarousel(carouselId) {
   carouselPages[carouselId] = Math.ceil(items.length / itemsPerPage);
   carouselCurrentPage[carouselId] = 0;
   
+  console.log('Carousel initialized:', carouselId, 'Items:', items.length, 'Per page:', itemsPerPage, 'Total pages:', carouselPages[carouselId]); // Debug
   updateCarouselDisplay(carouselId);
 }
 
@@ -1414,8 +1416,8 @@ function carouselNext(carouselId) {
   const itemsPerPage = getItemsPerPage(carouselId);
   const totalPages = Math.ceil(items.length / itemsPerPage);
   
-  // Go to next page, loop back to first if at end
   carouselCurrentPage[carouselId] = (carouselCurrentPage[carouselId] + 1) % totalPages;
+  console.log('Next page:', carouselCurrentPage[carouselId]); // Debug
   updateCarouselDisplay(carouselId);
 }
 
@@ -1427,8 +1429,8 @@ function carouselPrev(carouselId) {
   const itemsPerPage = getItemsPerPage(carouselId);
   const totalPages = Math.ceil(items.length / itemsPerPage);
   
-  // Go to previous page, loop to end if at start
   carouselCurrentPage[carouselId] = (carouselCurrentPage[carouselId] - 1 + totalPages) % totalPages;
+  console.log('Prev page:', carouselCurrentPage[carouselId]); // Debug
   updateCarouselDisplay(carouselId);
 }
 
@@ -1446,8 +1448,10 @@ function updateCarouselDisplay(carouselId) {
   items.forEach((item, index) => {
     if (index >= startIndex && index < endIndex) {
       item.style.display = '';
+      item.style.visibility = 'visible';
     } else {
-      item.style.display = 'none';
+      item.style.display = 'none !important';
+      item.style.visibility = 'hidden';
     }
   });
 }
@@ -1459,7 +1463,6 @@ document.addEventListener('DOMContentLoaded', function() {
 window.addEventListener('resize', function() {
   initCarousel('illusCarousel');
 });
-  // Can be used for scrolling if needed
 }
 
 document.addEventListener('DOMContentLoaded', function() {
