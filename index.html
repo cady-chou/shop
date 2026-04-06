@@ -1510,7 +1510,7 @@ function initDots(carouselId) {
   }
 
   /* 6 ── Store state */
-  _carousels[carouselId] = { carousel, dotsContainer, count };
+  _carousels[carouselId] = { carousel, dotsContainer, count, timer: null };
 
   /* 7 ── Infinite-loop: detect clone zones and teleport */
   let jumping = false;
@@ -1518,15 +1518,13 @@ function initDots(carouselId) {
     if (jumping) return;
     const st   = _step(carousel);
     const sl   = carousel.scrollLeft;
-    const zone = count * st;           // width of one full clone-set
+    const zone = count * st;
 
     if (sl < (count - 0.5) * st) {
-      /* entered front-clone zone → jump forward by one full set */
       jumping = true;
       carousel.scrollTo({ left: sl + zone, behavior: 'instant' });
       setTimeout(() => { jumping = false; }, 100);
     } else if (sl >= zone * 2) {
-      /* entered back-clone zone → jump backward by one full set */
       jumping = true;
       carousel.scrollTo({ left: sl - zone, behavior: 'instant' });
       setTimeout(() => { jumping = false; }, 100);
@@ -1534,6 +1532,37 @@ function initDots(carouselId) {
 
     _updateDots(carouselId);
   }, { passive: true });
+
+  /* 8 ── Autoplay: advance one item every 5 s */
+  function startAutoplay() {
+    const s = _carousels[carouselId];
+    if (!s || s.timer) return;
+    s.timer = setInterval(() => carouselNext(carouselId), 5000);
+  }
+  function stopAutoplay() {
+    const s = _carousels[carouselId];
+    if (!s || !s.timer) return;
+    clearInterval(s.timer);
+    s.timer = null;
+  }
+
+  /* Pause on hover / touch; resume after pointer leaves */
+  const wrapper = carousel.closest('.carousel-wrapper') || carousel;
+  wrapper.addEventListener('mouseenter', stopAutoplay);
+  wrapper.addEventListener('mouseleave', startAutoplay);
+  wrapper.addEventListener('touchstart', stopAutoplay, { passive: true });
+  wrapper.addEventListener('touchend',   () => {
+    /* short delay so the infinite-loop jump settles first */
+    setTimeout(startAutoplay, 1500);
+  }, { passive: true });
+
+  /* Also reset the 5 s countdown when user manually clicks an arrow or dot */
+  wrapper.addEventListener('click', () => {
+    stopAutoplay();
+    startAutoplay();
+  });
+
+  startAutoplay();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
