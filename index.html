@@ -40,20 +40,31 @@ section{padding:96px 48px;}
 @keyframes spin{to{transform:rotate(360deg);}}
 
 /* ══════════════════════════════════════
-   IP 插畫 GRID
+   IP 插畫 SCROLL-SNAP CAROUSEL
 ══════════════════════════════════════ */
 .illus-grid{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
   gap: 16px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
   position: relative;
+  padding-bottom: 10px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Hide scrollbar */
 }
-/* .illus-item display controlled by JavaScript carousel */
+.illus-grid::-webkit-scrollbar {
+  display: none;
+}
+
 .illus-item{
+  flex: 0 0 calc(25% - 12px); /* Desktop: 4 items */
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 6px 24px rgba(26,16,24,0.08);
   transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+  scroll-snap-align: start;
 }
 .illus-item:hover{
   transform: translateY(-6px) scale(1.01);
@@ -95,17 +106,18 @@ section{padding:96px 48px;}
 }
 
 /* tablet: 3 columns */
+/* Tablet: 3 items per row */
 @media(max-width:1199px) and (min-width:601px){
-  .illus-grid{
-    grid-template-columns: repeat(3, 1fr);
+  .illus-item{
+    flex: 0 0 calc(33.333% - 11px); /* 3 items */
   }
 }
-/* mobile: 2 columns with pagination carousel */
+
+/* Mobile: 2 items per row */
 @media(max-width:600px){
-  .illus-grid{
-    grid-template-columns: repeat(2, 1fr);
+  .illus-item{
+    flex: 0 0 calc(50% - 8px); /* 2 items */
   }
-  /* Display controlled by JavaScript */
 }
 
 /* ══════════════════════════════════════
@@ -521,24 +533,15 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
   }
-  .illus-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    position: relative;
-  }
   .ig-item {
     flex: 0 0 100%;
     scroll-snap-align: start;
   }
-  .illus-item {
-    scroll-snap-align: start;
-  }
   /* 隱藏滾動條 */
-  .ig-grid::-webkit-scrollbar, .illus-grid::-webkit-scrollbar {
+  .ig-grid::-webkit-scrollbar {
     display: none;
   }
-  .ig-grid, .illus-grid {
+  .ig-grid {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
@@ -1375,88 +1378,30 @@ document.querySelectorAll('.tab').forEach(tab=>{
 
 
 
-// Pagination carousel system - FIXED
-let carouselPages = {};
-let carouselCurrentPage = {};
-
-function getItemsPerPage(carouselId) {
-  const width = window.innerWidth;
-  console.log('Window width:', width); // Debug
-  if (width >= 1200) return 4;      // Desktop: 4 items per page
-  if (width >= 601) return 3;       // Tablet: 3 items per page
-  return 2;                          // Mobile: 2 items per page
-}
-
-function initCarousel(carouselId) {
-  const carousel = document.getElementById(carouselId);
-  if (!carousel) return;
-
-  const items = carousel.querySelectorAll('.illus-item');
-  const itemsPerPage = getItemsPerPage(carouselId);
-  
-  // Calculate total pages
-  carouselPages[carouselId] = Math.ceil(items.length / itemsPerPage);
-  carouselCurrentPage[carouselId] = 0;
-  
-  console.log('Carousel initialized:', carouselId, 'Items:', items.length, 'Per page:', itemsPerPage, 'Total pages:', carouselPages[carouselId]); // Debug
-  updateCarouselDisplay(carouselId);
-}
-
+/* CSS Scroll-Snap Carousel Controls */
 function carouselNext(carouselId) {
   const carousel = document.getElementById(carouselId);
   if (!carousel) return;
 
-  const items = carousel.querySelectorAll('.illus-item');
-  const itemsPerPage = getItemsPerPage(carouselId);
-  const totalPages = Math.ceil(items.length / itemsPerPage);
-  
-  carouselCurrentPage[carouselId] = (carouselCurrentPage[carouselId] + 1) % totalPages;
-  console.log('Next page:', carouselCurrentPage[carouselId]); // Debug
-  updateCarouselDisplay(carouselId);
+  const itemWidth = carousel.querySelector('.illus-item').offsetWidth;
+  const gap = 16; // From CSS
+  carousel.scrollBy({
+    left: itemWidth + gap,
+    behavior: 'smooth'
+  });
 }
 
 function carouselPrev(carouselId) {
   const carousel = document.getElementById(carouselId);
   if (!carousel) return;
 
-  const items = carousel.querySelectorAll('.illus-item');
-  const itemsPerPage = getItemsPerPage(carouselId);
-  const totalPages = Math.ceil(items.length / itemsPerPage);
-  
-  carouselCurrentPage[carouselId] = (carouselCurrentPage[carouselId] - 1 + totalPages) % totalPages;
-  console.log('Prev page:', carouselCurrentPage[carouselId]); // Debug
-  updateCarouselDisplay(carouselId);
-}
-
-function updateCarouselDisplay(carouselId) {
-  const carousel = document.getElementById(carouselId);
-  if (!carousel) return;
-
-  const items = carousel.querySelectorAll('.illus-item');
-  const itemsPerPage = getItemsPerPage(carouselId);
-  const currentPage = carouselCurrentPage[carouselId];
-  
-  const startIndex = currentPage * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-
-  items.forEach((item, index) => {
-    if (index >= startIndex && index < endIndex) {
-      item.style.display = '';
-      item.style.visibility = 'visible';
-    } else {
-      item.style.display = 'none !important';
-      item.style.visibility = 'hidden';
-    }
+  const itemWidth = carousel.querySelector('.illus-item').offsetWidth;
+  const gap = 16; // From CSS
+  carousel.scrollBy({
+    left: -(itemWidth + gap),
+    behavior: 'smooth'
   });
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-  initCarousel('illusCarousel');
-});
-
-window.addEventListener('resize', function() {
-  initCarousel('illusCarousel');
-});
 
 
 <!-- Instagram Embed Script -->
