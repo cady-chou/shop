@@ -1706,61 +1706,95 @@ window.filterIG = function(type, btn){
 
 /* ── Media Loader (Auto-detect Image/Video) ── */
 document.addEventListener('DOMContentLoaded', function() {
-  const mediaFormats = ['.jpg', '.png', '.mp4', '.webm', '.mov'];
+  const mediaFormats = [
+    { ext: '.jpg', type: 'image/jpeg' },
+    { ext: '.png', type: 'image/png' },
+    { ext: '.mp4', type: 'video/mp4' },
+    { ext: '.mov', type: 'video/quicktime' },
+    { ext: '.webm', type: 'video/webm' }
+  ];
   
   document.querySelectorAll('.collab-media[data-src]').forEach(function(container) {
     const baseSrc = container.dataset.src;
-    let loaded = false;
+    let attemptedFormats = [];
     
     function tryLoad(formatIndex) {
       if (formatIndex >= mediaFormats.length) {
-        // All formats failed, show placeholder
         container.style.opacity = '0.5';
+        container.innerHTML = '<div style="font-size:12px;color:#999;">❌ No media found</div>';
+        console.warn(`All formats failed for ${baseSrc}. Tried: ${attemptedFormats.join(', ')}`);
         return;
       }
       
-      const format = mediaFormats[formatIndex];
-      const fullSrc = baseSrc + format;
+      const fmt = mediaFormats[formatIndex];
+      const fullSrc = baseSrc + fmt.ext;
+      attemptedFormats.push(fmt.ext);
       
-      if (format === '.jpg' || format === '.png') {
-        const img = document.createElement('img');
+      // Image
+      if (fmt.type.startsWith('image/')) {
+        const img = new Image();
         img.onload = function() {
           container.innerHTML = '';
           container.appendChild(img);
-          loaded = true;
+          console.log(`✓ Loaded image: ${fullSrc}`);
         };
         img.onerror = function() {
+          console.log(`✗ Image failed: ${fullSrc}, trying next...`);
           tryLoad(formatIndex + 1);
         };
         img.src = fullSrc;
-      } else if (format === '.mp4' || format === '.webm' || format === '.mov') {
+      } 
+      // Video
+      else if (fmt.type.startsWith('video/')) {
         const video = document.createElement('video');
         video.controls = false;
         video.autoplay = true;
         video.loop = true;
         video.muted = true;
         video.playsInline = true;
+        video.style.width = '100%';
+        video.style.height = '100%';
+        video.style.objectFit = 'cover';
+        video.style.display = 'block';
         
         const source = document.createElement('source');
         source.src = fullSrc;
-        source.type = 'video/' + format.substring(1);
-        
-        video.onloadeddata = function() {
-          container.innerHTML = '';
-          container.appendChild(video);
-          loaded = true;
-        };
-        
-        video.onerror = function() {
-          tryLoad(formatIndex + 1);
-        };
+        source.type = fmt.type;
         
         video.appendChild(source);
-        // Test if format is playable before appending
-        if (video.canPlayType(source.type)) {
+        
+        // Timeout fallback (for browsers that don't fire events)
+        let hasLoaded = false;
+        const timeout = setTimeout(function() {
+          if (!hasLoaded) {
+            console.log(`✗ Video timeout: ${fullSrc}, trying next...`);
+            tryLoad(formatIndex + 1);
+          }
+        }, 3000);
+        
+        video.onloadeddata = function() {
+          hasLoaded = true;
+          clearTimeout(timeout);
+          container.innerHTML = '';
           container.appendChild(video);
-        } else {
+          console.log(`✓ Loaded video: ${fullSrc}`);
+        };
+        
+        video.onerror = function(e) {
+          clearTimeout(timeout);
+          console.log(`✗ Video error: ${fullSrc} (${e.type}), trying next...`);
           tryLoad(formatIndex + 1);
+        };
+        
+        // Check browser support first
+        const canPlay = video.canPlayType(fmt.type);
+        console.log(`Checking ${fmt.ext}: canPlayType="${canPlay}"`);
+        if (canPlay === '' || canPlay === 'no') {
+          console.log(`Browser cannot play ${fmt.type}, skipping...`);
+          clearTimeout(timeout);
+          tryLoad(formatIndex + 1);
+        } else {
+          container.appendChild(video);
         }
       }
     }
@@ -1768,7 +1802,6 @@ document.addEventListener('DOMContentLoaded', function() {
     tryLoad(0);
   });
 });
-
 </script>
 </body>
 </html>
