@@ -841,7 +841,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
 ══════════════════════════════════════ */
 
 #brand-story {
-  padding: 0 48px 96px; /* 垂直方向由 brand-hero-wrap 控制，只保留水平 + 底部 */
+  padding: 30px 48px 96px; /* 垂直方向由 brand-hero-wrap 控制，只保留水平 + 底部 */
   background:
     radial-gradient(ellipse 80% 60% at 70% 30%, rgba(125,216,236,0.18) 0%, transparent 60%),
     radial-gradient(ellipse 50% 40% at 15% 75%, rgba(255,107,138,0.10) 0%, transparent 55%),
@@ -868,7 +868,6 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
 .brand-hero-wrap {
   position: relative;
   z-index: 1;
-  min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -899,14 +898,14 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
 .brand-top-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 64px;
+  gap: 50px;
   align-items: center;
   position: relative;
   z-index: 1;
   padding: 0 0 0;
 }
 @media (max-width: 900px) {
-  .brand-top-grid { grid-template-columns: 1fr; gap: 40px; }
+  .brand-top-grid { grid-template-columns: 1fr; gap: 20px; }
 }
 
 /* 向下捲動提示 */
@@ -989,29 +988,14 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
 
 /* 右欄引言卡 */
 .brand-quote-card {
-  background: var(--black);
+  background: var(--sky);
   border-radius: 24px;
   padding: 48px 40px;
   color: white;
   position: relative;
   overflow: hidden;
 }
-.brand-quote-card::before {
-  content: '';
-  position: absolute;
-  top: -40px; right: -40px;
-  width: 200px; height: 200px;
-  background: radial-gradient(circle, rgba(125,216,236,0.15) 0%, transparent 70%);
-  pointer-events: none;
-}
-.brand-quote-card::after {
-  content: '';
-  position: absolute;
-  bottom: -30px; left: -30px;
-  width: 160px; height: 160px;
-  background: radial-gradient(circle, rgba(255,107,138,0.12) 0%, transparent 70%);
-  pointer-events: none;
-}
+
 .brand-quote-label {
   font-family: 'DotGothic16', monospace;
   font-size: 10px;
@@ -1023,13 +1007,13 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
   font-family: 'Noto Serif TC', serif;
   font-weight: 900;
   font-size: clamp(48px, 6vw, 80px);
-  line-height: 1.05;
-  letter-spacing: -.02em;
+  line-height: 1.2;
+  letter-spacing: 10px;
   background: linear-gradient(135deg, white 30%, var(--sky) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 16px;
+  margin-bottom: 25px;
 }
 .brand-quote-sub {
   font-family: 'DotGothic16', monospace;
@@ -1052,29 +1036,27 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
 }
 .brand-hero-img {
   display: block;
-  width: 80%;
+  width: 62%;
   height: auto;
   border-radius: 20px;
   object-fit: cover;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
   position: absolute;
-  right: -40px; /* 向右超出框框 40px */
-  top: 50%;
+  right: -56px; /* 向右超出框框 40px */
+  top: 48%;
   transform: translateY(-50%);
   z-index: 2;
 }
 @media (max-width: 900px) {
   .brand-hero-img {
-    width: 75%;
+    width: 53%;
     right: -24px;
-    border-radius: 16px;
   }
 }
 @media (max-width: 600px) {
   .brand-hero-img {
-    width: 70%;
-    right: -8px;
-    border-radius: 12px;
+    width: 66%;
+    right: -26px;
+    top: 53%;
   }
 }
 
@@ -1225,12 +1207,10 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
         <h2 class="section-title">周氏喵喵</h2>
         <div class="brand-body">
           <p>「周氏喵喵」源自作者的姓氏「周」，以及自家與朋友家照顧的貓咪們。喜歡使用繽紛的色彩，為你的日常注入可愛與療癒。</p>
+          <p>作者相信，每個人天生就有屬於自己可愛的一部分</p>
           <p>像貓咪一樣自在做自己，不用刻意討好誰，光是存在，就已經足夠可愛、足夠有魅力了。</p>
           <p>這份可愛不一定是外表，也可以是用了喜歡的小物，或是一顆想變可愛的心。</p>
-        </div>
-        <div class="brand-cta-row">
-          <a href="https://www.instagram.com/choucat_illustration/" target="_blank" class="brand-btn-ig">Instagram</a>
-          <a href="https://store.line.me/themeshop/product/f03a352a-e401-4ac0-b8ee-ad2b4f0dbd64/zh-Hant" target="_blank" class="brand-btn-line">LINE 主題商城</a>
+          <p>讓周氏喵喵陪你一起保持生活的那份可愛吧！</p>
         </div>
       </div>
 
@@ -1239,21 +1219,14 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
         <div class="brand-quote-card">
           <div class="brand-quote-label">BRAND PHILOSOPHY</div>
           <div class="brand-quote-main">保持<br>可愛</div>
-          <div class="brand-quote-sub">STAY CUTE · CHOÜ'S CAT</div>
-          <p class="brand-quote-body">讓周氏喵喵陪你一起保持生活的那份可愛吧！</p>
+         <div class="brand-cta-row">
+          <a href="https://www.instagram.com/choucat_illustration/" target="_blank" class="brand-btn-ig">Instagram</a>
+        </div>
         </div>
         <img src="img/hero-img.png" alt="周氏喵喵品牌視覺圖" class="brand-hero-img">
       </div>
 
       </div><!-- /brand-top-grid -->
-
-      <!-- 向下捲動提示 -->
-      <a href="#illustrations" class="scroll-hint" aria-label="向下捲動">
-        <span class="scroll-hint-label">SCROLL</span>
-        <svg class="scroll-hint-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </a>
 
     </div><!-- /brand-hero-wrap -->
 
@@ -1306,6 +1279,13 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
       </div>
     </div><!-- /brand-cats-grid -->
 
+      <!-- 向下捲動提示 -->
+      <a href="#illustrations" class="scroll-hint" aria-label="向下捲動">
+        <span class="scroll-hint-label">SCROLL</span>
+        <svg class="scroll-hint-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </a>
   </div>
 </section>
 
