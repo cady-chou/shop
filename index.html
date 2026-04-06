@@ -541,7 +541,8 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
 }
 /* ── Collab Cards (方案B) ───────────────────────────── */
 .collab-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
   text-decoration: none;
   border-radius: 16px;
   overflow: hidden;
@@ -555,7 +556,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
 }
 .collab-img {
   position: relative;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
 }
 .collab-img img {
@@ -591,6 +592,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
   padding: 8px 18px; border-radius: 999px;
 }
 .collab-footer {
+  flex: 1;
   display: flex; align-items: center;
   justify-content: space-between;
   padding: 11px 14px;
@@ -675,6 +677,14 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+/* ── Cards 01-04: 4:5 Aspect Ratio ── */
+.ig-grid .collab-card:nth-child(1) .collab-img,
+.ig-grid .collab-card:nth-child(2) .collab-img,
+.ig-grid .collab-card:nth-child(3) .collab-img,
+.ig-grid .collab-card:nth-child(4) .collab-img {
+  aspect-ratio: 4 / 5;
+}
+
 
 .ig-cat-sticker { background: #D4F4FF; color: #0099BB; }
 .ig-cat-collab  { background: #FFE2EB; color: #E0446A; }
