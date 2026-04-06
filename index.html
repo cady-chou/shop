@@ -850,6 +850,244 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
   box-shadow: 0 8px 20px rgba(26,16,24,0.12);
 }
 
+
+/* ══════════════════════════════════════
+   BRAND STORY 全新版型
+══════════════════════════════════════ */
+
+#brand-story {
+  background: linear-gradient(170deg, var(--sky-bg) 0%, var(--cream) 45%, #fff 100%);
+  padding-top: 0;
+  overflow: hidden;
+}
+
+.brand-transition-bar {
+  height: 80px;
+  background: linear-gradient(180deg, rgba(200,238,248,0.5) 0%, transparent 100%);
+  margin-bottom: 0;
+}
+
+/* 上半：左右兩欄 */
+.brand-top-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  padding: 20px 0 80px;
+}
+@media (max-width: 900px) {
+  .brand-top-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* 左欄文字 */
+.brand-text-col .section-title { margin-bottom: 24px; }
+.brand-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: var(--gray);
+  font-size: 15px;
+  line-height: 1.9;
+  margin-bottom: 36px;
+}
+.brand-body p { margin: 0; }
+.brand-cta-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.brand-btn-ig, .brand-btn-line {
+  display: inline-block;
+  padding: 11px 24px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+}
+.brand-btn-ig {
+  background: var(--black);
+  color: white;
+}
+.brand-btn-ig:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(26,16,24,0.2);
+}
+.brand-btn-line {
+  background: transparent;
+  color: var(--black);
+  border: 1.5px solid var(--gray-lt);
+}
+.brand-btn-line:hover {
+  border-color: var(--sky);
+  color: var(--sky);
+  transform: translateY(-2px);
+}
+
+/* 右欄引言卡 */
+.brand-quote-card {
+  background: var(--black);
+  border-radius: 24px;
+  padding: 48px 40px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.brand-quote-card::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(125,216,236,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.brand-quote-card::after {
+  content: '';
+  position: absolute;
+  bottom: -30px; left: -30px;
+  width: 160px; height: 160px;
+  background: radial-gradient(circle, rgba(255,107,138,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.brand-quote-label {
+  font-family: 'DotGothic16', monospace;
+  font-size: 10px;
+  letter-spacing: .2em;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 20px;
+}
+.brand-quote-main {
+  font-family: 'Noto Serif TC', serif;
+  font-weight: 900;
+  font-size: clamp(48px, 6vw, 80px);
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  background: linear-gradient(135deg, white 30%, var(--sky) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+.brand-quote-sub {
+  font-family: 'DotGothic16', monospace;
+  font-size: 11px;
+  letter-spacing: .15em;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 24px;
+}
+.brand-quote-body {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.65);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 20px;
+}
+
+/* 分隔線 */
+.brand-divider {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 48px;
+}
+.brand-divider::before, .brand-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--gray-lt);
+}
+.brand-divider-label {
+  font-family: 'DotGothic16', monospace;
+  font-size: 11px;
+  letter-spacing: .2em;
+  color: var(--sky);
+  white-space: nowrap;
+}
+
+/* 五隻貓網格 */
+.brand-cats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  padding-bottom: 20px;
+}
+@media (max-width: 1000px) {
+  .brand-cats-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 600px) {
+  .brand-cats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
+
+.brand-cat-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px 16px 20px;
+  text-align: center;
+  border-top: 3px solid var(--cat-color);
+  box-shadow: 0 4px 16px rgba(26,16,24,0.06);
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+  cursor: default;
+}
+.brand-cat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(26,16,24,0.12);
+}
+.brand-cat-emoji {
+  font-size: 36px;
+  margin-bottom: 12px;
+  display: block;
+}
+.brand-cat-name {
+  font-family: 'Noto Serif TC', serif;
+  font-weight: 900;
+  font-size: 15px;
+  color: var(--black);
+  margin: 0 0 4px;
+}
+.brand-cat-name span {
+  display: block;
+  font-family: 'DotGothic16', monospace;
+  font-size: 11px;
+  color: var(--gray);
+  font-weight: 400;
+  margin-top: 2px;
+}
+.brand-cat-role {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--cat-color);
+  background: color-mix(in srgb, var(--cat-color) 12%, transparent);
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin: 6px 0 10px;
+}
+.brand-cat-desc {
+  font-size: 12px;
+  color: var(--gray);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── 進場動畫 ── */
+@keyframes revealFade {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(36px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal-fade, .reveal-up {
+  opacity: 0;
+}
+.reveal-fade.visible {
+  animation: revealFade .7s ease forwards;
+}
+.reveal-up.visible {
+  animation: revealUp .6s ease forwards;
+}
+
 </style>
 </head>
 <body>
@@ -893,67 +1131,91 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
 </section>
 
 <!-- 品牌故事 BRAND STORY -->
-<section id="brand-story" style="background:var(--cream);">
+<section id="brand-story">
+  <!-- 過渡色帶 -->
+  <div class="brand-transition-bar"></div>
+
   <div class="inner">
-    <!-- 視覺過渡銜接 -->
-    <div style="height:40px;background:linear-gradient(180deg,rgba(200,238,248,0.2) 0%,transparent);margin:-48px -48px 0;"></div>
-    <div style="height:40px;"></div>
-    <div class="section-hd">
-      <div>
+
+    <!-- 上半區：左右分欄 -->
+    <div class="brand-top-grid">
+
+      <!-- 左欄：文字區 -->
+      <div class="brand-text-col reveal-fade">
         <div class="section-label">ABOUT THE BRAND</div>
-        <h2 class="section-title">保 持 可 愛</h2>
-      </div>
-    </div>
-    <div style="">
-      <div style="font-size:16px;line-height:1.9;color:var(--black);margin-bottom:28px;">
-        <p style="margin-bottom:20px;"><strong>「周氏喵喵」</strong>源自作者的姓氏「周」，以及自家與朋友家照顧的貓咪們。</p>
-        <p style="margin-bottom:20px;">喜歡使用繽紛的色彩，為你的日常注入可愛與療癒。</p>
-        <p style="margin-bottom:20px;"><strong>品牌傳達的理念是：「 保 持 可 愛 」</strong></p>
-        <p style="margin-bottom:20px;">作者相信，每個人天生就有屬於自己可愛的一部分。像貓咪一樣，自在做自己，不用刻意討好誰，光是存在，就已經足夠可愛、足夠有魅力了。</p>
-        <p style="margin-bottom:20px;">這份可愛不一定是外表，也可以是用了喜歡的小物，或是一顆想變可愛的心。</p>
-        <p style="margin-bottom:28px;"><strong style="font-size:18px;">讓周氏喵喵陪你一起保持生活的那份可愛吧！</strong></p>
-      </div>
-      <!-- 五隻喵喵角色 -->
-      <div style="margin-top:64px;padding-top:48px;border-top:2px solid var(--gray-lt);">
-        <div style="text-align:center;margin-bottom:32px;">
-          <div class="section-label" style="color:var(--sky);display:inline-block;">THE FIVE CATS</div>
-          <h3 style="font-family:'Noto Serif TC',serif;font-weight:900;font-size:clamp(22px,3vw,36px);color:var(--black);margin-top:8px;">關於喵喵</h3>
+        <h2 class="section-title">周氏喵喵</h2>
+        <div class="brand-body">
+          <p>「周氏喵喵」源自作者的姓氏「周」，以及自家與朋友家照顧的貓咪們。喜歡使用繽紛的色彩，為你的日常注入可愛與療癒。</p>
+          <p>像貓咪一樣自在做自己，不用刻意討好誰，光是存在，就已經足夠可愛、足夠有魅力了。</p>
+          <p>這份可愛不一定是外表，也可以是用了喜歡的小物，或是一顆想變可愛的心。</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;max-width:900px;margin:0 auto;">
-          <div style="padding:20px;border-radius:12px;background:white;text-align:center;border-left:4px solid #FF6B8A;">
-            <span style="font-size:32px;">🐱</span>
-            <p style="font-weight:700;margin:8px 0 4px;color:var(--black);">咕幾 / Kuchi</p>
-            <p style="font-size:12px;color:var(--pink);margin-bottom:8px;font-weight:600;">瘋老大</p>
-            <p style="font-size:13px;color:var(--gray);line-height:1.6;">摸不著頭緒，負責品牌中的「幽默與驚喜感」。</p>
-          </div>
-          <div style="padding:20px;border-radius:12px;background:white;text-align:center;border-left:4px solid #FFD93D;">
-            <span style="font-size:32px;">🧡</span>
-            <p style="font-weight:700;margin:8px 0 4px;color:var(--black);">波姆 / Pomu</p>
-            <p style="font-size:12px;color:#E07800;margin-bottom:8px;font-weight:600;">呆小弟</p>
-            <p style="font-size:13px;color:var(--gray);line-height:1.6;">貪吃擔當，負責品牌中的「飽足感與呆萌」。</p>
-          </div>
-          <div style="padding:20px;border-radius:12px;background:white;text-align:center;border-left:4px solid #C8C8D8;">
-            <span style="font-size:32px;">🩶</span>
-            <p style="font-weight:700;margin:8px 0 4px;color:var(--black);">胡麻 / Goma</p>
-            <p style="font-size:12px;color:#7878A0;margin-bottom:8px;font-weight:600;">厭世懶</p>
-            <p style="font-size:13px;color:var(--gray);line-height:1.6;">看透世事，負責品牌中的「共鳴感與舒壓」。</p>
-          </div>
-          <div style="padding:20px;border-radius:12px;background:white;text-align:center;border-left:4px solid #FFB8D0;">
-            <span style="font-size:32px;">🌸</span>
-            <p style="font-weight:700;margin:8px 0 4px;color:var(--black);">茲茲 / Zuzu</p>
-            <p style="font-size:12px;color:#C83060;margin-bottom:8px;font-weight:600;">細膩公主</p>
-            <p style="font-size:13px;color:var(--gray);line-height:1.6;">傲嬌求關注，負責品牌中的「精緻感與靈性」。</p>
-          </div>
-          <div style="padding:20px;border-radius:12px;background:white;text-align:center;border-left:4px solid #FFD8A0;">
-            <span style="font-size:32px;">🤍</span>
-            <p style="font-weight:700;margin:8px 0 4px;color:var(--black);">努努 / Nunu</p>
-            <p style="font-size:12px;color:#A06020;margin-bottom:8px;font-weight:600;">天使貓</p>
-            <p style="font-size:13px;color:var(--gray);line-height:1.6;">溫柔守護，負責品牌中的「純粹與終極療癒」。</p>
-          </div>
+        <div class="brand-cta-row">
+          <a href="https://www.instagram.com/choucat_illustration/" target="_blank" class="brand-btn-ig">Instagram</a>
+          <a href="https://store.line.me/themeshop/product/f03a352a-e401-4ac0-b8ee-ad2b4f0dbd64/zh-Hant" target="_blank" class="brand-btn-line">LINE 主題商城</a>
         </div>
       </div>
 
+      <!-- 右欄：引言視覺 -->
+      <div class="brand-quote-col reveal-fade" style="animation-delay:.15s;">
+        <div class="brand-quote-card">
+          <div class="brand-quote-label">BRAND PHILOSOPHY</div>
+          <div class="brand-quote-main">保持<br>可愛</div>
+          <div class="brand-quote-sub">STAY CUTE · CHOÜ'S CAT</div>
+          <p class="brand-quote-body">讓周氏喵喵陪你一起保持生活的那份可愛吧！</p>
+        </div>
+      </div>
+
+    </div><!-- /brand-top-grid -->
+
+    <!-- 分隔線 -->
+    <div class="brand-divider">
+      <div class="brand-divider-label">THE FIVE CATS</div>
     </div>
+
+    <!-- 下半區：五隻貓 -->
+    <div class="brand-cats-grid">
+      <div class="brand-cat-card reveal-up" style="--cat-color:#FF6B8A;animation-delay:.05s;">
+        <div class="brand-cat-emoji">🐱</div>
+        <div class="brand-cat-info">
+          <p class="brand-cat-name">咕幾 <span>Kuchi</span></p>
+          <p class="brand-cat-role">瘋老大</p>
+          <p class="brand-cat-desc">摸不著頭緒，負責品牌中的「幽默與驚喜感」。</p>
+        </div>
+      </div>
+      <div class="brand-cat-card reveal-up" style="--cat-color:#FFB020;animation-delay:.1s;">
+        <div class="brand-cat-emoji">🧡</div>
+        <div class="brand-cat-info">
+          <p class="brand-cat-name">波姆 <span>Pomu</span></p>
+          <p class="brand-cat-role">呆小弟</p>
+          <p class="brand-cat-desc">貪吃擔當，負責品牌中的「飽足感與呆萌」。</p>
+        </div>
+      </div>
+      <div class="brand-cat-card reveal-up" style="--cat-color:#9090B8;animation-delay:.15s;">
+        <div class="brand-cat-emoji">🩶</div>
+        <div class="brand-cat-info">
+          <p class="brand-cat-name">胡麻 <span>Goma</span></p>
+          <p class="brand-cat-role">厭世懶</p>
+          <p class="brand-cat-desc">看透世事，負責品牌中的「共鳴感與舒壓」。</p>
+        </div>
+      </div>
+      <div class="brand-cat-card reveal-up" style="--cat-color:#E05080;animation-delay:.2s;">
+        <div class="brand-cat-emoji">🌸</div>
+        <div class="brand-cat-info">
+          <p class="brand-cat-name">茲茲 <span>Zuzu</span></p>
+          <p class="brand-cat-role">細膩公主</p>
+          <p class="brand-cat-desc">傲嬌求關注，負責品牌中的「精緻感與靈性」。</p>
+        </div>
+      </div>
+      <div class="brand-cat-card reveal-up" style="--cat-color:#C88030;animation-delay:.25s;">
+        <div class="brand-cat-emoji">🤍</div>
+        <div class="brand-cat-info">
+          <p class="brand-cat-name">努努 <span>Nunu</span></p>
+          <p class="brand-cat-role">天使貓</p>
+          <p class="brand-cat-desc">溫柔守護，負責品牌中的「純粹與終極療癒」。</p>
+        </div>
+      </div>
+    </div><!-- /brand-cats-grid -->
+
   </div>
 </section>
 
@@ -2017,6 +2279,21 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <script>
+/* ── Brand Story Reveal Animation ── */
+(function() {
+  var targets = document.querySelectorAll('.reveal-fade, .reveal-up');
+  if (!targets.length) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  targets.forEach(function(el) { observer.observe(el); });
+})();
+
 /* ── Nav Scroll Behavior ── */
 (function() {
   var nav = document.getElementById('mainNav');
