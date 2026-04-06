@@ -42,6 +42,70 @@ section{padding:96px 48px;}
 /* ══════════════════════════════════════
    IP 插畫 SCROLL-SNAP CAROUSEL
 ══════════════════════════════════════ */
+
+/* Wrapper 讓箭頭定位 */
+.carousel-wrapper {
+  position: relative;
+}
+
+/* 箭頭按鈕 */
+.carousel-nav {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  background: rgba(255, 107, 138, 0.85);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 20px;
+  z-index: 10;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(26, 16, 24, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  line-height: 1;
+}
+.carousel-nav:hover {
+  background: var(--pink);
+  box-shadow: 0 6px 20px rgba(255, 107, 138, 0.5);
+  transform: translateY(-50%) scale(1.1);
+}
+.carousel-nav:active {
+  transform: translateY(-50%) scale(0.95);
+}
+.carousel-nav.prev { left: -22px; }
+.carousel-nav.next { right: -22px; }
+
+/* Dots 指示器 */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gray-lt);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+.carousel-dot.active {
+  background: var(--pink);
+  width: 24px;
+  border-radius: 4px;
+}
+.carousel-dot:hover {
+  background: var(--sky);
+}
 .illus-grid{
   display: flex;
   gap: 16px;
@@ -545,42 +609,6 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  /* 輪播箭頭 */
-  .carousel-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 107, 138, 0.85);
-    color: white;
-    border: none;
-    padding: 12px 16px;
-    cursor: pointer;
-    border-radius: 50%;
-    font-size: 24px;
-    z-index: 10;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(26, 16, 24, 0.2);
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-  }
-  .carousel-nav:hover {
-    background: rgba(255, 107, 138, 1);
-    box-shadow: 0 6px 16px rgba(255, 107, 138, 0.4);
-    transform: translateY(-50%) scale(1.1);
-  }
-  .carousel-nav:active {
-    transform: translateY(-50%) scale(0.95);
-  }
-  .carousel-nav.prev {
-    left: 10px;
-  }
-  .carousel-nav.next {
-    right: 10px;
-  }
 }
 
 
@@ -645,7 +673,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
         <p class="section-desc">春夏秋冬・節日慶典，每個季節都有屬於喵喵的故事。</p>
       </div>
     </div>
-    <div style="position: relative;">
+    <div class="carousel-wrapper">
       <button class="carousel-nav prev" onclick="carouselPrev('illusCarousel')">❮</button>
       <button class="carousel-nav next" onclick="carouselNext('illusCarousel')">❯</button>
       <div class="illus-grid" id="illusCarousel">
@@ -713,6 +741,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
       </div>
     </div>
       </div>
+      <div class="carousel-dots" id="illusCarousel-dots"></div>
     </div>
   </div>
 </section>
@@ -1378,30 +1407,65 @@ document.querySelectorAll('.tab').forEach(tab=>{
 
 
 
+<script>
 /* CSS Scroll-Snap Carousel Controls */
 function carouselNext(carouselId) {
   const carousel = document.getElementById(carouselId);
   if (!carousel) return;
-
   const itemWidth = carousel.querySelector('.illus-item').offsetWidth;
-  const gap = 16; // From CSS
-  carousel.scrollBy({
-    left: itemWidth + gap,
-    behavior: 'smooth'
-  });
+  carousel.scrollBy({ left: itemWidth + 16, behavior: 'smooth' });
+  setTimeout(() => updateDots(carouselId), 350);
 }
 
 function carouselPrev(carouselId) {
   const carousel = document.getElementById(carouselId);
   if (!carousel) return;
-
   const itemWidth = carousel.querySelector('.illus-item').offsetWidth;
-  const gap = 16; // From CSS
-  carousel.scrollBy({
-    left: -(itemWidth + gap),
-    behavior: 'smooth'
+  carousel.scrollBy({ left: -(itemWidth + 16), behavior: 'smooth' });
+  setTimeout(() => updateDots(carouselId), 350);
+}
+
+function updateDots(carouselId) {
+  const carousel = document.getElementById(carouselId);
+  if (!carousel) return;
+  const dotsContainer = document.getElementById(carouselId + '-dots');
+  if (!dotsContainer) return;
+
+  const itemWidth = carousel.querySelector('.illus-item').offsetWidth + 16;
+  const activeIndex = Math.round(carousel.scrollLeft / itemWidth);
+  const dots = dotsContainer.querySelectorAll('.carousel-dot');
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === activeIndex);
   });
 }
+
+function initDots(carouselId) {
+  const carousel = document.getElementById(carouselId);
+  if (!carousel) return;
+  const dotsContainer = document.getElementById(carouselId + '-dots');
+  if (!dotsContainer) return;
+
+  const items = carousel.querySelectorAll('.illus-item');
+  dotsContainer.innerHTML = '';
+  items.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Go to item ' + (i + 1));
+    dot.addEventListener('click', () => {
+      const itemWidth = carousel.querySelector('.illus-item').offsetWidth + 16;
+      carousel.scrollTo({ left: i * itemWidth, behavior: 'smooth' });
+      setTimeout(() => updateDots(carouselId), 350);
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+  carousel.addEventListener('scroll', () => updateDots(carouselId), { passive: true });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initDots('illusCarousel');
+});
+</script>
 
 
 <!-- Instagram Embed Script -->
