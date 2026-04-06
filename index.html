@@ -647,6 +647,35 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
   display: block;
   border-radius: 12px 12px 0 0;
 }
+.collab-media {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f5e6d3, #e8d5c4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.collab-media img,
+.collab-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.collab-media.loading::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0,0,0,.1);
+  border-top-color: #0099BB;
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 .ig-cat-sticker { background: #D4F4FF; color: #0099BB; }
 .ig-cat-collab  { background: #FFE2EB; color: #E0446A; }
 .ig-cat-promo   { background: #FFF3CC; color: #9A6B00; }
@@ -799,7 +828,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
         <div class="collab-img">
           <span class="collab-cat-badge promo">品牌合作推廣</span>
           <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
-          <img src="img/collab-01.jpg" alt="品牌合作推廣" loading="lazy" onerror="this.style.display='none'">
+          <div class="collab-media" data-src="img/collab-01"></div>
         </div>
         <div class="collab-footer">
           <span class="collab-brand">Vivisticker</span>
@@ -812,7 +841,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
         <div class="collab-img">
           <span class="collab-cat-badge promo">品牌合作推廣</span>
           <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
-          <img src="img/collab-02.jpg" alt="品牌合作推廣" loading="lazy" onerror="this.style.display='none'">
+          <div class="collab-media" data-src="img/collab-02"></div>
         </div>
         <div class="collab-footer">
           <span class="collab-brand">Gamesofa貓咪造咖(休閒手遊）</span>
@@ -825,7 +854,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
         <div class="collab-img">
           <span class="collab-cat-badge collab">聯名商品/圖像授權合作</span>
           <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
-          <img src="img/collab-03.jpg" alt="聯名商品/圖像授權合作" loading="lazy" onerror="this.style.display='none'">
+          <div class="collab-media" data-src="img/collab-03"></div>
         </div>
         <div class="collab-footer">
           <span class="collab-brand">𝗧𝗢𝗬𝗦𝗘𝗟𝗘𝗖𝗧</span>
@@ -838,7 +867,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
         <div class="collab-img">
           <span class="collab-cat-badge sticker">LINE 貼圖合作</span>
           <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
-          <img src="img/collab-04.jpg" alt="LINE 貼圖合作" loading="lazy" onerror="this.style.display='none'">
+          <div class="collab-media" data-src="img/collab-04"></div>
         </div>
         <div class="collab-footer">
           <span class="collab-brand">保誠人壽</span>
@@ -851,7 +880,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
         <div class="collab-img">
           <span class="collab-cat-badge sticker">LINE 貼圖合作</span>
           <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
-          <img src="img/collab-05.jpg" alt="LINE 貼圖合作" loading="lazy" onerror="this.style.display='none'">
+          <div class="collab-media" data-src="img/collab-05"></div>
         </div>
         <div class="collab-footer">
           <span class="collab-brand">𝗟𝗜𝗡𝗘禮物</span>
@@ -864,7 +893,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
         <div class="collab-img">
           <span class="collab-cat-badge sticker">LINE 貼圖合作</span>
           <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
-          <img src="img/collab-06.jpg" alt="LINE 貼圖合作" loading="lazy" onerror="this.style.display='none'">
+          <div class="collab-media" data-src="img/collab-06"></div>
         </div>
         <div class="collab-footer">
           <span class="collab-brand">台灣三麗鷗 Hello Kitty</span>
@@ -877,7 +906,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
         <div class="collab-img">
           <span class="collab-cat-badge collab">聯名商品/圖像授權合作</span>
           <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
-          <img src="img/collab-07.jpg" alt="聯名商品/圖像授權合作" loading="lazy" onerror="this.style.display='none'">
+          <div class="collab-media" data-src="img/collab-07"></div>
         </div>
         <div class="collab-footer">
           <span class="collab-brand">𝗧𝗢𝗬𝗦𝗘𝗟𝗘𝗖𝗧</span>
@@ -890,7 +919,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
         <div class="collab-img">
           <span class="collab-cat-badge promo">品牌合作推廣</span>
           <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
-          <img src="img/collab-08.jpg" alt="品牌合作推廣" loading="lazy" onerror="this.style.display='none'">
+          <div class="collab-media" data-src="img/collab-08"></div>
         </div>
         <div class="collab-footer">
           <span class="collab-brand">勞動部勞動力發展署桃竹苗分署</span>
@@ -903,7 +932,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
         <div class="collab-img">
           <span class="collab-cat-badge collab">聯名商品/圖像授權合作</span>
           <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
-          <img src="img/collab-09.jpg" alt="聯名商品/圖像授權合作" loading="lazy" onerror="this.style.display='none'">
+          <div class="collab-media" data-src="img/collab-09"></div>
         </div>
         <div class="collab-footer">
           <span class="collab-brand">Knocky</span>
@@ -916,7 +945,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
         <div class="collab-img">
           <span class="collab-cat-badge collab">聯名商品/圖像授權合作</span>
           <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
-          <img src="img/collab-10.jpg" alt="聯名商品/圖像授權合作" loading="lazy" onerror="this.style.display='none'">
+          <div class="collab-media" data-src="img/collab-10"></div>
         </div>
         <div class="collab-footer">
           <span class="collab-brand">RHINOSHIELD 犀牛盾</span>
@@ -929,7 +958,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
         <div class="collab-img">
           <span class="collab-cat-badge collab">聯名商品/圖像授權合作</span>
           <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
-          <img src="img/collab-11.jpg" alt="聯名商品/圖像授權合作" loading="lazy" onerror="this.style.display='none'">
+          <div class="collab-media" data-src="img/collab-11"></div>
         </div>
         <div class="collab-footer">
           <span class="collab-brand">雨之情品牌雨傘</span>
@@ -942,7 +971,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
         <div class="collab-img">
           <span class="collab-cat-badge collab">聯名商品/圖像授權合作</span>
           <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
-          <img src="img/collab-12.jpg" alt="聯名商品/圖像授權合作" loading="lazy" onerror="this.style.display='none'">
+          <div class="collab-media" data-src="img/collab-12"></div>
         </div>
         <div class="collab-footer">
           <span class="collab-brand">寶島眼鏡官網</span>
@@ -955,7 +984,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
         <div class="collab-img">
           <span class="collab-cat-badge sticker">LINE 貼圖合作</span>
           <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
-          <img src="img/collab-13.jpg" alt="LINE 貼圖合作" loading="lazy" onerror="this.style.display='none'">
+          <div class="collab-media" data-src="img/collab-13"></div>
         </div>
         <div class="collab-footer">
           <span class="collab-brand">LINE購物品牌名店</span>
@@ -1672,5 +1701,74 @@ window.filterIG = function(type, btn){
 
 </script>
 
+
+<script>
+
+/* ── Media Loader (Auto-detect Image/Video) ── */
+document.addEventListener('DOMContentLoaded', function() {
+  const mediaFormats = ['.jpg', '.png', '.mp4', '.webm', '.mov'];
+  
+  document.querySelectorAll('.collab-media[data-src]').forEach(function(container) {
+    const baseSrc = container.dataset.src;
+    let loaded = false;
+    
+    function tryLoad(formatIndex) {
+      if (formatIndex >= mediaFormats.length) {
+        // All formats failed, show placeholder
+        container.style.opacity = '0.5';
+        return;
+      }
+      
+      const format = mediaFormats[formatIndex];
+      const fullSrc = baseSrc + format;
+      
+      if (format === '.jpg' || format === '.png') {
+        const img = document.createElement('img');
+        img.onload = function() {
+          container.innerHTML = '';
+          container.appendChild(img);
+          loaded = true;
+        };
+        img.onerror = function() {
+          tryLoad(formatIndex + 1);
+        };
+        img.src = fullSrc;
+      } else if (format === '.mp4' || format === '.webm' || format === '.mov') {
+        const video = document.createElement('video');
+        video.controls = false;
+        video.autoplay = true;
+        video.loop = true;
+        video.muted = true;
+        video.playsInline = true;
+        
+        const source = document.createElement('source');
+        source.src = fullSrc;
+        source.type = 'video/' + format.substring(1);
+        
+        video.onloadeddata = function() {
+          container.innerHTML = '';
+          container.appendChild(video);
+          loaded = true;
+        };
+        
+        video.onerror = function() {
+          tryLoad(formatIndex + 1);
+        };
+        
+        video.appendChild(source);
+        // Test if format is playable before appending
+        if (video.canPlayType(source.type)) {
+          container.appendChild(video);
+        } else {
+          tryLoad(formatIndex + 1);
+        }
+      }
+    }
+    
+    tryLoad(0);
+  });
+});
+
+</script>
 </body>
 </html>
