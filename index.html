@@ -1408,58 +1408,118 @@ document.querySelectorAll('.tab').forEach(tab=>{
 
 
 <script>
-/* CSS Scroll-Snap Carousel Controls */
+/* ── Infinite Scroll-Snap Carousel ─────────────────────────
+   Strategy: clone first + last item, jump silently when
+   landing on a clone → seamless infinite loop.
+──────────────────────────────────────────────────────────── */
+
+const _carousels = {};   // stores state per carousel id
+
+function _step(carousel) {
+  const item = carousel.querySelector('.illus-item');
+  return item ? item.offsetWidth + 16 : 0;
+}
+
+function _realIndex(carousel, totalCount) {
+  const st = _step(carousel);
+  if (!st) return 0;
+  // index 0 = last-clone, 1…N = real items, N+1 = first-clone
+  const raw = Math.round(carousel.scrollLeft / st);
+  if (raw <= 0)           return totalCount - 1;
+  if (raw > totalCount)   return 0;
+  return raw - 1;  // 0-based real index
+}
+
+function _updateDots(carouselId) {
+  const state = _carousels[carouselId];
+  if (!state) return;
+  const { carousel, dotsContainer, count } = state;
+  if (!dotsContainer) return;
+
+  const idx = _realIndex(carousel, count);
+  dotsContainer.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i === idx);
+  });
+}
+
 function carouselNext(carouselId) {
-  const carousel = document.getElementById(carouselId);
-  if (!carousel) return;
-  const itemWidth = carousel.querySelector('.illus-item').offsetWidth;
-  carousel.scrollBy({ left: itemWidth + 16, behavior: 'smooth' });
-  setTimeout(() => updateDots(carouselId), 350);
+  const state = _carousels[carouselId];
+  if (!state) return;
+  const { carousel } = state;
+  carousel.scrollBy({ left: _step(carousel), behavior: 'smooth' });
 }
 
 function carouselPrev(carouselId) {
-  const carousel = document.getElementById(carouselId);
-  if (!carousel) return;
-  const itemWidth = carousel.querySelector('.illus-item').offsetWidth;
-  carousel.scrollBy({ left: -(itemWidth + 16), behavior: 'smooth' });
-  setTimeout(() => updateDots(carouselId), 350);
-}
-
-function updateDots(carouselId) {
-  const carousel = document.getElementById(carouselId);
-  if (!carousel) return;
-  const dotsContainer = document.getElementById(carouselId + '-dots');
-  if (!dotsContainer) return;
-
-  const itemWidth = carousel.querySelector('.illus-item').offsetWidth + 16;
-  const activeIndex = Math.round(carousel.scrollLeft / itemWidth);
-  const dots = dotsContainer.querySelectorAll('.carousel-dot');
-  dots.forEach((dot, i) => {
-    dot.classList.toggle('active', i === activeIndex);
-  });
+  const state = _carousels[carouselId];
+  if (!state) return;
+  const { carousel } = state;
+  carousel.scrollBy({ left: -_step(carousel), behavior: 'smooth' });
 }
 
 function initDots(carouselId) {
   const carousel = document.getElementById(carouselId);
   if (!carousel) return;
   const dotsContainer = document.getElementById(carouselId + '-dots');
-  if (!dotsContainer) return;
 
-  const items = carousel.querySelectorAll('.illus-item');
-  dotsContainer.innerHTML = '';
-  items.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-    dot.setAttribute('aria-label', 'Go to item ' + (i + 1));
-    dot.addEventListener('click', () => {
-      const itemWidth = carousel.querySelector('.illus-item').offsetWidth + 16;
-      carousel.scrollTo({ left: i * itemWidth, behavior: 'smooth' });
-      setTimeout(() => updateDots(carouselId), 350);
+  // ── 1. Gather real items (ignore existing clones) ──────
+  const realItems = Array.from(
+    carousel.querySelectorAll('.illus-item:not(.illus-clone)')
+  );
+  const count = realItems.length;
+  if (count === 0) return;
+
+  // ── 2. Clone last → prepend, clone first → append ──────
+  const lastClone  = realItems[count - 1].cloneNode(true);
+  const firstClone = realItems[0].cloneNode(true);
+  lastClone.classList.add('illus-clone');
+  firstClone.classList.add('illus-clone');
+  carousel.insertBefore(lastClone, realItems[0]);
+  carousel.appendChild(firstClone);
+
+  // ── 3. Set initial scroll to first real item (instant) ─
+  const st = _step(carousel);
+  carousel.scrollTo({ left: st, behavior: 'instant' });
+
+  // ── 4. Build dots ──────────────────────────────────────
+  if (dotsContainer) {
+    dotsContainer.innerHTML = '';
+    realItems.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', '第 ' + (i + 1) + ' 張');
+      dot.addEventListener('click', () => {
+        carousel.scrollTo({ left: (i + 1) * _step(carousel), behavior: 'smooth' });
+        setTimeout(() => _updateDots(carouselId), 380);
+      });
+      dotsContainer.appendChild(dot);
     });
-    dotsContainer.appendChild(dot);
-  });
+  }
 
-  carousel.addEventListener('scroll', () => updateDots(carouselId), { passive: true });
+  // ── 5. Store state ─────────────────────────────────────
+  _carousels[carouselId] = { carousel, dotsContainer, count };
+
+  // ── 6. Infinite-loop: silent jump on clone land ────────
+  let jumping = false;
+  carousel.addEventListener('scroll', () => {
+    if (jumping) return;
+    const scrollLeft = carousel.scrollLeft;
+    const step = _step(carousel);
+
+    // landed on first-clone (at the very end)
+    if (scrollLeft >= (count + 1) * step) {
+      jumping = true;
+      carousel.scrollTo({ left: step, behavior: 'instant' });
+      requestAnimationFrame(() => { jumping = false; });
+    }
+    // landed on last-clone (at the very start)
+    else if (scrollLeft < step * 0.5) {
+      jumping = true;
+      carousel.scrollTo({ left: count * step, behavior: 'instant' });
+      requestAnimationFrame(() => { jumping = false; });
+    }
+
+    _updateDots(carouselId);
+  }, { passive: true });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
