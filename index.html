@@ -1045,11 +1045,18 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
   top: 48%;
   transform: translateY(-50%);
   z-index: 2;
+  transition: top 0.3s ease;
+}
+.brand-quote-card:hover .brand-hero-img {
+  top: 47%; /* 上移 1% */
 }
 @media (max-width: 900px) {
   .brand-hero-img {
     width: 53%;
     right: -24px;
+  }
+  .brand-quote-card:hover .brand-hero-img {
+    top: 47%;
   }
 }
 @media (max-width: 600px) {
@@ -1057,6 +1064,9 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
     width: 66%;
     right: -26px;
     top: 53%;
+  }
+  .brand-quote-card:hover .brand-hero-img {
+    top: 52%;
   }
 }
 
