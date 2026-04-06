@@ -16,14 +16,113 @@ html{scroll-behavior:smooth;}
 body{font-family:'Noto Sans TC',sans-serif;color:var(--black);background:var(--sky-bg);overflow-x:hidden;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(238,249,253,0.9);backdrop-filter:blur(14px);border-bottom:1px solid rgba(125,216,236,0.2);}
-.nav-logo{font-family:'DotGothic16',monospace;font-size:16px;letter-spacing:.08em;}
-.nav-logo span{color:var(--sky);}
-.nav-links{display:flex;gap:28px;list-style:none;}
-.nav-links a{text-decoration:none;font-size:13px;color:var(--gray);transition:color .2s;}
-.nav-links a:hover{color:var(--sky);}
-.nav-cta{background:var(--black);color:white!important;padding:8px 20px;border-radius:999px;transition:background .2s!important;}
-.nav-cta:hover{background:var(--pink)!important;}
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 48px;
+  background: rgba(238,249,253,0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(125,216,236,0.15);
+  transition: padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+nav.scrolled {
+  padding: 12px 48px;
+  background: rgba(238,249,253,0.95);
+  box-shadow: 0 2px 24px rgba(26,16,24,0.06);
+}
+.nav-logo {
+  font-family: 'DotGothic16', monospace;
+  font-size: 15px;
+  letter-spacing: .08em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: var(--black);
+}
+.nav-logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--black);
+  border-radius: 8px;
+  color: white;
+  font-size: 15px;
+  transition: background 0.2s;
+}
+nav:hover .nav-logo-mark,
+.nav-logo:hover .nav-logo-mark {
+  background: var(--pink);
+}
+.nav-logo-text span {
+  color: var(--sky);
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+}
+.nav-links li a {
+  text-decoration: none;
+  font-size: 13px;
+  color: var(--gray);
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+  position: relative;
+  letter-spacing: 0.02em;
+}
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 12px;
+  right: 12px;
+  height: 1.5px;
+  background: var(--sky);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+  border-radius: 2px;
+}
+.nav-links li a:hover {
+  color: var(--black);
+  background: rgba(125,216,236,0.1);
+}
+.nav-links li a:hover::after {
+  transform: scaleX(1);
+}
+.nav-cta {
+  background: var(--black) !important;
+  color: white !important;
+  padding: 9px 20px !important;
+  border-radius: 999px !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+  letter-spacing: 0.03em !important;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s !important;
+  box-shadow: 0 2px 8px rgba(26,16,24,0.15) !important;
+}
+.nav-cta::after { display: none !important; }
+.nav-cta:hover {
+  background: var(--pink) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 16px rgba(255,107,138,0.35) !important;
+}
+@media (max-width: 768px) {
+  nav { padding: 14px 24px; }
+  nav.scrolled { padding: 10px 24px; }
+  .nav-links { gap: 2px; }
+  .nav-links li a { padding: 6px 8px; font-size: 12px; }
+}
 
 /* COMMON */
 section{padding:96px 48px;}
@@ -755,14 +854,17 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
 </head>
 <body>
 
-<nav>
-  <div class="nav-logo">周氏喵喵 <span>✦</span> CHOÜ'S CAT</div>
+<nav id="mainNav">
+  <a class="nav-logo" href="#">
+    <span class="nav-logo-mark">🐱</span>
+    <span class="nav-logo-text">周氏喵喵 <span>✦</span> CHOÜ'S CAT</span>
+  </a>
   <ul class="nav-links">
+    <li><a href="#brand-story">關於</a></li>
     <li><a href="#illustrations">插畫作品</a></li>
     <li><a href="#collabs">商業合作</a></li>
     <li><a href="#exhibitions">參展經驗</a></li>
     <li><a href="#products">商品</a></li>
-    <li><a href="#brand-story">關於</a></li>
     <li><a href="mailto:ruidiechou@gmail.com" class="nav-cta">合作邀約 ↗</a></li>
   </ul>
 </nav>
@@ -811,15 +913,11 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
         <p style="margin-bottom:20px;">這份可愛不一定是外表，也可以是用了喜歡的小物，或是一顆想變可愛的心。</p>
         <p style="margin-bottom:28px;"><strong style="font-size:18px;">讓周氏喵喵陪你一起保持生活的那份可愛吧！</strong></p>
       </div>
-      <div style="display:flex;gap:16px;flex-wrap:wrap;">
-        <a href="https://www.instagram.com/choucat_illustration/" target="_blank" style="display:inline-block;background:var(--pink);color:white;padding:12px 28px;border-radius:999px;text-decoration:none;font-weight:500;transition:all .3s;">Follow Instagram</a>
-        <a href="https://store.line.me/themeshop/product/f03a352a-e401-4ac0-b8ee-ad2b4f0dbd64/zh-Hant" target="_blank" style="display:inline-block;background:var(--sky);color:white;padding:12px 28px;border-radius:999px;text-decoration:none;font-weight:500;transition:all .3s;">LINE主題商城</a>
-      </div>
       <!-- 五隻喵喵角色 -->
       <div style="margin-top:64px;padding-top:48px;border-top:2px solid var(--gray-lt);">
         <div style="text-align:center;margin-bottom:32px;">
           <div class="section-label" style="color:var(--sky);display:inline-block;">THE FIVE CATS</div>
-          <h3 style="font-family:'Noto Serif TC',serif;font-weight:900;font-size:clamp(22px,3vw,36px);color:var(--black);margin-top:8px;">五隻喵喵的故事</h3>
+          <h3 style="font-family:'Noto Serif TC',serif;font-weight:900;font-size:clamp(22px,3vw,36px);color:var(--black);margin-top:8px;">關於喵喵</h3>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;max-width:900px;margin:0 auto;">
           <div style="padding:20px;border-radius:12px;background:white;text-align:center;border-left:4px solid #FF6B8A;">
@@ -1917,6 +2015,20 @@ document.addEventListener('DOMContentLoaded', function() {
     tryLoad(0);
   });
 });
+</script>
+<script>
+/* ── Nav Scroll Behavior ── */
+(function() {
+  var nav = document.getElementById('mainNav');
+  if (!nav) return;
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 60) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  }, { passive: true });
+})();
 </script>
 </body>
 </html>
