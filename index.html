@@ -539,50 +539,76 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
 .ig-item.ig-hidden {
   display: none;
 }
-/* Override Instagram embed defaults */
-.ig-item .instagram-media {
-  margin: 0 !important;
-  max-width: 100% !important;
-  min-width: unset !important;
-  border-radius: 0 !important;
-  border: none !important;
-  box-shadow: none !important;
+/* ── Collab Cards (方案B) ───────────────────────────── */
+.collab-card {
+  display: block;
+  text-decoration: none;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--sky-lt);
+  box-shadow: 0 6px 24px rgba(26,16,24,0.08);
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
 }
-/* Hide Instagram account info and likes */
-.ig-item .instagram-media footer,
-.ig-item .instagram-media .footer,
-.ig-item .instagram-media [role="button"],
-.ig-item .instagram-media img[alt*="贊"],
-.ig-item .instagram-media > div > div:last-child,
-.ig-item .instagram-media > div:last-child,
-.ig-item .instagram-media svg {
-  display: none !important;
+.collab-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 16px 40px rgba(26,16,24,0.14);
 }
-/* Hide all text content in Instagram embeds */
-.ig-item .instagram-media a[href*="instagram.com/"],
-.ig-item .instagram-media span,
-.ig-item .instagram-media div {
-  color: transparent !important;
-  background: transparent !important;
+.collab-img {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
 }
-/* Show only images */
-.ig-item .instagram-media img:not([alt*="贊"]) {
-  color: inherit !important;
+.collab-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease;
 }
-/* Type badge */
-.ig-type-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
+.collab-card:hover .collab-img img { transform: scale(1.05); }
+.collab-cat-badge {
+  position: absolute;
+  top: 10px; left: 10px;
   font-family: 'DotGothic16', monospace;
-  font-size: 10px;
-  letter-spacing: .1em;
-  padding: 4px 12px;
-  border-radius: 999px;
-  margin-bottom: 10px;
+  font-size: 10px; letter-spacing: .1em;
+  padding: 4px 10px; border-radius: 999px;
+  backdrop-filter: blur(6px);
+  z-index: 1;
 }
-.ig-type-carousel { background: var(--sky-lt); color: var(--sky); }
-.ig-type-single   { background: #FFE9F0; color: var(--pink); }
+.collab-cat-badge.sticker { background:rgba(212,244,255,.88); color:#0099BB; }
+.collab-cat-badge.collab  { background:rgba(255,226,235,.88); color:#E0446A; }
+.collab-cat-badge.promo   { background:rgba(255,243,204,.88); color:#9A6B00; }
+.collab-overlay {
+  position: absolute; inset: 0;
+  background: rgba(26,16,24,.45);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity .3s;
+}
+.collab-card:hover .collab-overlay { opacity: 1; }
+.collab-view-btn {
+  color: white; font-size: 13px; font-weight: 500;
+  letter-spacing: .06em;
+  border: 1.5px solid rgba(255,255,255,.75);
+  padding: 8px 18px; border-radius: 999px;
+}
+.collab-footer {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 11px 14px;
+  background: white;
+  border-top: 1px solid var(--gray-lt);
+}
+.collab-brand {
+  font-family: 'Noto Serif TC', serif;
+  font-weight: 900; font-size: 13px;
+  color: var(--black);
+}
+.collab-ig-icon {
+  width: 28px; height: 28px; flex-shrink: 0;
+  background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+}
+.collab-ig-icon svg { width:15px; height:15px; fill:white; }
 
 @media(max-width:960px){
   .ig-grid{ grid-template-columns: repeat(2,1fr); }
@@ -759,7 +785,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
 
     <!-- 篩選列 -->
     <div class="ig-filter-bar">
-      <button class="ig-filter-btn active" data-cat="all" onclick="filterIG('all',this)">全部 12</button>
+      <button class="ig-filter-btn active" data-cat="all" onclick="filterIG('all',this)">全部 13</button>
       <button class="ig-filter-btn" data-cat="sticker" onclick="filterIG('sticker',this)">🎨 聯名／免費貼圖合作 4</button>
       <button class="ig-filter-btn" data-cat="collab" onclick="filterIG('collab',this)">🛍 聯名商品合作 6</button>
       <button class="ig-filter-btn" data-cat="promo" onclick="filterIG('promo',this)">📣 社群貼文推廣合作 2</button>
@@ -768,122 +794,175 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
     <!-- Instagram 貼文 Grid（newest → oldest） -->
     <div class="ig-grid" id="igGrid">
 
-      <div class="ig-item" data-type="promo">
-        <div class="ig-cat-badge ig-cat-promo">社群推廣</div>
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/p/DWrNkojmmxn/"
-          data-instgrm-version="14">
-          <a href="https://www.instagram.com/p/DWrNkojmmxn/">在 Instagram 查看這則貼文</a>
-        </blockquote>
-      </div>
+      <!-- Card 01 -->
+      <a class="collab-card" href="https://www.instagram.com/p/DWrNkojmmxn/" target="_blank" rel="noopener" data-type="promo">
+        <div class="collab-img">
+          <span class="collab-cat-badge promo">品牌合作推廣</span>
+          <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
+          <img src="img/collab-01.jpg" alt="品牌合作推廣" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="collab-footer">
+          <span class="collab-brand">品牌合作推廣</span>
+          <span class="collab-ig-icon" title="在 Instagram 查看"></span>
+        </div>
+      </a>
 
-      <div class="ig-item" data-type="promo">
-        <div class="ig-cat-badge ig-cat-promo">社群推廣</div>
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/p/DSzmNYzEs-M/"
-          data-instgrm-version="14">
-          <a href="https://www.instagram.com/p/DSzmNYzEs-M/">在 Instagram 查看這則貼文</a>
-        </blockquote>
-      </div>
+      <!-- Card 02 -->
+      <a class="collab-card" href="https://www.instagram.com/p/DSzmNYzEs-M/" target="_blank" rel="noopener" data-type="promo">
+        <div class="collab-img">
+          <span class="collab-cat-badge promo">品牌合作推廣</span>
+          <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
+          <img src="img/collab-02.jpg" alt="品牌合作推廣" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="collab-footer">
+          <span class="collab-brand">品牌合作推廣</span>
+          <span class="collab-ig-icon" title="在 Instagram 查看"></span>
+        </div>
+      </a>
 
-      <div class="ig-item" data-type="collab">
-        <div class="ig-cat-badge ig-cat-collab">聯名商品</div>
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/p/DON2kR7gRMO/"
-          data-instgrm-version="14">
-          <a href="https://www.instagram.com/p/DON2kR7gRMO/">在 Instagram 查看這則貼文</a>
-        </blockquote>
-      </div>
+      <!-- Card 03 -->
+      <a class="collab-card" href="https://www.instagram.com/p/DON2kR7gRMO/" target="_blank" rel="noopener" data-type="collab">
+        <div class="collab-img">
+          <span class="collab-cat-badge collab">聯名商品合作</span>
+          <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
+          <img src="img/collab-03.jpg" alt="聯名商品合作" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="collab-footer">
+          <span class="collab-brand">聯名商品合作</span>
+          <span class="collab-ig-icon" title="在 Instagram 查看"></span>
+        </div>
+      </a>
 
-      <div class="ig-item" data-type="sticker">
-        <div class="ig-cat-badge ig-cat-sticker">貼圖合作</div>
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/p/DMIN-GhyLdf/"
-          data-instgrm-version="14">
-          <a href="https://www.instagram.com/p/DMIN-GhyLdf/">在 Instagram 查看這則貼文</a>
-        </blockquote>
-      </div>
+      <!-- Card 04 -->
+      <a class="collab-card" href="https://www.instagram.com/p/DMIN-GhyLdf/" target="_blank" rel="noopener" data-type="sticker">
+        <div class="collab-img">
+          <span class="collab-cat-badge sticker">LINE 貼圖合作</span>
+          <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
+          <img src="img/collab-04.jpg" alt="LINE 貼圖合作" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="collab-footer">
+          <span class="collab-brand">LINE 貼圖合作</span>
+          <span class="collab-ig-icon" title="在 Instagram 查看"></span>
+        </div>
+      </a>
 
-      <div class="ig-item" data-type="sticker">
-        <div class="ig-cat-badge ig-cat-sticker">貼圖合作</div>
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/p/DEfCEo4TcFQ/"
-          data-instgrm-version="14">
-          <a href="https://www.instagram.com/p/DEfCEo4TcFQ/">在 Instagram 查看這則貼文</a>
-        </blockquote>
-      </div>
+      <!-- Card 05 -->
+      <a class="collab-card" href="https://www.instagram.com/p/DEfCEo4TcFQ/" target="_blank" rel="noopener" data-type="sticker">
+        <div class="collab-img">
+          <span class="collab-cat-badge sticker">LINE 貼圖合作</span>
+          <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
+          <img src="img/collab-05.jpg" alt="LINE 貼圖合作" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="collab-footer">
+          <span class="collab-brand">LINE 貼圖合作</span>
+          <span class="collab-ig-icon" title="在 Instagram 查看"></span>
+        </div>
+      </a>
 
-      <div class="ig-item" data-type="sticker">
-        <div class="ig-cat-badge ig-cat-sticker">貼圖合作</div>
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/p/DCOq9trzpgy/"
-          data-instgrm-version="14">
-          <a href="https://www.instagram.com/p/DCOq9trzpgy/">在 Instagram 查看這則貼文</a>
-        </blockquote>
-      </div>
+      <!-- Card 06 -->
+      <a class="collab-card" href="https://www.instagram.com/p/DCOq9trzpgy/" target="_blank" rel="noopener" data-type="sticker">
+        <div class="collab-img">
+          <span class="collab-cat-badge sticker">LINE 貼圖合作</span>
+          <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
+          <img src="img/collab-06.jpg" alt="LINE 貼圖合作" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="collab-footer">
+          <span class="collab-brand">LINE 貼圖合作</span>
+          <span class="collab-ig-icon" title="在 Instagram 查看"></span>
+        </div>
+      </a>
 
-      <div class="ig-item" data-type="collab">
-        <div class="ig-cat-badge ig-cat-collab">聯名商品</div>
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/p/DBLkjTrxaya/"
-          data-instgrm-version="14">
-          <a href="https://www.instagram.com/p/DBLkjTrxaya/">在 Instagram 查看這則貼文</a>
-        </blockquote>
-      </div>
+      <!-- Card 07 -->
+      <a class="collab-card" href="https://www.instagram.com/p/DBLkjTrxaya/" target="_blank" rel="noopener" data-type="collab">
+        <div class="collab-img">
+          <span class="collab-cat-badge collab">聯名商品合作</span>
+          <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
+          <img src="img/collab-07.jpg" alt="聯名商品合作" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="collab-footer">
+          <span class="collab-brand">聯名商品合作</span>
+          <span class="collab-ig-icon" title="在 Instagram 查看"></span>
+        </div>
+      </a>
 
-      <div class="ig-item" data-type="promo">
-        <div class="ig-cat-badge ig-cat-promo">社群推廣</div>
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/p/C-kg3cbPwci/"
-          data-instgrm-version="14">
-          <a href="https://www.instagram.com/p/C-kg3cbPwci/">在 Instagram 查看這則貼文</a>
-        </blockquote>
-      </div>
+      <!-- Card 08 -->
+      <a class="collab-card" href="https://www.instagram.com/p/C-kg3cbPwci/" target="_blank" rel="noopener" data-type="promo">
+        <div class="collab-img">
+          <span class="collab-cat-badge promo">品牌合作推廣</span>
+          <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
+          <img src="img/collab-08.jpg" alt="品牌合作推廣" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="collab-footer">
+          <span class="collab-brand">品牌合作推廣</span>
+          <span class="collab-ig-icon" title="在 Instagram 查看"></span>
+        </div>
+      </a>
 
-      <div class="ig-item" data-type="collab">
-        <div class="ig-cat-badge ig-cat-collab">聯名商品</div>
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/p/C-KtT7OvLzA/"
-          data-instgrm-version="14">
-          <a href="https://www.instagram.com/p/C-KtT7OvLzA/">在 Instagram 查看這則貼文</a>
-        </blockquote>
-      </div>
+      <!-- Card 09 -->
+      <a class="collab-card" href="https://www.instagram.com/p/C-KtT7OvLzA/" target="_blank" rel="noopener" data-type="collab">
+        <div class="collab-img">
+          <span class="collab-cat-badge collab">聯名商品合作</span>
+          <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
+          <img src="img/collab-09.jpg" alt="聯名商品合作" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="collab-footer">
+          <span class="collab-brand">聯名商品合作</span>
+          <span class="collab-ig-icon" title="在 Instagram 查看"></span>
+        </div>
+      </a>
 
-      <div class="ig-item" data-type="collab">
-        <div class="ig-cat-badge ig-cat-collab">聯名商品</div>
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/p/C9HT4KJvjJu/"
-          data-instgrm-version="14">
-          <a href="https://www.instagram.com/p/C9HT4KJvjJu/">在 Instagram 查看這則貼文</a>
-        </blockquote>
-      </div>
+      <!-- Card 10 -->
+      <a class="collab-card" href="https://www.instagram.com/p/C9HT4KJvjJu/" target="_blank" rel="noopener" data-type="collab">
+        <div class="collab-img">
+          <span class="collab-cat-badge collab">聯名商品合作</span>
+          <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
+          <img src="img/collab-10.jpg" alt="聯名商品合作" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="collab-footer">
+          <span class="collab-brand">聯名商品合作</span>
+          <span class="collab-ig-icon" title="在 Instagram 查看"></span>
+        </div>
+      </a>
 
-      <div class="ig-item" data-type="collab">
-        <div class="ig-cat-badge ig-cat-collab">聯名商品</div>
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/p/C8ZTENbPPbm/"
-          data-instgrm-version="14">
-          <a href="https://www.instagram.com/p/C8ZTENbPPbm/">在 Instagram 查看這則貼文</a>
-        </blockquote>
-      </div>
+      <!-- Card 11 -->
+      <a class="collab-card" href="https://www.instagram.com/p/C8ZTENbPPbm/" target="_blank" rel="noopener" data-type="collab">
+        <div class="collab-img">
+          <span class="collab-cat-badge collab">聯名商品合作</span>
+          <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
+          <img src="img/collab-11.jpg" alt="聯名商品合作" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="collab-footer">
+          <span class="collab-brand">聯名商品合作</span>
+          <span class="collab-ig-icon" title="在 Instagram 查看"></span>
+        </div>
+      </a>
 
-      <div class="ig-item" data-type="collab">
-        <div class="ig-cat-badge ig-cat-collab">聯名商品</div>
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/p/C76iyn6Su_L/"
-          data-instgrm-version="14">
-          <a href="https://www.instagram.com/p/C76iyn6Su_L/">在 Instagram 查看這則貼文</a>
-        </blockquote>
-      </div>
+      <!-- Card 12 -->
+      <a class="collab-card" href="https://www.instagram.com/p/C76iyn6Su_L/" target="_blank" rel="noopener" data-type="collab">
+        <div class="collab-img">
+          <span class="collab-cat-badge collab">聯名商品合作</span>
+          <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
+          <img src="img/collab-12.jpg" alt="聯名商品合作" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="collab-footer">
+          <span class="collab-brand">聯名商品合作</span>
+          <span class="collab-ig-icon" title="在 Instagram 查看"></span>
+        </div>
+      </a>
 
-      <div class="ig-item" data-type="sticker">
-        <div class="ig-cat-badge ig-cat-sticker">貼圖合作</div>
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/p/C1BeRYJvnqA/"
-          data-instgrm-version="14">
-          <a href="https://www.instagram.com/p/C1BeRYJvnqA/">在 Instagram 查看這則貼文</a>
-        </blockquote>
-      </div>
+      <!-- Card 13 -->
+      <a class="collab-card" href="https://www.instagram.com/p/C1BeRYJvnqA/" target="_blank" rel="noopener" data-type="sticker">
+        <div class="collab-img">
+          <span class="collab-cat-badge sticker">LINE 貼圖合作</span>
+          <div class="collab-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
+          <img src="img/collab-13.jpg" alt="LINE 貼圖合作" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="collab-footer">
+          <span class="collab-brand">LINE 貼圖合作</span>
+          <span class="collab-ig-icon" title="在 Instagram 查看"></span>
+        </div>
+      </a>
+
     </div><!-- /ig-grid -->
   </div>
 </section>
@@ -1572,7 +1651,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 <!-- Instagram Embed Script -->
-<script async src="https://www.instagram.com/embed.js"></script>
+
 
 <script>
 /* ── Instagram Grid Filter ── */
