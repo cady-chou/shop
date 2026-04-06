@@ -685,6 +685,72 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
 .ig-filter-btn[data-cat="collab"].active  { background: var(--pink); border-color: var(--pink); }
 .ig-filter-btn[data-cat="promo"].active   { background: #9A6B00; border-color: #9A6B00; }
 
+
+/* ══════════════════════════════════════
+   品牌故事視覺過渡 & 動畫
+══════════════════════════════════════ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    height: 0;
+  }
+  to {
+    opacity: 1;
+    height: auto;
+  }
+}
+
+#brand-story {
+  position: relative;
+  background: linear-gradient(180deg, #EEF9FD 0%, #FFF7F0 100%);
+}
+
+/* 品牌故事頂部漸層過渡線 */
+#brand-story::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(180deg, rgba(200,238,248,0.3), transparent);
+  pointer-events: none;
+}
+
+/* 五隻貓卡片入場動畫 */
+#brand-story .cat-card {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+#brand-story .cat-card:nth-child(1) { animation-delay: 0.1s; }
+#brand-story .cat-card:nth-child(2) { animation-delay: 0.2s; }
+#brand-story .cat-card:nth-child(3) { animation-delay: 0.3s; }
+#brand-story .cat-card:nth-child(4) { animation-delay: 0.4s; }
+#brand-story .cat-card:nth-child(5) { animation-delay: 0.5s; }
+
+/* 五隻貓容器滑入 */
+#brand-story .cat-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#brand-story .cat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(26,16,24,0.12);
+}
+
 </style>
 </head>
 <body>
@@ -716,13 +782,20 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
     </div>
     <h1 style="font-family:'Noto Serif TC',serif;font-weight:900;font-size:clamp(32px,5vw,64px);line-height:1.1;letter-spacing:-.02em;color:white;text-shadow:0 2px 20px rgba(26,16,24,0.25);margin-bottom:8px;">周氏喵喵 CHOÜ'S CAT</h1>
     <p style="font-size:15px;color:rgba(255,255,255,0.88);letter-spacing:.08em;text-shadow:0 1px 8px rgba(26,16,24,0.2);">可愛製造所 · 插畫 IP · 文創品牌</p>
-    <p style="margin-top:32px;font-family:'DotGothic16',monospace;font-size:11px;letter-spacing:.18em;color:rgba(255,255,255,0.7);animation:bounce 2s ease-in-out infinite;">↓ &nbsp; SCROLL DOWN</p>
+    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:5;">
+        <h1 style="font-family:'Noto Serif TC',serif;font-size:clamp(40px,8vw,72px);font-weight:900;color:white;letter-spacing:-0.02em;line-height:1.1;margin-bottom:16px;text-shadow:0 4px 12px rgba(26,16,24,0.3);">保 持 可 愛</h1>
+        <p style="font-family:'Noto Sans TC',sans-serif;font-size:clamp(14px,2vw,18px);color:rgba(255,255,255,0.9);letter-spacing:0.06em;margin-bottom:48px;">像貓咪一樣，自在做自己</p>
+      </div>
+      <p style="position:absolute;bottom:48px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.7);animation:bounce 2s ease-in-out infinite;">↓ &nbsp; SCROLL DOWN</p>
   </div>
 </section>
 
 <!-- 品牌故事 BRAND STORY -->
 <section id="brand-story" style="background:var(--cream);">
   <div class="inner">
+    <!-- 視覺過渡銜接 -->
+    <div style="height:40px;background:linear-gradient(180deg,rgba(200,238,248,0.2) 0%,transparent);margin:-48px -48px 0;"></div>
+    <div style="height:40px;"></div>
     <div class="section-hd">
       <div>
         <div class="section-label">ABOUT THE BRAND</div>
