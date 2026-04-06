@@ -1409,25 +1409,27 @@ document.querySelectorAll('.tab').forEach(tab=>{
 
 <script>
 /* ── Infinite Scroll-Snap Carousel ─────────────────────────
-   Strategy: clone first + last item, jump silently when
-   landing on a clone → seamless infinite loop.
+   Layout: [clone×N] [real×N] [clone×N]
+   - Clone the FULL set at both ends so every real item
+     has enough overflow space to be scroll-snapped to.
+   - Infinite jump: when scrollLeft drifts into either clone
+     zone, silently teleport back to the matching real position.
 ──────────────────────────────────────────────────────────── */
 
-const _carousels = {};   // stores state per carousel id
+const _carousels = {};
 
 function _step(carousel) {
   const item = carousel.querySelector('.illus-item');
   return item ? item.offsetWidth + 16 : 0;
 }
 
-function _realIndex(carousel, totalCount) {
+/* Real index from raw scroll position */
+function _realIndex(carousel, count) {
   const st = _step(carousel);
   if (!st) return 0;
-  // index 0 = last-clone, 1…N = real items, N+1 = first-clone
   const raw = Math.round(carousel.scrollLeft / st);
-  if (raw <= 0)           return totalCount - 1;
-  if (raw > totalCount)   return 0;
-  return raw - 1;  // 0-based real index
+  // raw is in range 0 … 3N-1; real items occupy slots count … 2*count-1
+  return ((raw - count) % count + count) % count;
 }
 
 function _updateDots(carouselId) {
@@ -1435,7 +1437,6 @@ function _updateDots(carouselId) {
   if (!state) return;
   const { carousel, dotsContainer, count } = state;
   if (!dotsContainer) return;
-
   const idx = _realIndex(carousel, count);
   dotsContainer.querySelectorAll('.carousel-dot').forEach((dot, i) => {
     dot.classList.toggle('active', i === idx);
@@ -1443,17 +1444,15 @@ function _updateDots(carouselId) {
 }
 
 function carouselNext(carouselId) {
-  const state = _carousels[carouselId];
-  if (!state) return;
-  const { carousel } = state;
-  carousel.scrollBy({ left: _step(carousel), behavior: 'smooth' });
+  const s = _carousels[carouselId];
+  if (!s) return;
+  s.carousel.scrollBy({ left: _step(s.carousel), behavior: 'smooth' });
 }
 
 function carouselPrev(carouselId) {
-  const state = _carousels[carouselId];
-  if (!state) return;
-  const { carousel } = state;
-  carousel.scrollBy({ left: -_step(carousel), behavior: 'smooth' });
+  const s = _carousels[carouselId];
+  if (!s) return;
+  s.carousel.scrollBy({ left: -_step(s.carousel), behavior: 'smooth' });
 }
 
 function initDots(carouselId) {
@@ -1461,26 +1460,40 @@ function initDots(carouselId) {
   if (!carousel) return;
   const dotsContainer = document.getElementById(carouselId + '-dots');
 
-  // ── 1. Gather real items (ignore existing clones) ──────
+  /* 1 ── Real items only */
   const realItems = Array.from(
     carousel.querySelectorAll('.illus-item:not(.illus-clone)')
   );
   const count = realItems.length;
   if (count === 0) return;
 
-  // ── 2. Clone last → prepend, clone first → append ──────
-  const lastClone  = realItems[count - 1].cloneNode(true);
-  const firstClone = realItems[0].cloneNode(true);
-  lastClone.classList.add('illus-clone');
-  firstClone.classList.add('illus-clone');
-  carousel.insertBefore(lastClone, realItems[0]);
-  carousel.appendChild(firstClone);
+  /* 2 ── Prepend full clone-set (insertBefore realItems[0] in order)
+          Result DOM: [c0,c1,...,c(N-1), r0,r1,...,r(N-1), ...]
+          Scrolling left from r0 reveals c(N-1)=clone of last item ✓  */
+  realItems.forEach(item => {
+    const c = item.cloneNode(true);
+    c.classList.add('illus-clone');
+    carousel.insertBefore(c, realItems[0]);
+  });
 
-  // ── 3. Set initial scroll to first real item (instant) ─
-  const st = _step(carousel);
-  carousel.scrollTo({ left: st, behavior: 'instant' });
+  /* 3 ── Append full clone-set
+          Result DOM: [..., r(N-1), c0',c1',...,c(N-1)']
+          Scrolling right from r(N-1) reveals c0'=clone of first item ✓ */
+  realItems.forEach(item => {
+    const c = item.cloneNode(true);
+    c.classList.add('illus-clone');
+    carousel.appendChild(c);
+  });
 
-  // ── 4. Build dots ──────────────────────────────────────
+  /* 4 ── Initial position: show real item 0 (at slot index = count) */
+  function setStart() {
+    const st = _step(carousel);
+    if (!st) { requestAnimationFrame(setStart); return; }
+    carousel.scrollTo({ left: count * st, behavior: 'instant' });
+  }
+  requestAnimationFrame(setStart);
+
+  /* 5 ── Build dots (one per real item) */
   if (dotsContainer) {
     dotsContainer.innerHTML = '';
     realItems.forEach((_, i) => {
@@ -1488,34 +1501,35 @@ function initDots(carouselId) {
       dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
       dot.setAttribute('aria-label', '第 ' + (i + 1) + ' 張');
       dot.addEventListener('click', () => {
-        carousel.scrollTo({ left: (i + 1) * _step(carousel), behavior: 'smooth' });
+        /* real item i sits at DOM slot (count + i) */
+        carousel.scrollTo({ left: (count + i) * _step(carousel), behavior: 'smooth' });
         setTimeout(() => _updateDots(carouselId), 380);
       });
       dotsContainer.appendChild(dot);
     });
   }
 
-  // ── 5. Store state ─────────────────────────────────────
+  /* 6 ── Store state */
   _carousels[carouselId] = { carousel, dotsContainer, count };
 
-  // ── 6. Infinite-loop: silent jump on clone land ────────
+  /* 7 ── Infinite-loop: detect clone zones and teleport */
   let jumping = false;
   carousel.addEventListener('scroll', () => {
     if (jumping) return;
-    const scrollLeft = carousel.scrollLeft;
-    const step = _step(carousel);
+    const st   = _step(carousel);
+    const sl   = carousel.scrollLeft;
+    const zone = count * st;           // width of one full clone-set
 
-    // landed on first-clone (at the very end)
-    if (scrollLeft >= (count + 1) * step) {
+    if (sl < (count - 0.5) * st) {
+      /* entered front-clone zone → jump forward by one full set */
       jumping = true;
-      carousel.scrollTo({ left: step, behavior: 'instant' });
-      requestAnimationFrame(() => { jumping = false; });
-    }
-    // landed on last-clone (at the very start)
-    else if (scrollLeft < step * 0.5) {
+      carousel.scrollTo({ left: sl + zone, behavior: 'instant' });
+      setTimeout(() => { jumping = false; }, 100);
+    } else if (sl >= zone * 2) {
+      /* entered back-clone zone → jump backward by one full set */
       jumping = true;
-      carousel.scrollTo({ left: count * step, behavior: 'instant' });
-      requestAnimationFrame(() => { jumping = false; });
+      carousel.scrollTo({ left: sl - zone, behavior: 'instant' });
+      setTimeout(() => { jumping = false; }, 100);
     }
 
     _updateDots(carouselId);
