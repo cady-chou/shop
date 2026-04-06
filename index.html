@@ -1046,6 +1046,38 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
   padding-top: 20px;
 }
 
+/* 英雄圖片 — 貼紙效果，疊在卡片上並超出右邊 */
+.brand-quote-col {
+  position: relative;
+}
+.brand-hero-img {
+  display: block;
+  width: 80%;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+  position: absolute;
+  right: -40px; /* 向右超出框框 40px */
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+@media (max-width: 900px) {
+  .brand-hero-img {
+    width: 75%;
+    right: -24px;
+    border-radius: 16px;
+  }
+}
+@media (max-width: 600px) {
+  .brand-hero-img {
+    width: 70%;
+    right: -8px;
+    border-radius: 12px;
+  }
+}
+
 /* 分隔線 */
 .brand-divider {
   display: flex;
@@ -1210,6 +1242,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
           <div class="brand-quote-sub">STAY CUTE · CHOÜ'S CAT</div>
           <p class="brand-quote-body">讓周氏喵喵陪你一起保持生活的那份可愛吧！</p>
         </div>
+        <img src="img/hero-img.png" alt="周氏喵喵品牌視覺圖" class="brand-hero-img">
       </div>
 
       </div><!-- /brand-top-grid -->
