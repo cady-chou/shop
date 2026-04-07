@@ -1029,6 +1029,26 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
   padding-top: 20px;
 }
 
+/* Exhibitions section diagonal stripe pattern */
+#exhibitions::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 20px,
+    rgba(125, 216, 236, 0.08) 20px,
+    rgba(125, 216, 236, 0.08) 40px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+#exhibitions > * {
+  position: relative;
+  z-index: 1;
+}
+
 /* Products section background pattern */
 #products::before {
   content: '';
@@ -1641,7 +1661,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3);}
 </section>
 
 <!-- 參展經驗：瀑布流畫廊 -->
-<section style="background:var(--white);" id="exhibitions">
+<section style="background-color: var(--white); position: relative;" id="exhibitions">
   <div class="inner">
     <div class="section-hd">
       <div>
