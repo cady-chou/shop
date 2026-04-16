@@ -111,6 +111,7 @@ nav.scrolled {
 .nav-interview {
   background: var(--sec-collabs) !important;
   color: white !important;
+  text-shadow: 0 0 2px #0cacd9 !important;
   padding: 9px 20px !important;
   border-radius: 999px !important;
   font-weight: 500 !important;
@@ -196,7 +197,7 @@ nav.scrolled {
 .mobile-menu ul li { width: 100%; text-align: center; }
 .mobile-menu ul li a {
   display: block;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 500;
   color: var(--black);
   text-decoration: none;
@@ -209,13 +210,13 @@ nav.scrolled {
   background: var(--black) !important;
   color: white !important;
   margin-top: 8px;
-  font-size: 16px !important;
+  font-size: 22px !important;
 }
 .mobile-menu ul li a.nav-interview {
   background: var(--sec-collabs) !important;
   color: white !important;
   margin-top: 4px;
-  font-size: 16px !important;
+  font-size: 22px !important;
 }
 
 @media (max-width: 768px) {
@@ -603,6 +604,8 @@ section{padding:65px 48px;}
 .p-card-collab{font-family:'DotGothic16',monospace;font-size:10px;letter-spacing:.12em;color:var(--sky);margin-bottom:5px;}
 .p-card-name{font-size:16px;font-weight:700;line-height:1.3;margin-bottom:6px;}
 .p-card-desc{font-size:12px;color:var(--gray);line-height:1.7;margin-bottom:14px;}
+.p-card-desc a{color:#0099BB;}
+.p-card-desc a:hover{color:#ff64a2;}
 .p-card-items{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px;}
 .item-tag{font-size:11px;padding:3px 9px;border-radius:5px;background:var(--gray-lt);color:var(--black);font-weight:500;}
 .p-card-footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--gray-lt);padding-top:14px;gap:10px;}
@@ -936,7 +939,7 @@ footer p{font-size:12px;color:#fff;}
 ══════════════════════════════════════ */
 
 #brand-story {
-  padding: 30px 48px 96px; /* 垂直方向由 brand-hero-wrap 控制，只保留水平 + 底部 */
+  padding: 30px 48px 50px; /* 垂直方向由 brand-hero-wrap 控制，只保留水平 + 底部 */
   background:
     radial-gradient(ellipse 80% 60% at 70% 30%, rgba(125,216,236,0.18) 0%, transparent 60%),
     radial-gradient(ellipse 50% 40% at 15% 75%, rgba(255,107,138,0.10) 0%, transparent 55%),
@@ -945,7 +948,7 @@ footer p{font-size:12px;color:#fff;}
   position: relative;
 }
 @media (max-width: 600px) {
-  #brand-story { padding: 0 24px 64px; }
+  #brand-story { padding: 0 24px 20px; }
 }
 
 /* 細緻點陣底紋 */
@@ -1646,7 +1649,7 @@ footer p{font-size:12px;color:#fff;}
           </div>
         </div>
         <div class="collab-footer">
-          <span class="collab-cat-badge promo">圖像授權合作</span>
+          <span class="collab-cat-badge collab">圖像授權合作</span>
           <span class="collab-brand">Vivisticker</span>
           <img src="img/ig-icon.svg" alt="Instagram" class="collab-ig-icon" title="在 Instagram 查看">
         </div>
@@ -1678,7 +1681,7 @@ footer p{font-size:12px;color:#fff;}
           </div>
         </div>
         <div class="collab-footer">
-          <span class="collab-cat-badge promo">聯名商品合作</span>
+          <span class="collab-cat-badge collab">聯名商品合作</span>
           <span class="collab-brand">𝗧𝗢𝗬𝗦𝗘𝗟𝗘𝗖𝗧</span>
           <img src="img/ig-icon.svg" alt="Instagram" class="collab-ig-icon" title="在 Instagram 查看">
         </div>
@@ -1694,7 +1697,7 @@ footer p{font-size:12px;color:#fff;}
           </div>
         </div>
         <div class="collab-footer">
-          <span class="collab-cat-badge promo">聯名免費貼圖合作</span>
+          <span class="collab-cat-badge sticker">聯名免費貼圖合作</span>
           <span class="collab-brand">保誠人壽</span>
           <img src="img/ig-icon.svg" alt="Instagram" class="collab-ig-icon" title="在 Instagram 查看">
         </div>
@@ -1710,7 +1713,7 @@ footer p{font-size:12px;color:#fff;}
           </div>
         </div>
         <div class="collab-footer">
-          <span class="collab-cat-badge promo">免費貼圖合作</span>
+          <span class="collab-cat-badge sticker">免費貼圖合作</span>
           <span class="collab-brand">𝗟𝗜𝗡𝗘禮物</span>
           <img src="img/ig-icon.svg" alt="Instagram" class="collab-ig-icon" title="在 Instagram 查看">
         </div>
@@ -1726,7 +1729,7 @@ footer p{font-size:12px;color:#fff;}
           </div>
         </div>
         <div class="collab-footer">
-          <span class="collab-cat-badge promo">聯名動態表情貼合作</span>
+          <span class="collab-cat-badge sticker">聯名動態表情貼合作</span>
           <span class="collab-brand">台灣三麗鷗 Hello Kitty</span>
           <img src="img/ig-icon.svg" alt="Instagram" class="collab-ig-icon" title="在 Instagram 查看">
         </div>
@@ -1742,7 +1745,7 @@ footer p{font-size:12px;color:#fff;}
           </div>
         </div>
         <div class="collab-footer">
-          <span class="collab-cat-badge promo">聯名商品合作</span>
+          <span class="collab-cat-badge collab">聯名商品合作</span>
           <span class="collab-brand">𝗧𝗢𝗬𝗦𝗘𝗟𝗘𝗖𝗧</span>
           <img src="img/ig-icon.svg" alt="Instagram" class="collab-ig-icon" title="在 Instagram 查看">
         </div>
@@ -1774,7 +1777,7 @@ footer p{font-size:12px;color:#fff;}
           </div>
         </div>
         <div class="collab-footer">
-          <span class="collab-cat-badge promo">聯名商品合作</span>
+          <span class="collab-cat-badge collab">聯名商品合作</span>
           <span class="collab-brand">Knocky</span>
           <img src="img/ig-icon.svg" alt="Instagram" class="collab-ig-icon" title="在 Instagram 查看">
         </div>
@@ -1790,7 +1793,7 @@ footer p{font-size:12px;color:#fff;}
           </div>
         </div>
         <div class="collab-footer">
-          <span class="collab-cat-badge promo">圖像授權合作</span>
+          <span class="collab-cat-badge collab">圖像授權合作</span>
           <span class="collab-brand">RHINOSHIELD 犀牛盾</span>
           <img src="img/ig-icon.svg" alt="Instagram" class="collab-ig-icon" title="在 Instagram 查看">
         </div>
@@ -1806,7 +1809,7 @@ footer p{font-size:12px;color:#fff;}
           </div>
         </div>
         <div class="collab-footer">
-          <span class="collab-cat-badge promo">聯名商品合作</span>
+          <span class="collab-cat-badge collab">聯名商品合作</span>
           <span class="collab-brand">雨之情品牌雨傘</span>
           <img src="img/ig-icon.svg" alt="Instagram" class="collab-ig-icon" title="在 Instagram 查看">
         </div>
@@ -1822,7 +1825,7 @@ footer p{font-size:12px;color:#fff;}
           </div>
         </div>
         <div class="collab-footer">
-          <span class="collab-cat-badge promo">圖像授權合作</span>
+          <span class="collab-cat-badge collab">圖像授權合作</span>
           <span class="collab-brand">寶島眼鏡官網</span>
           <img src="img/ig-icon.svg" alt="Instagram" class="collab-ig-icon" title="在 Instagram 查看">
         </div>
@@ -1838,7 +1841,7 @@ footer p{font-size:12px;color:#fff;}
           </div>
         </div>
         <div class="collab-footer">
-          <span class="collab-cat-badge promo">免費貼圖合作</span>
+          <span class="collab-cat-badge sticker">免費貼圖合作</span>
           <span class="collab-brand">LINE購物品牌名店</span>
           <img src="img/ig-icon.svg" alt="Instagram" class="collab-ig-icon" title="在 Instagram 查看">
         </div>
