@@ -170,6 +170,20 @@ nav.scrolled {
   padding: 80px 24px 40px;
 }
 .mobile-menu.open { display: flex; }
+.mobile-menu-close {
+  position: absolute;
+  top: 20px; right: 24px;
+  width: 40px; height: 40px;
+  background: rgba(26,16,24,0.08);
+  border: none;
+  border-radius: 50%;
+  font-size: 18px;
+  color: var(--black);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.mobile-menu-close:hover { background: rgba(26,16,24,0.15); }
 .mobile-menu ul {
   list-style: none;
   display: flex;
@@ -1355,6 +1369,7 @@ footer p{font-size:12px;color:#fff;}
 </nav>
 <!-- Mobile Nav Overlay -->
 <div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="關閉選單">✕</button>
   <ul>
     <li><a href="#brand-story">關於</a></li>
     <li><a href="#illustrations">插畫作品</a></li>
@@ -2558,6 +2573,7 @@ document.addEventListener('DOMContentLoaded', function() {
 (function() {
   const hamburger = document.getElementById('navHamburger');
   const mobileMenu = document.getElementById('mobileMenu');
+  const closeBtn   = document.getElementById('mobileMenuClose');
   if (!hamburger || !mobileMenu) return;
 
   function closeMenu() {
@@ -2573,6 +2589,9 @@ document.addEventListener('DOMContentLoaded', function() {
     hamburger.setAttribute('aria-label', isOpen ? '關閉選單' : '開啟選單');
     document.body.style.overflow = isOpen ? 'hidden' : '';
   });
+
+  // 關閉按鈕
+  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
 
   // 點選單項目後關閉
   mobileMenu.querySelectorAll('a').forEach(function(link) {
