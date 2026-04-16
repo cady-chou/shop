@@ -108,6 +108,23 @@ nav.scrolled {
   transform: translateY(-1px) !important;
   box-shadow: 0 4px 16px rgba(255,107,138,0.35) !important;
 }
+.nav-interview {
+  background: var(--sec-collabs) !important;
+  color: white !important;
+  padding: 9px 20px !important;
+  border-radius: 999px !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+  letter-spacing: 0.03em !important;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s !important;
+  box-shadow: 0 2px 8px rgba(77,200,235,0.25) !important;
+}
+.nav-interview::after { display: none !important; }
+.nav-interview:hover {
+  background: var(--blue) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 16px rgba(66,117,200,0.35) !important;
+}
 @media (max-width: 768px) {
   nav { padding: 14px 24px; }
   nav.scrolled { padding: 10px 24px; }
@@ -1250,6 +1267,7 @@ footer p{font-size:12px;color:#fff;}
     <li><a href="#collabs">商業合作</a></li>
     <li><a href="#exhibitions">參展經驗</a></li>
     <li><a href="#products">商品</a></li>
+    <li><a href="https://creator-mag-tw.weblog.to/archives/30196201.html" target="_blank" rel="noopener" class="nav-interview">✦ 專訪報導</a></li>
     <li><a href="mailto:ruidiechou@gmail.com" class="nav-cta">合作邀約 ↗</a></li>
   </ul>
 </nav>
