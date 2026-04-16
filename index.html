@@ -2460,9 +2460,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function tryLoad(formatIndex) {
       if (formatIndex >= mediaFormats.length) {
-        container.style.opacity = '0.5';
-        container.innerHTML = '<div style="font-size:12px;color:#999;">❌ No media found</div>';
-        console.warn(`All formats failed for ${baseSrc}. Tried: ${attemptedFormats.join(', ')}`);
         return;
       }
       
