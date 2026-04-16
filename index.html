@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>周氏喵喵 CHOÜ'S CAT｜文創品牌・插畫設計・圖像授權 🐱 x 👽</title>
+<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+<title>周氏喵喵 CHOÜ'S CAT｜文創品牌・插畫設計・圖像授權・異業合作 🐱 x 👽</title>
+<meta name="description" content="「周氏喵喵」源自作者的姓氏「周」，以及自家與朋友家照顧的貓咪們。以繽紛的色彩與滑順的筆觸，描繪屬於日常的可愛片刻，為生活注入一點剛剛好的療癒。" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@900&family=DotGothic16&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -581,7 +583,7 @@ section{padding:65px 48px;}
 .products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 .p-card{background:white;border-radius:18px;overflow:hidden;border:1.5px solid var(--gray-lt);transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s;}
 .p-card:hover{transform:translateY(-7px) rotate(-.4deg);box-shadow:8px 16px 40px rgba(26,16,24,0.11);}
-.p-card-img{position:relative;height:200px;overflow:hidden;}
+.p-card-img{position:relative;aspect-ratio: 11 / 6;overflow:hidden;}
 .p-card-img::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.04) 1px,transparent 1px);background-size:18px 18px;z-index:2;pointer-events:none;}
 .slides{position:absolute;inset:0;z-index:1;}
 .slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .85s ease-in-out;background-size:cover;background-position:center;}
@@ -948,7 +950,7 @@ footer p{font-size:12px;color:#fff;}
   position: relative;
 }
 @media (max-width: 600px) {
-  #brand-story { padding: 0 24px 20px; }
+  #brand-story { padding: 0 12px 20px; }
 }
 
 /* 細緻點陣底紋 */
@@ -1163,13 +1165,13 @@ footer p{font-size:12px;color:#fff;}
 }
 @media (max-width: 600px) {
   .brand-hero-img {
-    width: 66%;
+    width: 62%;
     right: -26px;
-    top: 53%;
+    top: 58%;
   }
   .brand-quote-col:hover .brand-hero-img {
-    top: 52%;
-    transform: translateY(-50%) scale(1.06);
+    top: 57%;
+    transform: translateY(-52%) scale(1.06);
   }
 }
 
@@ -1335,20 +1337,22 @@ footer p{font-size:12px;color:#fff;}
 @media(max-width:550px){
   .inner { padding:20px; }
   [src*="cat-icon-"] { width:80px; height:80px; }
-  .cat-icon-6-resp { top:5px !important; right:40px !important; }
+  .cat-icon-6-resp { top:5px !important; right:30px !important; }
   .cat-icon-11-hide { display:none; }
 }
 @media(max-width:1415px){
   .cat-icon-5-hide { display:none; }
   .cat-icon-8-resp { top:20px !important; right:40px !important; }
-  .cat-icon-9-resp { bottom:50% !important; left:-25px !important; z-index:9 !important; }
+  .cat-icon-9-resp { bottom:45% !important; left:-25px !important; z-index:9 !important; }
   .cat-icon-3-resp { left:0px !important; bottom:-30px !important; }
 }
 @media(max-width:550px){
   .cat-icon-8-resp { top:10px !important; right:20px !important; }
-  .cat-icon-3-resp { width:90px;left:-10px !important; bottom:-55px !important; }
+  .cat-icon-3-resp { width:90px;left:-10px !important; bottom:-55px !important;transform: rotate(347deg) !important; }
   .cat-icon-7-resp { top:20px !important; right:20px !important; }
-  
+  .cat-icon-2-resp { right:20px !important; }
+  .cat-icon-12-resp { bottom: -5px !important;left: 15px !important;transform: rotate(358deg) !important;}
+  .cat-icon-10-resp{top:-45px !important;right:10% !important;}
 }
 </style>
 </head>
@@ -1489,7 +1493,7 @@ footer p{font-size:12px;color:#fff;}
 <section id="illustrations">
   <div class="inner">
     <!-- 裝飾貓咪 2, 3 -->
-    <img src="img/cat-icon-2.png" alt="" class="cat-deco-icon" style="top: 20px; right: 40px; transform: rotate(12deg);">
+    <img src="img/cat-icon-2.png" alt="" class="cat-deco-icon cat-icon-2-resp" style="top: 20px; right: 40px; transform: rotate(12deg);">
     <img src="img/cat-icon-3.png" alt="" class="cat-deco-icon cat-icon-3-resp" style="bottom: -100px;left: -40px; transform: rotate(-22deg);">
 
     <div class="section-hd">
@@ -1601,7 +1605,7 @@ footer p{font-size:12px;color:#fff;}
   <div class="inner">
     <!-- 裝飾貓咪圖標 -->
     <img src="img/cat-icon-6.gif" alt="" class="collab-cat-deco cat-deco-1 cat-icon-6-resp" style="top: 30px; right: 50px;">
-    <img src="img/cat-icon-12.gif" alt="" class="collab-cat-deco cat-deco-2">
+    <img src="img/cat-icon-12.gif" alt="" class="collab-cat-deco cat-deco-2 cat-icon-12-resp" style="transform:scaleX(-1);">
     <img src="img/cat-icon-5.gif" alt="" class="cat-deco-icon cat-icon-5-hide" style="top: 40%; right: -50px; transform: rotate(6deg);">
 
     <div class="section-hd">
@@ -1626,7 +1630,7 @@ footer p{font-size:12px;color:#fff;}
       <!-- Card 00 -->
       <a class="collab-card" href="https://www.instagram.com/p/DW9N9rOml6M" target="_blank" rel="noopener" data-type="sticker">
         <div class="collab-img">
-          <div class="collab-media" data-src="img/collab-14"></div>
+          <div class="collab-media" data-src="img/collab-14.mp4"></div>
           <div class="collab-overlay" style="font-size: 14px; color: white; text-align: center; padding: 12px; flex-direction: column; gap: 8px;">
             <span>前往 Instagram 查看更多</span>
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -1642,7 +1646,7 @@ footer p{font-size:12px;color:#fff;}
       <!-- Card 01 -->
       <a class="collab-card" href="https://www.instagram.com/p/DWrNkojmmxn/" target="_blank" rel="noopener" data-type="collab">
         <div class="collab-img">
-                    <div class="collab-media" data-src="img/collab-01"></div>
+                    <div class="collab-media" data-src="img/collab-01.mp4"></div>
           <div class="collab-overlay" style="font-size: 14px; color: white; text-align: center; padding: 12px; flex-direction: column; gap: 8px;">
             <span>前往 Instagram 查看更多</span>
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -1658,7 +1662,7 @@ footer p{font-size:12px;color:#fff;}
       <!-- Card 02 -->
       <a class="collab-card" href="https://www.instagram.com/p/DSzmNYzEs-M/" target="_blank" rel="noopener" data-type="promo">
         <div class="collab-img">
-                    <div class="collab-media" data-src="img/collab-02"></div>
+                    <div class="collab-media" data-src="img/collab-02.mp4"></div>
           <div class="collab-overlay" style="font-size: 14px; color: white; text-align: center; padding: 12px; flex-direction: column; gap: 8px;">
             <span>前往 Instagram 查看更多</span>
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -1674,7 +1678,7 @@ footer p{font-size:12px;color:#fff;}
       <!-- Card 03 -->
       <a class="collab-card" href="https://www.instagram.com/p/DON2kR7gRMO/" target="_blank" rel="noopener" data-type="collab">
         <div class="collab-img">
-                    <div class="collab-media" data-src="img/collab-03"></div>
+                    <div class="collab-media" data-src="img/collab-03.PNG"></div>
           <div class="collab-overlay" style="font-size: 14px; color: white; text-align: center; padding: 12px; flex-direction: column; gap: 8px;">
             <span>前往 Instagram 查看更多</span>
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -1690,7 +1694,7 @@ footer p{font-size:12px;color:#fff;}
       <!-- Card 04 -->
       <a class="collab-card" href="https://www.instagram.com/p/DMIN-GhyLdf/" target="_blank" rel="noopener" data-type="sticker">
         <div class="collab-img" style="aspect-ratio:4/5;">
-                    <div class="collab-media" data-src="img/collab-04"></div>
+                    <div class="collab-media" data-src="img/collab-04.mp4"></div>
           <div class="collab-overlay" style="font-size: 14px; color: white; text-align: center; padding: 12px; flex-direction: column; gap: 8px;">
             <span>前往 Instagram 查看更多</span>
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -1706,7 +1710,7 @@ footer p{font-size:12px;color:#fff;}
       <!-- Card 05 -->
       <a class="collab-card" href="https://www.instagram.com/p/DEfCEo4TcFQ/" target="_blank" rel="noopener" data-type="sticker">
         <div class="collab-img">
-                    <div class="collab-media" data-src="img/collab-05"></div>
+                    <div class="collab-media" data-src="img/collab-05.MP4"></div>
           <div class="collab-overlay" style="font-size: 14px; color: white; text-align: center; padding: 12px; flex-direction: column; gap: 8px;">
             <span>前往 Instagram 查看更多</span>
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -1722,7 +1726,7 @@ footer p{font-size:12px;color:#fff;}
       <!-- Card 06 -->
       <a class="collab-card" href="https://www.instagram.com/p/DCOq9trzpgy/" target="_blank" rel="noopener" data-type="sticker">
         <div class="collab-img">
-                    <div class="collab-media" data-src="img/collab-06"></div>
+                    <div class="collab-media" data-src="img/collab-06.MP4"></div>
           <div class="collab-overlay" style="font-size: 14px; color: white; text-align: center; padding: 12px; flex-direction: column; gap: 8px;">
             <span>前往 Instagram 查看更多</span>
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -1738,7 +1742,7 @@ footer p{font-size:12px;color:#fff;}
       <!-- Card 07 -->
       <a class="collab-card" href="https://www.instagram.com/p/DBLkjTrxaya/" target="_blank" rel="noopener" data-type="collab">
         <div class="collab-img">
-                    <div class="collab-media" data-src="img/collab-07"></div>
+                    <div class="collab-media" data-src="img/collab-07.png"></div>
           <div class="collab-overlay" style="font-size: 14px; color: white; text-align: center; padding: 12px; flex-direction: column; gap: 8px;">
             <span>前往 Instagram 查看更多</span>
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -1754,7 +1758,7 @@ footer p{font-size:12px;color:#fff;}
       <!-- Card 08 -->
       <a class="collab-card" href="https://www.instagram.com/p/C-kg3cbPwci/" target="_blank" rel="noopener" data-type="promo">
         <div class="collab-img">
-                    <div class="collab-media" data-src="img/collab-08"></div>
+                    <div class="collab-media" data-src="img/collab-08.png"></div>
           <div class="collab-overlay" style="font-size: 14px; color: white; text-align: center; padding: 12px; flex-direction: column; gap: 8px;">
             <span>前往 Instagram 查看更多</span>
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -1770,7 +1774,7 @@ footer p{font-size:12px;color:#fff;}
       <!-- Card 09 -->
       <a class="collab-card" href="https://www.instagram.com/p/C-KtT7OvLzA/" target="_blank" rel="noopener" data-type="collab">
         <div class="collab-img">
-                    <div class="collab-media" data-src="img/collab-09"></div>
+                    <div class="collab-media" data-src="img/collab-09.jpg"></div>
           <div class="collab-overlay" style="font-size: 14px; color: white; text-align: center; padding: 12px; flex-direction: column; gap: 8px;">
             <span>前往 Instagram 查看更多</span>
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -1786,7 +1790,7 @@ footer p{font-size:12px;color:#fff;}
       <!-- Card 10 -->
       <a class="collab-card" href="https://www.instagram.com/p/C9HT4KJvjJu/" target="_blank" rel="noopener" data-type="collab">
         <div class="collab-img">
-                    <div class="collab-media" data-src="img/collab-10"></div>
+                    <div class="collab-media" data-src="img/collab-10.png"></div>
           <div class="collab-overlay" style="font-size: 14px; color: white; text-align: center; padding: 12px; flex-direction: column; gap: 8px;">
             <span>前往 Instagram 查看更多</span>
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -1802,7 +1806,7 @@ footer p{font-size:12px;color:#fff;}
       <!-- Card 11 -->
       <a class="collab-card" href="https://www.instagram.com/p/C8ZTENbPPbm/" target="_blank" rel="noopener" data-type="collab">
         <div class="collab-img">
-                    <div class="collab-media" data-src="img/collab-11"></div>
+                    <div class="collab-media" data-src="img/collab-11.png"></div>
           <div class="collab-overlay" style="font-size: 14px; color: white; text-align: center; padding: 12px; flex-direction: column; gap: 8px;">
             <span>前往 Instagram 查看更多</span>
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -1818,7 +1822,7 @@ footer p{font-size:12px;color:#fff;}
       <!-- Card 12 -->
       <a class="collab-card" href="https://www.instagram.com/p/C76iyn6Su_L/" target="_blank" rel="noopener" data-type="collab">
         <div class="collab-img">
-                    <div class="collab-media" data-src="img/collab-12"></div>
+                    <div class="collab-media" data-src="img/collab-12.png"></div>
           <div class="collab-overlay" style="font-size: 14px; color: white; text-align: center; padding: 12px; flex-direction: column; gap: 8px;">
             <span>前往 Instagram 查看更多</span>
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -1834,7 +1838,7 @@ footer p{font-size:12px;color:#fff;}
       <!-- Card 13 -->
       <a class="collab-card" href="https://www.instagram.com/p/C1BeRYJvnqA/" target="_blank" rel="noopener" data-type="sticker">
         <div class="collab-img">
-                    <div class="collab-media" data-src="img/collab-13"></div>
+                    <div class="collab-media" data-src="img/collab-13.MP4"></div>
           <div class="collab-overlay" style="font-size: 14px; color: white; text-align: center; padding: 12px; flex-direction: column; gap: 8px;">
             <span>前往 Instagram 查看更多</span>
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -1851,9 +1855,9 @@ footer p{font-size:12px;color:#fff;}
 
     <!-- 合作詢問 CTA -->
     <div style="margin-top:48px;padding:32px;background:linear-gradient(135deg,#FFE4EC,#E8F4FF);border-radius:16px;text-align:center;">
-      <h3 style="font-size:20px;font-weight:700;margin-bottom:12px;color:var(--black);">和周氏喵喵一起可可愛愛 ꜀(^. .^꜀ )꜆੭</h3>
+      <h3 style="font-size:20px;font-weight:700;margin-bottom:12px;color:var(--black);">和周氏喵喵一起可可愛愛 💖꜀(^. .^꜀ )꜆੭</h3>
       <p style="color:var(--gray);margin-bottom:24px;">品牌聯名、圖像授權或其他合作機會，歡迎寄信洽詢！</p>
-      <a href="mailto:ruidiechou@gmail.com?subject=周氏喵喵合作詢問" style="display:inline-block;background:var(--pink);color:white;padding:12px 32px;border-radius:999px;text-decoration:none;font-weight:600;transition:all .3s;">📧 聯絡合作</a>
+      <a href="mailto:ruidiechou@gmail.com?subject=周氏喵喵合作詢問" style="display:inline-block;background:var(--pink);color:white;padding:12px 32px;border-radius:999px;text-decoration:none;font-weight:600;transition:all .3s;">💌 聯絡合作</a>
     </div>
   </div>
 </section>
@@ -2139,7 +2143,7 @@ footer p{font-size:12px;color:#fff;}
 <!-- ABOUT -->
 
 <footer style="position:relative;">
-    <img src="img/cat-icon-10.gif" alt="" class="cat-deco-icon" style="top: -50px; right: 20%; transform: rotate(2deg);">
+    <img src="img/cat-icon-10.gif" alt="" class="cat-deco-icon cat-icon-10-resp" style="top: -50px; right: 20%; transform: rotate(2deg);">
   <div class="footer-logo">周氏喵喵 <span>✦</span> CHOÜ'S CAT</div>
   <p>2026 © 保持可愛貓貓企業社<br><span>統一編號：61244566</span></p>
 </footer>
@@ -2444,102 +2448,32 @@ window.filterIG = function(type, btn){
 
 <script>
 
-/* ── Media Loader (Auto-detect Image/Video) ── */
+/* ── Media Loader ── */
 document.addEventListener('DOMContentLoaded', function() {
-  const mediaFormats = [
-    { ext: '.jpg', type: 'image/jpeg' },
-    { ext: '.png', type: 'image/png' },
-    { ext: '.mp4', type: 'video/mp4' },
-    { ext: '.mov', type: 'video/quicktime' },
-    { ext: '.webm', type: 'video/webm' }
-  ];
-  
+  const imageExts = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
+
   document.querySelectorAll('.collab-media[data-src]').forEach(function(container) {
-    const baseSrc = container.dataset.src;
-    let attemptedFormats = [];
-    
-    function tryLoad(formatIndex) {
-      if (formatIndex >= mediaFormats.length) {
-        container.style.opacity = '0.5';
-        container.innerHTML = '<div style="font-size:12px;color:#999;">❌ No media found</div>';
-        console.warn(`All formats failed for ${baseSrc}. Tried: ${attemptedFormats.join(', ')}`);
-        return;
-      }
-      
-      const fmt = mediaFormats[formatIndex];
-      const fullSrc = baseSrc + fmt.ext;
-      attemptedFormats.push(fmt.ext);
-      
-      // Image
-      if (fmt.type.startsWith('image/')) {
-        const img = new Image();
-        img.onload = function() {
-          container.innerHTML = '';
-          container.appendChild(img);
-          console.log(`✓ Loaded image: ${fullSrc}`);
-        };
-        img.onerror = function() {
-          console.log(`✗ Image failed: ${fullSrc}, trying next...`);
-          tryLoad(formatIndex + 1);
-        };
-        img.src = fullSrc;
-      } 
+    const src = container.dataset.src;
+    const ext = src.substring(src.lastIndexOf('.')).toLowerCase();
+    const isImage = imageExts.includes(ext);
+
+    if (isImage) {
+      const img = document.createElement('img');
+      img.src = src;
+      img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
+      container.appendChild(img);
+    } else {
       // Video
-      else if (fmt.type.startsWith('video/')) {
-        const video = document.createElement('video');
-        video.controls = false;
-        video.autoplay = true;
-        video.loop = true;
-        video.muted = true;
-        video.playsInline = true;
-        video.style.width = '100%';
-        video.style.height = '100%';
-        video.style.objectFit = 'cover';
-        video.style.display = 'block';
-        
-        const source = document.createElement('source');
-        source.src = fullSrc;
-        source.type = fmt.type;
-        
-        video.appendChild(source);
-        
-        // Timeout fallback (for browsers that don't fire events)
-        let hasLoaded = false;
-        const timeout = setTimeout(function() {
-          if (!hasLoaded) {
-            console.log(`✗ Video timeout: ${fullSrc}, trying next...`);
-            tryLoad(formatIndex + 1);
-          }
-        }, 3000);
-        
-        video.onloadeddata = function() {
-          hasLoaded = true;
-          clearTimeout(timeout);
-          container.innerHTML = '';
-          container.appendChild(video);
-          console.log(`✓ Loaded video: ${fullSrc}`);
-        };
-        
-        video.onerror = function(e) {
-          clearTimeout(timeout);
-          console.log(`✗ Video error: ${fullSrc} (${e.type}), trying next...`);
-          tryLoad(formatIndex + 1);
-        };
-        
-        // Check browser support first
-        const canPlay = video.canPlayType(fmt.type);
-        console.log(`Checking ${fmt.ext}: canPlayType="${canPlay}"`);
-        if (canPlay === '' || canPlay === 'no') {
-          console.log(`Browser cannot play ${fmt.type}, skipping...`);
-          clearTimeout(timeout);
-          tryLoad(formatIndex + 1);
-        } else {
-          container.appendChild(video);
-        }
-      }
+      const video = document.createElement('video');
+      video.autoplay = true;
+      video.loop = true;
+      video.muted = true;
+      video.playsInline = true;
+      video.controls = false;
+      video.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
+      video.src = src;
+      container.appendChild(video);
     }
-    
-    tryLoad(0);
   });
 });
 </script>
