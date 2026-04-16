@@ -13,7 +13,7 @@
   --sky:#6CAFC3;--sky-lt:#A8D4DE;--sky-bg:#D8EEF3;
   --pink:#FF9EAE;--blue:#4275C8;--yellow:#F7CF46;
   --cream:#FFF7F0;--black:#1A1018;
-  --gray:#6B5F6E;--gray-lt:#E8E0EB;--mint:#00C9A7;
+  --gray:#454545;--gray-lt:#E8E0EB;--mint:#00C9A7;
   /* Section 底色（高飽和品牌色） */
   --sec-illus:#ffffff;
   --sec-collabs:#4DC8EB;
@@ -199,7 +199,7 @@ nav.scrolled {
 .mobile-menu ul li { width: 100%; text-align: center; }
 .mobile-menu ul li a {
   display: block;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 500;
   color: var(--black);
   text-decoration: none;
@@ -212,13 +212,13 @@ nav.scrolled {
   background: var(--black) !important;
   color: white !important;
   margin-top: 8px;
-  font-size: 22px !important;
+  font-size: 20px !important;
 }
 .mobile-menu ul li a.nav-interview {
   background: var(--sec-collabs) !important;
   color: white !important;
   margin-top: 4px;
-  font-size: 22px !important;
+  font-size: 20px !important;
 }
 
 @media (max-width: 768px) {
@@ -1348,11 +1348,16 @@ footer p{font-size:12px;color:#fff;}
 }
 @media(max-width:550px){
   .cat-icon-8-resp { top:10px !important; right:20px !important; }
-  .cat-icon-3-resp { width:90px;left:-10px !important; bottom:-55px !important;transform: rotate(347deg) !important; }
+  .cat-icon-3-resp { width:90px;left:0px !important; bottom:-55px !important;transform: rotate(347deg) !important; }
   .cat-icon-7-resp { top:20px !important; right:20px !important; }
   .cat-icon-2-resp { right:20px !important; }
   .cat-icon-12-resp { bottom: -5px !important;left: 15px !important;transform: rotate(358deg) !important;}
   .cat-icon-10-resp{top:-45px !important;right:10% !important;}
+  #illustrations{padding: 30px 10px;}
+  .brand-quote-card{padding: 35px 40px 35px 35px;}
+  .brand-body{margin-bottom: 8px;}
+  .timeline-wrap{margin-top: -25px;margin-bottom: 35px;}
+  .section-hd{margin-bottom: 30px;margin-top: 12px;}
 }
 </style>
 </head>
@@ -1368,10 +1373,10 @@ footer p{font-size:12px;color:#fff;}
   <ul class="nav-links" id="navLinks">
     <li><a href="#brand-story">關於</a></li>
     <li><a href="#illustrations">插畫作品</a></li>
-    <li><a href="#collabs">商業合作</a></li>
+    <li><a href="#collabs">合作經歷</a></li>
     <li><a href="#exhibitions">參展經驗</a></li>
     <li><a href="#products">商品</a></li>
-    <li><a href="https://creator-mag-tw.weblog.to/archives/30196201.html" target="_blank" rel="noopener" class="nav-interview">✦ 專訪報導</a></li>
+    <li><a href="https://creator-mag-tw.weblog.to/archives/30196201.html" target="_blank" rel="noopener" class="nav-interview">✦ 專訪文章</a></li>
     <li><a href="mailto:ruidiechou@gmail.com" class="nav-cta">合作邀約 ↗</a></li>
   </ul>
 </nav>
@@ -1381,10 +1386,10 @@ footer p{font-size:12px;color:#fff;}
   <ul>
     <li><a href="#brand-story">關於</a></li>
     <li><a href="#illustrations">插畫作品</a></li>
-    <li><a href="#collabs">商業合作</a></li>
+    <li><a href="#collabs">合作經歷</a></li>
     <li><a href="#exhibitions">參展經驗</a></li>
     <li><a href="#products">商品</a></li>
-    <li><a href="https://creator-mag-tw.weblog.to/archives/30196201.html" target="_blank" rel="noopener" class="nav-interview">✦ 專訪報導</a></li>
+    <li><a href="https://creator-mag-tw.weblog.to/archives/30196201.html" target="_blank" rel="noopener" class="nav-interview">✦ 專訪文章</a></li>
     <li><a href="mailto:ruidiechou@gmail.com" class="nav-cta">合作邀約 ↗</a></li>
   </ul>
 </div>
@@ -1407,7 +1412,7 @@ footer p{font-size:12px;color:#fff;}
         <div class="section-label">ABOUT THE BRAND</div>
         <h2 class="section-title">周氏喵喵</h2>
         <div class="brand-body">
-          <p>「周氏喵喵」源自作者的姓氏「周」，以及自家與朋友家照顧的貓咪們。以繽紛的色彩與滑順的筆觸，描繪屬於日常的可愛片刻，為生活注入一點剛剛好的療癒。</p>
+          <p>「周氏喵喵」源自作者的姓氏「周」，以及自家與朋友家照顧的貓咪們。以繽紛色彩與滑順筆觸，描繪屬於日常的可愛片刻，為生活注入一點剛剛好的療癒。</p>
           <p>我們相信——每個人天生，都擁有屬於自己的可愛。</p>
           <p>那份可愛，不需要迎合、不需要修飾，可以像貓一樣，自在、任性、做自己。它可能是一種狀態、一份喜好，也可能只是心裡那個「想變可愛」的小小念頭。</p>
           <p>讓周氏喵喵陪你一起，把生活過成喜歡的樣子，保持可愛 ☺</p>
@@ -1417,7 +1422,6 @@ footer p{font-size:12px;color:#fff;}
       <!-- 右欄：引言視覺 -->
       <div class="brand-quote-col reveal-fade" style="animation-delay:.15s;">
         <div class="brand-quote-card">
-          <div class="brand-quote-label">BRAND PHILOSOPHY</div>
           <div class="brand-quote-main">保持<br>可愛</div>
          <div class="brand-cta-row">
           <a href="https://www.instagram.com/cady._.design/" target="_blank" class="brand-btn-ig">Instagram</a>
@@ -1611,7 +1615,7 @@ footer p{font-size:12px;color:#fff;}
     <div class="section-hd">
       <div>
         <div class="section-label">COMMERCIAL COLLABS</div>
-        <h2 class="section-title">商業合作案例</h2>
+        <h2 class="section-title">商業合作經歷</h2>
         <p class="section-desc">曾與台灣三麗鷗、犀牛盾、保誠人壽、政府單位……等多元形式的品牌合作。</p>
       </div>
     </div>
@@ -1620,8 +1624,8 @@ footer p{font-size:12px;color:#fff;}
     <div class="ig-filter-bar">
       <button class="ig-filter-btn active" data-cat="all" onclick="filterIG('all',this)">全部 14</button>
       <button class="ig-filter-btn" data-cat="sticker" onclick="filterIG('sticker',this)">🎨 LINE聯名/免費貼圖 5</button>
-      <button class="ig-filter-btn" data-cat="collab" onclick="filterIG('collab',this)">🛍 聯名商品/圖像授權 6</button>
-      <button class="ig-filter-btn" data-cat="promo" onclick="filterIG('promo',this)">📣 社群貼文推廣 3</button>
+      <button class="ig-filter-btn" data-cat="collab" onclick="filterIG('collab',this)">🛍 聯名商品/圖像授權 7</button>
+      <button class="ig-filter-btn" data-cat="promo" onclick="filterIG('promo',this)">📣 社群推廣 2</button>
     </div>
 
     <!-- Instagram 貼文 Grid（newest → oldest） -->
