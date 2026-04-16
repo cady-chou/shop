@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>周氏喵喵 CHOÜ'S CAT｜文創品牌・插畫設計・圖像授權 🐱 x 👽</title>
+<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+<title>周氏喵喵 CHOÜ'S CAT｜文創品牌・插畫設計・圖像授權・異業合作 🐱 x 👽</title>
+<meta name="description" content="「周氏喵喵」源自作者的姓氏「周」，以及自家與朋友家照顧的貓咪們。以繽紛的色彩與滑順的筆觸，描繪屬於日常的可愛片刻，為生活注入一點剛剛好的療癒。" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@900&family=DotGothic16&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -581,7 +583,7 @@ section{padding:65px 48px;}
 .products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 .p-card{background:white;border-radius:18px;overflow:hidden;border:1.5px solid var(--gray-lt);transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s;}
 .p-card:hover{transform:translateY(-7px) rotate(-.4deg);box-shadow:8px 16px 40px rgba(26,16,24,0.11);}
-.p-card-img{position:relative;height:200px;overflow:hidden;}
+.p-card-img{position:relative;aspect-ratio: 11 / 6;overflow:hidden;}
 .p-card-img::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.04) 1px,transparent 1px);background-size:18px 18px;z-index:2;pointer-events:none;}
 .slides{position:absolute;inset:0;z-index:1;}
 .slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .85s ease-in-out;background-size:cover;background-position:center;}
@@ -948,7 +950,7 @@ footer p{font-size:12px;color:#fff;}
   position: relative;
 }
 @media (max-width: 600px) {
-  #brand-story { padding: 0 24px 20px; }
+  #brand-story { padding: 0 12px 20px; }
 }
 
 /* 細緻點陣底紋 */
@@ -1163,13 +1165,13 @@ footer p{font-size:12px;color:#fff;}
 }
 @media (max-width: 600px) {
   .brand-hero-img {
-    width: 66%;
+    width: 62%;
     right: -26px;
-    top: 53%;
+    top: 58%;
   }
   .brand-quote-col:hover .brand-hero-img {
-    top: 52%;
-    transform: translateY(-50%) scale(1.06);
+    top: 57%;
+    transform: translateY(-52%) scale(1.06);
   }
 }
 
@@ -1335,20 +1337,22 @@ footer p{font-size:12px;color:#fff;}
 @media(max-width:550px){
   .inner { padding:20px; }
   [src*="cat-icon-"] { width:80px; height:80px; }
-  .cat-icon-6-resp { top:5px !important; right:40px !important; }
+  .cat-icon-6-resp { top:5px !important; right:30px !important; }
   .cat-icon-11-hide { display:none; }
 }
 @media(max-width:1415px){
   .cat-icon-5-hide { display:none; }
   .cat-icon-8-resp { top:20px !important; right:40px !important; }
-  .cat-icon-9-resp { bottom:50% !important; left:-25px !important; z-index:9 !important; }
+  .cat-icon-9-resp { bottom:45% !important; left:-25px !important; z-index:9 !important; }
   .cat-icon-3-resp { left:0px !important; bottom:-30px !important; }
 }
 @media(max-width:550px){
   .cat-icon-8-resp { top:10px !important; right:20px !important; }
-  .cat-icon-3-resp { width:90px;left:-10px !important; bottom:-55px !important; }
+  .cat-icon-3-resp { width:90px;left:-10px !important; bottom:-55px !important;transform: rotate(347deg) !important; }
   .cat-icon-7-resp { top:20px !important; right:20px !important; }
-  
+  .cat-icon-2-resp { right:20px !important; }
+  .cat-icon-12-resp { bottom: -5px !important;left: 15px !important;transform: rotate(358deg) !important;}
+  .cat-icon-10-resp{top:-45px !important;right:10% !important;}
 }
 </style>
 </head>
@@ -1489,7 +1493,7 @@ footer p{font-size:12px;color:#fff;}
 <section id="illustrations">
   <div class="inner">
     <!-- 裝飾貓咪 2, 3 -->
-    <img src="img/cat-icon-2.png" alt="" class="cat-deco-icon" style="top: 20px; right: 40px; transform: rotate(12deg);">
+    <img src="img/cat-icon-2.png" alt="" class="cat-deco-icon cat-icon-2-resp" style="top: 20px; right: 40px; transform: rotate(12deg);">
     <img src="img/cat-icon-3.png" alt="" class="cat-deco-icon cat-icon-3-resp" style="bottom: -100px;left: -40px; transform: rotate(-22deg);">
 
     <div class="section-hd">
@@ -1601,7 +1605,7 @@ footer p{font-size:12px;color:#fff;}
   <div class="inner">
     <!-- 裝飾貓咪圖標 -->
     <img src="img/cat-icon-6.gif" alt="" class="collab-cat-deco cat-deco-1 cat-icon-6-resp" style="top: 30px; right: 50px;">
-    <img src="img/cat-icon-12.gif" alt="" class="collab-cat-deco cat-deco-2">
+    <img src="img/cat-icon-12.gif" alt="" class="collab-cat-deco cat-deco-2 cat-icon-12-resp" style="transform:scaleX(-1);">
     <img src="img/cat-icon-5.gif" alt="" class="cat-deco-icon cat-icon-5-hide" style="top: 40%; right: -50px; transform: rotate(6deg);">
 
     <div class="section-hd">
@@ -1851,9 +1855,9 @@ footer p{font-size:12px;color:#fff;}
 
     <!-- 合作詢問 CTA -->
     <div style="margin-top:48px;padding:32px;background:linear-gradient(135deg,#FFE4EC,#E8F4FF);border-radius:16px;text-align:center;">
-      <h3 style="font-size:20px;font-weight:700;margin-bottom:12px;color:var(--black);">和周氏喵喵一起可可愛愛 ꜀(^. .^꜀ )꜆੭</h3>
+      <h3 style="font-size:20px;font-weight:700;margin-bottom:12px;color:var(--black);">和周氏喵喵一起可可愛愛 💖꜀(^. .^꜀ )꜆੭</h3>
       <p style="color:var(--gray);margin-bottom:24px;">品牌聯名、圖像授權或其他合作機會，歡迎寄信洽詢！</p>
-      <a href="mailto:ruidiechou@gmail.com?subject=周氏喵喵合作詢問" style="display:inline-block;background:var(--pink);color:white;padding:12px 32px;border-radius:999px;text-decoration:none;font-weight:600;transition:all .3s;">📧 聯絡合作</a>
+      <a href="mailto:ruidiechou@gmail.com?subject=周氏喵喵合作詢問" style="display:inline-block;background:var(--pink);color:white;padding:12px 32px;border-radius:999px;text-decoration:none;font-weight:600;transition:all .3s;">💌 聯絡合作</a>
     </div>
   </div>
 </section>
@@ -2139,7 +2143,7 @@ footer p{font-size:12px;color:#fff;}
 <!-- ABOUT -->
 
 <footer style="position:relative;">
-    <img src="img/cat-icon-10.gif" alt="" class="cat-deco-icon" style="top: -50px; right: 20%; transform: rotate(2deg);">
+    <img src="img/cat-icon-10.gif" alt="" class="cat-deco-icon cat-icon-10-resp" style="top: -50px; right: 20%; transform: rotate(2deg);">
   <div class="footer-logo">周氏喵喵 <span>✦</span> CHOÜ'S CAT</div>
   <p>2026 © 保持可愛貓貓企業社<br><span>統一編號：61244566</span></p>
 </footer>
