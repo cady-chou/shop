@@ -125,11 +125,67 @@ nav.scrolled {
   transform: translateY(-1px) !important;
   box-shadow: 0 4px 16px rgba(66,117,200,0.35) !important;
 }
+/* 漢堡按鈕 */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 8px;
+  transition: background 0.2s;
+  z-index: 1001;
+}
+.nav-hamburger:hover { background: rgba(125,216,236,0.15); }
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--black);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 @media (max-width: 768px) {
   nav { padding: 14px 24px; }
   nav.scrolled { padding: 10px 24px; }
-  .nav-links { gap: 2px; }
-  .nav-links li a { padding: 6px 8px; font-size: 12px; }
+  .nav-hamburger { display: flex; }
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(238,249,253,0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    z-index: 1000;
+    padding: 80px 24px 40px;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { width: 100%; text-align: center; }
+  .nav-links li a {
+    display: block;
+    font-size: 18px;
+    padding: 14px 20px;
+    border-radius: 12px;
+  }
+  .nav-links li a.nav-cta,
+  .nav-links li a.nav-interview {
+    font-size: 16px !important;
+    padding: 14px 20px !important;
+    display: block;
+  }
 }
 
 /* COMMON */
@@ -1261,7 +1317,10 @@ footer p{font-size:12px;color:#fff;}
   <a class="nav-logo" href="#">
     <img src="img/logo-1.png" alt="" width="150px" style="padding:15px;">
   </a>
-  <ul class="nav-links">
+  <button class="nav-hamburger" id="navHamburger" aria-label="開啟選單">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
     <li><a href="#brand-story">關於</a></li>
     <li><a href="#illustrations">插畫作品</a></li>
     <li><a href="#collabs">商業合作</a></li>
@@ -2456,6 +2515,31 @@ document.addEventListener('DOMContentLoaded', function() {
       nav.classList.remove('scrolled');
     }
   }, { passive: true });
+})();
+</script>
+<script>
+// 漢堡選單
+(function() {
+  const hamburger = document.getElementById('navHamburger');
+  const navLinks  = document.getElementById('navLinks');
+  if (!hamburger || !navLinks) return;
+
+  hamburger.addEventListener('click', function() {
+    const isOpen = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-label', isOpen ? '關閉選單' : '開啟選單');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  // 點選單項目後關閉
+  navLinks.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-label', '開啟選單');
+      document.body.style.overflow = '';
+    });
+  });
 })();
 </script>
 </body>
