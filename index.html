@@ -154,38 +154,61 @@ nav.scrolled {
 .nav-hamburger.open span:nth-child(2) { opacity: 0; }
 .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* Mobile overlay menu (sibling of nav, avoids backdrop-filter stacking context) */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(238,249,253,0.97);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 80px 24px 40px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  max-width: 320px;
+}
+.mobile-menu ul li { width: 100%; text-align: center; }
+.mobile-menu ul li a {
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--black);
+  text-decoration: none;
+  padding: 14px 20px;
+  border-radius: 14px;
+  transition: background 0.2s, color 0.2s;
+}
+.mobile-menu ul li a:hover { background: rgba(125,216,236,0.15); color: var(--black); }
+.mobile-menu ul li a.nav-cta {
+  background: var(--black) !important;
+  color: white !important;
+  margin-top: 8px;
+  font-size: 16px !important;
+}
+.mobile-menu ul li a.nav-interview {
+  background: var(--sec-collabs) !important;
+  color: white !important;
+  margin-top: 4px;
+  font-size: 16px !important;
+}
+
 @media (max-width: 768px) {
   nav { padding: 14px 24px; }
   nav.scrolled { padding: 10px 24px; }
   .nav-hamburger { display: flex; }
-  .nav-links {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(238,249,253,0.97);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    z-index: 1000;
-    padding: 80px 24px 40px;
-  }
-  .nav-links.open { display: flex; }
-  .nav-links li { width: 100%; text-align: center; }
-  .nav-links li a {
-    display: block;
-    font-size: 18px;
-    padding: 14px 20px;
-    border-radius: 12px;
-  }
-  .nav-links li a.nav-cta,
-  .nav-links li a.nav-interview {
-    font-size: 16px !important;
-    padding: 14px 20px !important;
-    display: block;
-  }
+  .nav-links { display: none; }
 }
 
 /* COMMON */
@@ -1330,6 +1353,19 @@ footer p{font-size:12px;color:#fff;}
     <li><a href="mailto:ruidiechou@gmail.com" class="nav-cta">合作邀約 ↗</a></li>
   </ul>
 </nav>
+<!-- Mobile Nav Overlay -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#brand-story">關於</a></li>
+    <li><a href="#illustrations">插畫作品</a></li>
+    <li><a href="#collabs">商業合作</a></li>
+    <li><a href="#exhibitions">參展經驗</a></li>
+    <li><a href="#products">商品</a></li>
+    <li><a href="https://creator-mag-tw.weblog.to/archives/30196201.html" target="_blank" rel="noopener" class="nav-interview">✦ 專訪報導</a></li>
+    <li><a href="mailto:ruidiechou@gmail.com" class="nav-cta">合作邀約 ↗</a></li>
+  </ul>
+</div>
+
 <!-- 品牌故事 / HERO — ABOUT THE BRAND -->
 <section id="brand-story">
 
@@ -2521,24 +2557,26 @@ document.addEventListener('DOMContentLoaded', function() {
 // 漢堡選單
 (function() {
   const hamburger = document.getElementById('navHamburger');
-  const navLinks  = document.getElementById('navLinks');
-  if (!hamburger || !navLinks) return;
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (!hamburger || !mobileMenu) return;
+
+  function closeMenu() {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-label', '開啟選單');
+    document.body.style.overflow = '';
+  }
 
   hamburger.addEventListener('click', function() {
-    const isOpen = navLinks.classList.toggle('open');
+    const isOpen = mobileMenu.classList.toggle('open');
     hamburger.classList.toggle('open', isOpen);
     hamburger.setAttribute('aria-label', isOpen ? '關閉選單' : '開啟選單');
     document.body.style.overflow = isOpen ? 'hidden' : '';
   });
 
   // 點選單項目後關閉
-  navLinks.querySelectorAll('a').forEach(function(link) {
-    link.addEventListener('click', function() {
-      navLinks.classList.remove('open');
-      hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-label', '開啟選單');
-      document.body.style.overflow = '';
-    });
+  mobileMenu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', closeMenu);
   });
 })();
 </script>
